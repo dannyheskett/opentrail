@@ -3,27 +3,24 @@
  "_asset": [
   "cross_tipped"
  ],
- "_note": "wagon tipped over in the river (112x56)",
+ "_note": "the wagon tipped over in the river, seen from behind (112x56)",
  "style": "rd_pro__default",
  "width": 112,
  "height": 56,
- "prompt": "side view of a covered wagon tipped over on its side in a river, its orange-brown underside and dark wheels facing the viewer, the white canvas cover lying flat to the right, a white sack and an orange crate floating away below it, small dark ripples around them, on a plain magenta background",
+ "prompt": "a covered wagon tipped over on its side in a river, seen from behind and to the right, its white canvas cover with orange stripes half in the water, a wheel in the air, a white sack and an orange crate floating beside it, dark ripples and white foam, on a plain magenta background",
  "remove_bg": true,
  "num_images": 1,
  "seed": 1848,
  "bypass_prompt_expansion": false,
  "figure": false,
  "reference_image_paths": [
-  "art/inputs/cross_tipped_ref.png"
+  "assets/modern/cross_tipped.png"
  ],
  "_original": "RIVER.IMA 4",
  "_accept": [
-  "one covered wagon tipped over on its side",
-  "orange-brown underside and dark wheels showing, white canvas lying to the right",
-  "a white sack and an orange crate floating below it",
-  "small dark ripples around them",
-  "not: people, oxen, a raft, river banks, a solid band of water",
+  "one tipped covered wagon in the water, seen from behind and to the right, a sack and a crate floating",
+  "the same white canvas with orange stripes, brown wood and dark outlines as the approved side views",
   "clean transparent background: no leftover background colour, block or frame",
-  "the same colours and feel as the original"
+  "not: people, river banks, trees, a second wagon"
  ]
 }

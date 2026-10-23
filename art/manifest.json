@@ -625,40 +625,40 @@
    "w": 112,
    "h": 56,
    "group": "crossing",
-   "desc": "wagon on a ferry raft",
+   "desc": "wagon on a ferry raft, seen from behind heading to the far bank",
    "original": "RIVER.IMA 1",
    "transparent": true,
-   "source": "art/runs/cross_ferry/run01/01_raw.png"
+   "source": "art/runs/cross_ferry/run02/01_raw.png"
   },
   {
    "id": "cross_ford",
    "w": 112,
    "h": 56,
    "group": "crossing",
-   "desc": "wagon fording, oxen in the water",
+   "desc": "wagon fording, seen from behind heading to the far bank",
    "original": "RIVER.IMA 2",
    "transparent": true,
-   "source": "art/runs/cross_ford/run04/01_raw.png"
+   "source": "art/runs/cross_ford/run05/02_edited.png"
   },
   {
    "id": "cross_float",
    "w": 112,
    "h": 56,
    "group": "crossing",
-   "desc": "caulked wagon floating",
+   "desc": "caulked wagon floating, seen from behind heading to the far bank",
    "original": "RIVER.IMA 3",
    "transparent": true,
-   "source": "art/runs/cross_float/run02/01_raw.png"
+   "source": "art/runs/cross_float/run03/01_raw.png"
   },
   {
    "id": "cross_tipped",
    "w": 112,
    "h": 56,
    "group": "crossing",
-   "desc": "wagon tipped over in the river",
+   "desc": "wagon tipped over in the river, seen from behind heading to the far bank",
    "original": "RIVER.IMA 4",
    "transparent": true,
-   "source": "art/runs/cross_tipped/run01/01_raw.png"
+   "source": "art/runs/cross_tipped/run02/01_raw.png"
   },
   {
    "id": "raft_raft",
@@ -682,13 +682,13 @@
   },
   {
    "id": "raft_sign",
-   "w": 60,
-   "h": 36,
+   "w": 64,
+   "h": 40,
    "group": "raft",
-   "desc": "Wooden direction sign on the river bank",
+   "desc": "wooden signpost on the river bank, its arrow pointing down and to the left",
    "original": "ORSPRITE.IMA 5",
    "transparent": true,
-   "source": "art/runs/raft_sign/run02/01_raw.png"
+   "source": "art/runs/raft_sign/run03/01_raw.png"
   },
   {
    "id": "raft_landing",

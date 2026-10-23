@@ -3,26 +3,25 @@
  "_asset": [
   "raft_sign"
  ],
- "_note": "Wooden direction sign on the river bank (60x36)",
+ "_note": "Wooden direction sign on the river bank (64x40)",
  "style": "rd_pro__default",
- "width": 60,
- "height": 36,
- "prompt": "a white wooden arrow sign on a short white wooden post, the arrow tilted diagonally so its point aims down toward the lower left corner, a small tuft of green grass at the foot of the post, on a plain magenta background",
+ "width": 64,
+ "height": 40,
+ "prompt": "a weathered wooden signpost standing in a small tuft of green grass: a thick dark brown post and one wide brown wooden plank nailed to it, the plank cut to a point at its lower left end and painted with a bold white arrow pointing down and to the lower left, dark outlines, on a plain magenta background",
  "remove_bg": true,
  "num_images": 1,
  "seed": 1848,
  "bypass_prompt_expansion": false,
  "figure": false,
  "reference_image_paths": [
-  "art/inputs/raft_sign_ref.png"
+  "assets/modern/raft_rock.png"
  ],
  "_original": "ORSPRITE.IMA 5",
  "_accept": [
-  "one white wooden arrow sign pointing down and to the left",
-  "on a short white post",
-  "a small tuft of green grass at its foot",
-  "not: lettering, a second sign, a riverbank, trees",
-  "clean transparent background: no leftover background colour, block or frame",
-  "the same colours and feel as the original"
+  "one wooden signpost with a plank cut to a point, a white arrow pointing down and to the left",
+  "brown weathered wood, dark outlines, the raft and rocks' style",
+  "a small tuft of grass at its foot",
+  "not: lettering, a second sign, a riverbank, trees, water",
+  "clean transparent background: no leftover background colour, block or frame"
  ]
 }

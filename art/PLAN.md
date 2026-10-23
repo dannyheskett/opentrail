@@ -4,10 +4,10 @@ Made by `tools/art.py plan`: one row per job in art/jobs/, the images it makes, 
 
 | job | style | size | images | run | cost |
 |---|---|---|---|---|---|
-| cross_ferry | rd_pro__default | 112x56 | cross_ferry | run01 | $0.18 |
-| cross_float | rd_pro__default | 112x56 | cross_float | run02 | $0.18 |
-| cross_ford | rd_pro__default | 112x56 | cross_ford | run04 | $0.18 |
-| cross_tipped | rd_pro__default | 112x56 | cross_tipped | run01 | $0.18 |
+| cross_ferry | rd_pro__default | 112x56 | cross_ferry | run02 | $0.18 |
+| cross_float | rd_pro__default | 112x56 | cross_float | run03 | $0.18 |
+| cross_ford | rd_pro__default | 112x56 | cross_ford | run05 | $0.18 |
+| cross_tipped | rd_pro__default | 112x56 | cross_tipped | run02 | $0.18 |
 | event_blizzard | rd_pro__default | 72x24 | event_blizzard | run03 | $0.18 |
 | event_broken_part | rd_pro__default | 168x66 | event_broken_part | run03 | $0.18 |
 | event_fire | rd_pro__default | 216x60 | event_fire | run07 | $0.18 |
@@ -55,7 +55,7 @@ Made by `tools/art.py plan`: one row per job in art/jobs/, the images it makes, 
 | raft_landing | rd_pro__default | 60x48 | raft_landing | run03 | $0.18 |
 | raft_raft | rd_pro__default | 64x40 | raft_raft | run03 | $0.18 |
 | raft_rock | rd_pro__default | 52x20 | raft_rock | run03 | $0.18 |
-| raft_sign | rd_pro__default | 60x36 | raft_sign | run02 | $0.18 |
+| raft_sign | rd_pro__default | 64x40 | raft_sign | run03 | $0.18 |
 | scene_hunt_zone0 | rd_tile__single_tile | 64x64 | scene_hunt_zone0 | run03 | $0.06 |
 | scene_hunt_zone1 | rd_tile__single_tile | 64x64 | scene_hunt_zone1 | run03 | $0.06 |
 | scene_hunt_zone2 | rd_tile__single_tile | 64x64 | scene_hunt_zone2 | run04 | $0.06 |
