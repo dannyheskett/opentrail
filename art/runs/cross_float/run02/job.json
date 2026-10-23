@@ -1,0 +1,27 @@
+{
+ "id": "cross_float",
+ "_asset": "cross_float",
+ "_note": "caulked wagon floating (112x56)",
+ "style": "rd_pro__default",
+ "width": 112,
+ "height": 56,
+ "prompt": "a covered wagon floating by itself in a river like a boat, seen straight from the side, its sealed orange-brown wagon box riding low in the water with no wheels showing, white canvas cover with orange stripes and a dark opening at the right end, small dark ripples and white foam trailing behind it to the right, on a plain magenta background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "reference_image_paths": [
+  "art/inputs/cross_float_ref.png"
+ ],
+ "_original": "RIVER.IMA 3",
+ "_accept": [
+  "one covered wagon floating on its own, side view, no wheels showing",
+  "white canvas with orange stripes, dark opening at the right",
+  "orange-brown wagon box low in the water",
+  "small dark ripples and white foam behind it",
+  "not: people, oxen, a raft, river banks, a solid band of water",
+  "clean transparent background: no leftover background colour, block or frame",
+  "the same colours and feel as the original"
+ ]
+}

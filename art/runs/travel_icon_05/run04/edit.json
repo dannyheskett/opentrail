@@ -1,0 +1,7 @@
+{
+ "tool": "by hand: the wall stubs cut off at the image's two edges made transparent (columns 0-4 and 164-169), so the fort ends on its two towers' outer walls; nothing recoloured or added (the user's request)",
+ "source": "art/runs/travel_icon_05/run04/01_raw.png",
+ "images": [
+  "travel_icon_05"
+ ]
+}

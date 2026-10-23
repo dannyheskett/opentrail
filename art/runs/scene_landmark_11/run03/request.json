@@ -1,0 +1,11 @@
+{
+ "prompt": "Fort Hall trading post in 1848 on green grass, a row of buildings across the middle distance just below the middle of the picture, a long plain sandy tan adobe wall with one small window and a framed dark doorway, two chimneys with white smoke and a tall dark stack at its right end, low grey timber buildings with four dark doorways at the left, a two-storey white house with a dark roof and four small windows at the right, a snow-capped purple mountain peak behind it at the right edge, in the left foreground three deer facing right, a stag with big pale antlers, a doe beside him, and the white rump of a third deer cut off by the left edge, dark bush clumps on the grass at the right, white clouds in a blue sky",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 1828,
+ "strength": 0.55,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

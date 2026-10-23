@@ -1,0 +1,21 @@
+{
+ "style": "rd_pro__default",
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "num_images": 1,
+ "seed": 1848,
+ "_raw_only": true,
+ "figure": false,
+ "id": "travel_icon_04",
+ "_asset": [
+  "travel_icon_04"
+ ],
+ "_note": "Chimney Rock, a horizon landmark: the backdrop's pixel scale (drawn 2x), standing on the horizon (y=56).",
+ "width": 40,
+ "height": 26,
+ "_target": [
+  40,
+  26
+ ],
+ "prompt": "a tall narrow tan rock spire rising from a cone-shaped hill, seen from the side"
+}

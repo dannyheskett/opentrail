@@ -1,0 +1,25 @@
+{
+ "id": "scene_landmark_13",
+ "_asset": [
+  "scene_landmark_13"
+ ],
+ "_note": "Landmark 13: Fort Boise (384x216). Redone in the trail icon's adobe (travel_icon_13): it starts from inputs/scene_landmark_13_base.png, the approved vista with its log stockade replaced by the icon's right tower and a stretch of its wall (2.6x), the scene mirrored above them; the original (L13) shows a stockade, the icon and the fort of 1848 adobe",
+ "style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "prompt": "outside Fort Boise in 1848 on green grass, snow-capped mountains across the top third with a purple rock face right of centre and a dark brush band at their foot, a tall sandy tan adobe fort tower and wall with small dark windows, in the foreground a pioneer woman with her hair in a bun, white blouse and white apron over a pink skirt, holding a baby wrapped in white, a little girl in a white dress reaching up to the baby with pink flowers in her other hand, a man in a white hat and blue coat seen from behind, a white ox with short curved horns lying down on the grass, cut off by the edge of the picture, the adobe fort and the lying ox on the right side of the picture, the man on the left edge, bright white snow on the mountain peaks, on the right a towering tan adobe tower much taller than the people that runs off the right edge of the picture, the girl faces her mother and lifts the flowers up toward the baby, only half of the ox is visible at the right edge",
+ "num_images": 1,
+ "seed": 4012,
+ "bypass_prompt_expansion": true,
+ "figure": false,
+ "_original": "L13.PCK",
+ "_accept": [
+  "snow-capped mountains across the top third, a purple rock face right of centre, dark brush band at their foot",
+  "the trail icon's adobe fort on the right third: a tall tan adobe tower with small dark windows and a stretch of wall, running off the right edge",
+  "woman with a bun in white blouse and apron over a pink skirt holding a baby in white; girl in a white dress reaching up to the baby with pink flowers in her other hand; man in white hat and blue coat seen from behind at the left edge",
+  "white ox with short curved horns lying on the grass at the right, facing left, cut off by the right edge",
+  "not: a log stockade, a river, a wagon, a crowd; the ox standing instead of lying"
+ ],
+ "input_image_path": "art/inputs/scene_landmark_13_base.png",
+ "strength": 0.55
+}

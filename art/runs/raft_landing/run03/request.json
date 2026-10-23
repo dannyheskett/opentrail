@@ -1,0 +1,11 @@
+{
+ "prompt": "a small winding dirt footpath climbing up a grassy river bank, seen from above, edged on both sides by rows of small orange and white stones, a small corner of bright blue river water at the top left, a tuft of bright green grass at the bottom right, on a plain magenta background",
+ "prompt_style": "rd_pro__default",
+ "width": 60,
+ "height": 48,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

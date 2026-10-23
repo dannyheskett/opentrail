@@ -1,0 +1,25 @@
+{
+ "id": "event_snowdrift",
+ "_asset": "event_snowdrift",
+ "_note": "snowdrift (80x20)",
+ "style": "rd_pro__default",
+ "width": 80,
+ "height": 20,
+ "prompt": "a big white snowdrift mound, its rounded peak right of centre and a long gentle slope down to the left, soft pale blue shading, flat along its bottom, on a plain dark blue background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "reference_image_paths": [
+  "art/inputs/event_snowdrift_ref.png"
+ ],
+ "_original": "EVENTS.IMA 8",
+ "_accept": [
+  "one long low white snowdrift, flat along the bottom",
+  "low at the left, rising to a rounded peak right of centre, sloping down at the right",
+  "clean transparent background: no leftover background colour, block or frame",
+  "the same colours and feel as the original",
+  "not: snowflakes, trees, rocks, a sky"
+ ]
+}

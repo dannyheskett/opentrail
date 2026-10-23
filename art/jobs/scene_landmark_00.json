@@ -1,0 +1,26 @@
+{
+ "id": "scene_landmark_00",
+ "_asset": [
+  "scene_landmark_00"
+ ],
+ "_note": "Landmark 0: Independence (384x216)",
+ "style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "prompt": "frontier town main street in 1848 seen straight down the middle, plain weathered wooden false-front stores on both sides, a tall white building at the far left, green prairie at the far end of the street, a single file of four covered wagons in the centre of the street heading away from the viewer, two white oxen yoked to the nearest wagon, in the foreground a woman in a pink dress and bonnet holding hands with a man in a white hat and green shirt, a man on a brown horse at the right, a boy waving at the left, small white dog, blue sky with white clouds",
+ "num_images": 1,
+ "seed": 1336,
+ "bypass_prompt_expansion": true,
+ "figure": false,
+ "_original": "L0.PCK",
+ "_accept": [
+  "street seen straight down its length; false-front buildings close in on both sides, the tallest whitewashed one at the far left; green country at the far end",
+  "four covered wagons down the middle, receding; the nearest, left of centre, has a pair of white oxen yoked in front of it facing right",
+  "a riderless white horse behind the second wagon; a small white dog in the street",
+  "couple holding hands in the centre foreground: pink dress and bonnet; white hat, green shirt, blue trousers",
+  "boy with one arm raised at the left edge; brown-coated man with a slanted staff cut off at bottom left",
+  "rider in a white hat on a brown horse heading left in the right foreground, arm raised; man in blue vest and green trousers at the far right",
+  "figures and wagons in one consistent perspective scale",
+  "not: loose oxen, wagons framing the scene left and right, an extra crowd, saloon signs, Southwestern buildings"
+ ]
+}

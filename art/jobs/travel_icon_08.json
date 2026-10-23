@@ -1,0 +1,21 @@
+{
+ "style": "rd_pro__default",
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "num_images": 1,
+ "seed": 1848,
+ "_raw_only": true,
+ "figure": false,
+ "id": "travel_icon_08",
+ "_asset": [
+  "travel_icon_08"
+ ],
+ "_note": "Fort Bridger, a foreground landmark: the wagon's pixel scale, standing on the ground line (y=76).",
+ "width": 170,
+ "height": 72,
+ "_target": [
+  170,
+  72
+ ],
+ "prompt": "a frontier-era trading post seen straight from the side, a long brown log stockade wall facing the viewer with a wooden gate, a log cabin with a smoking stone chimney behind the wall, a red white and blue American flag on a tall pole inside the stockade rising above the wall, the trading post standing alone and empty"
+}

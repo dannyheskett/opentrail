@@ -1,0 +1,21 @@
+{
+ "style": "rd_pro__default",
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "num_images": 1,
+ "seed": 1848,
+ "_raw_only": true,
+ "figure": false,
+ "id": "travel_icon_06",
+ "_asset": [
+  "travel_icon_06"
+ ],
+ "_note": "Independence Rock, a foreground landmark: the wagon's pixel scale, standing on the ground line (y=76).",
+ "width": 150,
+ "height": 44,
+ "_target": [
+  150,
+  44
+ ],
+ "prompt": "a huge long low granite rock shaped like a whale's back, smooth grey stone with dark streaks and weathered cracks, emigrants' names carved near its base, sagebrush around its foot, seen straight from the side"
+}

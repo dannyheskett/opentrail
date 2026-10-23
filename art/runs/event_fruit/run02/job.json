@@ -1,0 +1,26 @@
+{
+ "id": "event_fruit",
+ "_asset": "event_fruit",
+ "_note": "wild fruit bushes (48x20)",
+ "style": "rd_pro__default",
+ "width": 48,
+ "height": 20,
+ "prompt": "two round bushes made of dense small bright green leaves with darker green shading and small white highlights, the left one smaller and the right one larger, on a plain dark blue background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "reference_image_paths": [
+  "art/inputs/event_fruit_ref.png"
+ ],
+ "_original": "EVENTS.IMA 6",
+ "_accept": [
+  "two bright green bushes side by side",
+  "the left one smaller than the right one",
+  "small white highlights in the leaves",
+  "clean transparent background: no leftover background colour, block or frame",
+  "the same colours and feel as the original",
+  "not: berries, flowers, trees, ground"
+ ]
+}

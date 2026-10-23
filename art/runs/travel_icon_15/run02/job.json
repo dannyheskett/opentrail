@@ -1,0 +1,19 @@
+{
+ "style": "rd_pro__default",
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "num_images": 1,
+ "seed": 1848,
+ "raw_only": true,
+ "figure": false,
+ "id": "travel_icon_15",
+ "_asset": "travel_icon_15",
+ "_note": "Fort Walla Walla, a foreground landmark: the wagon's pixel scale, standing on the ground line (y=76).",
+ "width": 170,
+ "height": 72,
+ "target": [
+  170,
+  72
+ ],
+ "prompt": "a compact frontier-era fort seen straight from the side, a tall wall of pointed grey weathered logs facing the viewer with a heavy wooden gate, a two-story wooden blockhouse with an overhanging upper floor and a shingled roof at each corner, small cannons poking out of the blockhouses, a red white and blue American flag on a tall pole inside the fort rising above the wall, the fort standing alone and empty"
+}

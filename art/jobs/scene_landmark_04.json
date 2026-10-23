@@ -1,0 +1,23 @@
+{
+ "id": "scene_landmark_04",
+ "_asset": [
+  "scene_landmark_04"
+ ],
+ "_note": "Landmark 4: Chimney Rock (384x216)",
+ "style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "prompt": "Chimney Rock in Nebraska standing alone on the open Great Plains, a single tall narrow rock spire dead centre on top of a broad low cone shaped hill, the spire reaching the very top edge of the picture, the spire banded tan and brown with its right side in shadow, the cone with pale bands, dark gullies and small green patches, a low reddish outcrop at the left edge, the flat horizon just below the middle of the picture, a wide flat dry pale prairie with sparse grass tufts filling the bottom half, blue sky with long white clouds on either side of the spire, nothing else on the horizon",
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": true,
+ "figure": false,
+ "_original": "L4.PCK",
+ "_accept": [
+  "one spire, dead centre, on the apex of a broad low cone, reaching the very top edge",
+  "spire banded tan and brown with its right side in shadow; cone with pale bands, dark gullies and green patches; reddish outcrop at the left edge; green patch high on the right flank",
+  "horizon at the ridge just below the middle; a flat dry pale plain with sparse grass tufts fills the bottom half",
+  "blue sky with long clouds either side of the spire",
+  "not: people, wagons, animals, trees, a trail, a second spire, green grassland instead of dry plain"
+ ]
+}

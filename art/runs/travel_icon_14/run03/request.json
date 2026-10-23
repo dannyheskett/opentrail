@@ -1,0 +1,11 @@
+{
+ "prompt": "a short range of rounded mountains covered in dark green pine forest, fading to hazy blue at their peaks, the mountains sloping down at both ends to meet flat level ground, seen straight from the side",
+ "prompt_style": "rd_pro__default",
+ "width": 130,
+ "height": 26,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

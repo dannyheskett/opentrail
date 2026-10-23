@@ -1,0 +1,11 @@
+{
+ "prompt": "outside Fort Boise in 1848 on green grass, snow-capped mountains across the top third with a purple rock face right of centre and a dark brush band at their foot, a tall sandy tan adobe fort tower and wall with small dark windows, in the foreground a pioneer woman with her hair in a bun, white blouse and white apron over a pink skirt, holding a baby wrapped in white, a little girl in a white dress reaching up to the baby with pink flowers in her other hand, a man in a white hat and blue coat seen from behind, a white ox with short curved horns lying down on the grass, cut off by the edge of the picture, the adobe fort and the lying ox on the right side of the picture, the man on the left edge, bright white snow on the mountain peaks, on the right a towering tan adobe tower much taller than the people that runs off the right edge of the picture, the girl faces her mother and lifts the flowers up toward the baby, only half of the ox is visible at the right edge",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 4012,
+ "strength": 0.55,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

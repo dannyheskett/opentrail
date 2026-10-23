@@ -1,0 +1,22 @@
+{
+ "id": "scene_landmark_12",
+ "_asset": "scene_landmark_12",
+ "_note": "Landmark 12: Snake River crossing (384x216)",
+ "style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "prompt": "close-up three-quarter length portrait of a Shoshone guide in 1848, he is large and fills the whole left half of the picture from top to bottom, cut off at the knees by the bottom edge, facing the viewer, long black hair with one white feather, white shirt, dark vest over a blue, white and orange beaded breastplate, white trousers, his right arm stretched straight out pointing to the right, his left hand on his waist, behind him a high green grassy plateau, to the right a deep gorge seen from above its rim, a near wall of tall layered tan rock columns falling to the bottom edge, pale far cliffs with green scrub, a blue river winding in sharp bends to the bottom right corner, white clouds in a blue sky",
+ "num_images": 1,
+ "seed": 99,
+ "bypass_prompt_expansion": true,
+ "figure": false,
+ "_original": "L12.PCK",
+ "_accept": [
+  "Native American man fills the left half facing the viewer, cut off at the knees: long black hair, one white feather, white shirt, dark vest over a blue, white and orange beaded breastplate, white trousers",
+  "right arm pointing straight right; left hand at his waist",
+  "green plateau behind him to a dark rim about a quarter down",
+  "right half a deep gorge: near wall of tall layered tan columns falling to the bottom edge, reddish ledge at the rim, pale far cliffs with green scrub, blue river winding in sharp bends down to the bottom-right corner",
+  "clouds in a blue sky",
+  "not: wagons, oxen, a crowd, a second figure; the man is the subject, not the river"
+ ]
+}

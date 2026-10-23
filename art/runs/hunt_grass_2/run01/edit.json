@@ -1,0 +1,6 @@
+{
+ "tool": "manual edit (user allowed manual editing)",
+ "source": "art/runs/hunt_grass_2/run01/01_raw.png",
+ "change": "made the leftover magenta background transparent",
+ "pixels_changed": 13
+}

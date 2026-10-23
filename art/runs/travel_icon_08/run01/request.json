@@ -1,0 +1,11 @@
+{
+ "prompt": "a frontier-era trading post seen straight from the side, a long brown log stockade wall facing the viewer with a wooden gate, a log cabin with a smoking stone chimney behind the wall, a red white and blue American flag on a tall pole inside the stockade rising above the wall, the trading post standing alone and empty",
+ "prompt_style": "rd_pro__default",
+ "width": 170,
+ "height": 72,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

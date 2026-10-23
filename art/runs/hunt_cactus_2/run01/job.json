@@ -1,0 +1,22 @@
+{
+ "id": "hunt_cactus_2",
+ "_asset": "hunt_cactus_2",
+ "_note": "cactus, variant 2, seen from above at an angle (60x44)",
+ "style": "rd_pro__default",
+ "width": 60,
+ "height": 44,
+ "prompt": "a round green barrel cactus, seen from above at an angle, on a plain magenta background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_original": "HUNT_SCENERY.IMA 17",
+ "_accept": [
+  "a round green barrel cactus",
+  "seen from above at an angle",
+  "fills most of the frame",
+  "clean transparent background: no leftover background colour, block or frame",
+  "not: animals, people, a second object, scenery"
+ ]
+}

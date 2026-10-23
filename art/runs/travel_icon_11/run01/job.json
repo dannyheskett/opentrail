@@ -1,0 +1,19 @@
+{
+ "style": "rd_pro__default",
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "num_images": 1,
+ "seed": 1848,
+ "raw_only": true,
+ "figure": false,
+ "id": "travel_icon_11",
+ "_asset": "travel_icon_11",
+ "_note": "Fort Hall, a foreground landmark: the wagon's pixel scale, standing on the ground line (y=76).",
+ "width": 150,
+ "height": 64,
+ "target": [
+  150,
+  64
+ ],
+ "prompt": "a small frontier-era trading post fort seen straight from the side, one low square adobe wall facing the viewer with a wooden gate in the middle, a two-story square adobe blockhouse at each end, a red Hudson's Bay Company flag on a tall pole inside the fort rising above the wall, the fort standing alone and empty"
+}

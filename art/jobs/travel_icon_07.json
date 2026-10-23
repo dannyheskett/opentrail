@@ -1,0 +1,16 @@
+{
+ "style": "rd_pro__default",
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "num_images": 1,
+ "seed": 1848,
+ "figure": false,
+ "id": "travel_icon_07",
+ "_asset": [
+  "travel_icon_07"
+ ],
+ "_note": "South Pass, a foreground landmark: the wagon's pixel scale, standing on the ground line (y=76). Its image in the game is 96x44 (made before art/, from an earlier version of this job; no run was kept).",
+ "width": 150,
+ "height": 44,
+ "prompt": "a short worn dirt path running between two big weathered grey rock outcrops, the near outcrop large and close in front, the far outcrop smaller and further back, the path fading into patchy grass at its ends and sides, sagebrush around the rocks, seen from the side"
+}

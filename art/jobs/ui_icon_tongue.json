@@ -1,0 +1,23 @@
+{
+ "id": "ui_icon_tongue",
+ "_asset": [
+  "ui_icon_tongue"
+ ],
+ "_note": "Supply icon: wagon tongue (32x32)",
+ "style": "rd_pro__default",
+ "width": 32,
+ "height": 32,
+ "prompt": "a game inventory icon of one wooden wagon tongue, a long wooden pole with an iron ring at the front end, lying diagonally, on a plain magenta background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_original": "OREGON.IMA 3",
+ "_accept": [
+  "one long wooden pole with an iron fitting",
+  "fills most of the icon",
+  "clean transparent background",
+  "not: wheels, a wagon, oxen"
+ ]
+}

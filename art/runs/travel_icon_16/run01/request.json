@@ -1,0 +1,12 @@
+{
+ "prompt": "a wide blue river with rushing white rapids and foam winding away into the distance, wide at the front and narrowing toward the horizon, jagged dark rocks along both banks, seen from the side",
+ "prompt_style": "rd_pro__default",
+ "width": 97,
+ "height": 33,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "strength": 0.6,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

@@ -1,0 +1,10 @@
+{
+ "prompt": "big wooden wagon wheels and an ox yoke leaning against the counter of a bright, cheerful frontier general store crowded with goods, sunlight through big windows, shelves of colourful tins and jars, flour sacks, barrels, crates, bolts of cloth, rifles on a rack, warm wood colours",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 1855,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

@@ -1,0 +1,12 @@
+{
+ "prompt": "the pioneer hunter seen from behind walks in place, stepping with his left leg and then his right leg, his knees bending, his rifle held steady aiming up and away to the upper left",
+ "prompt_style": "rd_advanced_animation__custom_action",
+ "width": 48,
+ "height": 64,
+ "num_images": 1,
+ "seed": 1848,
+ "frames_duration": 4,
+ "return_spritesheet": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

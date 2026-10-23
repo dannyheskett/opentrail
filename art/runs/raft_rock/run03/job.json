@@ -1,0 +1,22 @@
+{
+ "id": "raft_rock",
+ "_asset": "raft_rock",
+ "_note": "River rock breaking the rapids (52x20)",
+ "style": "rd_pro__default",
+ "width": 52,
+ "height": 20,
+ "prompt": "a single jagged pale grey river boulder with dark cracks, white foam splashing around its base, seen from the side, on a plain magenta background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_original": "ORSPRITE.IMA 4",
+ "_accept": [
+  "one flat white rock with dark cracks",
+  "white foam around it",
+  "not: plants, a riverbank, a solid band of water",
+  "clean transparent background: no leftover background colour, block or frame",
+  "the same colours and feel as the original"
+ ]
+}

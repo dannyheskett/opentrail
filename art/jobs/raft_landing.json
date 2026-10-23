@@ -1,0 +1,26 @@
+{
+ "id": "raft_landing",
+ "_asset": [
+  "raft_landing"
+ ],
+ "_note": "Landing and trail up the bank to the Willamette Valley (60x48)",
+ "style": "rd_pro__default",
+ "width": 60,
+ "height": 48,
+ "prompt": "a small winding dirt footpath climbing up a grassy river bank, seen from above, edged on both sides by rows of small orange and white stones, a small corner of bright blue river water at the top left, a tuft of bright green grass at the bottom right, on a plain magenta background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_original": "ORSPRITE.IMA 6",
+ "_accept": [
+  "a winding trail climbing up the bank, seen from above",
+  "its two edges marked by curving lines of orange and white stones",
+  "a little blue water at the top left",
+  "a tuft of green grass at the bottom right",
+  "not: people, wagons, buildings, a solid patch of ground",
+  "clean transparent background: no leftover background colour, block or frame",
+  "the same colours and feel as the original"
+ ]
+}

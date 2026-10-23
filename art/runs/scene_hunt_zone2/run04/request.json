@@ -1,0 +1,11 @@
+{
+ "prompt": "seamless ground texture seen from directly above: green mountain meadow grass with small grey pebbles scattered through it, an even pattern that runs off every edge",
+ "prompt_style": "rd_tile__single_tile",
+ "width": 64,
+ "height": 64,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": false,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

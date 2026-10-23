@@ -1,0 +1,29 @@
+{
+ "id": "hunt_rabbit_anim",
+ "_asset": [
+  "hunt_rabbit_1",
+  "hunt_rabbit_2",
+  "hunt_rabbit_3",
+  "hunt_rabbit_4"
+ ],
+ "_note": "rabbit running right, frame 1 of 4 (28x14); from the approved hunt_rabbit_still, padded for motion room when it is approved (approved still: run01)",
+ "style": "rd_advanced_animation__custom_action",
+ "width": 40,
+ "height": 32,
+ "prompt": "the grey-brown rabbit runs to the right in a hopping cycle, legs stretching out and gathering under, the body stays in place",
+ "frames_duration": 4,
+ "return_spritesheet": true,
+ "input_image_path": "art/inputs/hunt_rabbit_still_padded.png",
+ "input_image_keep_alpha": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_accept": [
+  "4 running frames of the same animal, facing right",
+  "legs moving through a run cycle, the body steady",
+  "no part cut off by the frame edge",
+  "clean transparent background in every frame",
+  "not: a second animal, ground, scenery"
+ ]
+}

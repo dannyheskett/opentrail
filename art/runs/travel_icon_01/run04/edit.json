@@ -1,0 +1,10 @@
+{
+ "tool": "tools/art.py keep (blue only, the river icons)",
+ "source": "art/runs/travel_icon_01/run04/01_raw.png",
+ "images": [
+  "travel_icon_01",
+  "travel_icon_02",
+  "travel_icon_09",
+  "travel_icon_12"
+ ]
+}

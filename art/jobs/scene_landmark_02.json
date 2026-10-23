@@ -1,0 +1,25 @@
+{
+ "id": "scene_landmark_02",
+ "_asset": [
+  "scene_landmark_02"
+ ],
+ "_note": "Landmark 2: Big Blue River crossing (384x216)",
+ "style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "prompt": "a long wide river winding from the distant horizon toward the viewer and filling the lower two thirds of the picture, seen from above the water, flat green meadow banks on both sides, on the right side of the river a small covered wagon wading in deep water heading to the left, its team of three oxen in a single file ahead of it on the left, water up to the oxen's bellies, two white oxen leading and a black and white ox closest to the wagon, a small cluster of four bare leafless trees far away on the horizon at the top right, grey boulders at the bottom left corner and the bottom right corner, pale rounded hills on the horizon, clear blue sky, three oxen in all, the black and white one yoked right next to the wagon, wild land with no buildings",
+ "num_images": 1,
+ "seed": 3372,
+ "bypass_prompt_expansion": true,
+ "figure": false,
+ "_original": "L2.PCK",
+ "_accept": [
+  "river comes from the top-centre horizon toward the viewer and fills the lower two thirds",
+  "one covered wagon, in the water just off the right bank, heading left",
+  "three oxen in a line yoked to it: two white, the one at the wagon black-and-white; water to their bellies",
+  "four bare leafless trees near the horizon at the top right",
+  "boulders: a cluster at the bottom left, one in the water at the right bank, one large at the bottom right",
+  "pale rounded hills on the horizon behind a flat green far meadow; clear sky",
+  "not: people, a second wagon, loose oxen, ponds, buildings, mountains, canyon"
+ ]
+}

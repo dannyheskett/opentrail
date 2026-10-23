@@ -1,0 +1,10 @@
+{
+ "prompt": "high bird's-eye view looking down over a wide flat pale green plain in Wyoming, in the bottom right third the top of a bare pale grey rounded granite rock covered with pioneer names painted in black handwriting, a blue river winding in a broad S curve across the plain from the right edge below the mountains down to the bottom left corner, a brown sandy bank along its outer bend, a ring of six small white-topped covered wagons camped near the right edge with a strip of brighter green grass leading up to them, grey mountains with dark crests along a high horizon near the top, a darker range at the right, a narrow band of blue sky at the top",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 6892,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

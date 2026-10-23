@@ -1,0 +1,10 @@
+{
+ "prompt": "Soda Springs in 1848, a flat pale grey-white mineral crusted plain, a long range of snow-capped purple mountains along the horizon a quarter of the way down, clear blue sky, a big round blue spring pool filling the bottom right corner of the picture, two small pools in the bottom left corner, half of a covered wagon with a barrel cut off by the left edge, one white long-horned ox lying loose, four pioneers: a woman in a pink skirt sitting in the middle, a man in a white hat and blue trousers lying on his side beside a small campfire with a coffee pot, a child kneeling at the big pool dipping a bottle, a woman in a white dress and pink bonnet kneeling at the big pool with her hands in the water",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 5399,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

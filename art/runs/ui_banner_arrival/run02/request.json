@@ -1,0 +1,11 @@
+{
+ "prompt": "a wide banner with the words \"On Arriving in Oregon\" in rustic western lettering, warm parchment gold letters with a dark brown outline, on a plain dark blue background",
+ "prompt_style": "rd_pro__default",
+ "width": 256,
+ "height": 32,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

@@ -1,0 +1,20 @@
+{
+ "id": "ui_panel",
+ "_asset": "ui_panel",
+ "_note": "Dialog panel frame, 9-slice (16-pixel corners), weathered wood and parchment (48x48)",
+ "style": "rd_pro__default",
+ "width": 48,
+ "height": 48,
+ "prompt": "a square dialog box frame made of weathered brown wooden planks with iron corner brackets, a plain flat parchment-coloured middle, the frame running along all four edges of the image",
+ "remove_bg": false,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_accept": [
+  "a frame of weathered wood along all four edges",
+  "corners about 16 pixels, with brackets or detail",
+  "a plain flat middle with no pattern",
+  "not: text, icons"
+ ]
+}

@@ -1,0 +1,10 @@
+{
+ "prompt": "the Willamette Valley in Oregon seen from a high hillside, a lush green valley below a long range of snow-capped mountains across the whole horizon a quarter of the way down, a big central peak with grey rock and purple shadows, green rolling meadows with dark tree clumps, a paler white-streaked meadow at the right, two tiny white sheep far off, a blue river winding from the centre left to the bottom right corner with tan gravel bars and grassy islands, a dark tree line on its far bank, tall dark fir trees filling the left side, the tallest at the left edge reaching the top, a dense cluster of firs at the bottom left, green meadow at the bottom right, white clouds in a blue sky, untouched wilderness",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 2232,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

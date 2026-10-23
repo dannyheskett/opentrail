@@ -1,0 +1,24 @@
+{
+ "id": "scene_landmark_14",
+ "_asset": [
+  "scene_landmark_14"
+ ],
+ "_note": "Landmark 14: Blue Mountains (384x216)",
+ "style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "prompt": "summer in the Blue Mountains of Oregon seen from a high viewpoint, a wide open clearing of dry grey-green grass and grey scree sweeping down the middle of the picture between dense dark pine forests, a big snow-capped peak right of centre near the top, a snowy ridge to its right, pale blue-grey ridges with snow patches at the left, dense dark pines across the bottom of the picture, a tall bare dead forked tree snag at the far left edge reaching the top, tall white-barked aspen trees with bright green leaves at the right edge, white clouds along the top, untouched wilderness",
+ "num_images": 1,
+ "seed": 5078,
+ "bypass_prompt_expansion": true,
+ "figure": false,
+ "_original": "L14.PCK",
+ "_accept": [
+  "broad open pale-grey slope down the middle between dark pines",
+  "big snow-capped peak at the centre right (about a fifth down), snowy ridge to the right, pale blue-grey snow-patched ridges at the left; snowfields streaked with dark gullies on the upper slopes",
+  "dense dark pines across the bottom on both sides of the slope",
+  "tall dead forked snag at the left edge reaching the top; tall white-barked trees with green leaves at the right; one white trunk at the left",
+  "clouds along the top",
+  "not: a trail, wagons, people, animals, a uniform green forest"
+ ]
+}

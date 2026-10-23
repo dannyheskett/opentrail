@@ -1,0 +1,7 @@
+{
+ "tool": "by hand: leftover background made transparent: the reference's teal hill at the lower left (columns 0-14) and lone pixels (one opaque neighbour or none) outside the buildings; nothing recoloured or added",
+ "source": "art/runs/travel_icon_03/run02/01_raw.png",
+ "images": [
+  "travel_icon_03"
+ ]
+}

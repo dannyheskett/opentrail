@@ -1,0 +1,12 @@
+{
+ "prompt": "a calm blue river winding away into the distance, wide at the front and narrowing toward the horizon, a few small red barns and orchard trees along both banks, seen from the side",
+ "prompt_style": "rd_pro__default",
+ "width": 160,
+ "height": 36,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "strength": 0.6,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

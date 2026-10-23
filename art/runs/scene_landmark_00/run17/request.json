@@ -1,0 +1,10 @@
+{
+ "prompt": "frontier town main street in 1848 seen straight down the middle, plain weathered wooden false-front stores on both sides, a tall white building at the far left, green prairie at the far end of the street, a single file of four covered wagons in the centre of the street heading away from the viewer, two white oxen yoked to the nearest wagon, in the foreground a woman in a pink dress and bonnet holding hands with a man in a white hat and green shirt, a man on a brown horse at the right, a boy waving at the left, small white dog, blue sky with white clouds",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 1336,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

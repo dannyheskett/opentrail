@@ -1,0 +1,12 @@
+{
+ "prompt": "this ox and covered wagon broken down: the wagon's front wheel broken off so the wagon tilts steeply with its front end down on the ground and its back end raised, the canvas tilting up to the right, on a plain magenta background",
+ "prompt_style": "rd_pro__default",
+ "width": 168,
+ "height": 66,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "strength": 0.6,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

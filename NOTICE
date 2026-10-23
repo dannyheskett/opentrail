@@ -1,0 +1,49 @@
+OpenTrail
+Copyright (c) 2026 Dan Heskett
+Licensed under the MIT License (see LICENSE), except for the original game
+content described below.
+
+The original game
+-----------------
+OpenTrail is a reimplementation of The Oregon Trail (MECC, Apple II, 1985,
+version 1.4). The original game's content is published here with the
+permission of its rights holder and is NOT covered by the MIT License:
+
+- legacy/extracted/: the files from the original disks (MECC's BASIC
+  programs, data, pictures, tunes and text);
+- legacy/memory/: MECC's machine code from the booted game (the ampersand
+  extension and the hunting game; everything else is blanked);
+- assets/*.bin: the original data files built from the two above;
+- the game's text, rules and data as ported into src/engine/ and src/legacy/.
+
+The Oregon Trail is a trademark of its owner. OpenTrail is not affiliated with
+or endorsed by the trademark owner or by Apple Inc. No Apple software (ROM,
+DOS or otherwise) is included.
+
+The modern mode's pictures (assets/modern/, art/) were made for this project,
+with Retro Diffusion and in code (tools/art.py), and are covered by the MIT
+License.
+
+Third-party components
+----------------------
+This product bundles the following third-party components, each under its own
+license:
+
+- raylib (windowing, graphics, input and audio on desktop, web and Android),
+  by Ramon Santamaria and contributors, linked statically.
+  License: zlib/libpng. See https://github.com/raysan5/raylib.
+
+- minih264 (H.264 encoder, for the MP4 recorder), a single-header
+  public-domain library.
+  License: CC0 1.0 Universal. See third_party/minih264/LICENSE.
+
+- minimp4 (MP4 muxer, for the MP4 recorder), a single-header public-domain
+  library.
+  License: CC0 1.0 Universal. See third_party/minimp4/LICENSE.
+
+- stb_image (PNG decoding for modern mode's pictures), by Sean Barrett.
+  License: public domain or MIT, at your choice. See third_party/stb/stb_image.h.
+
+- Press Start 2P (modern mode's text font), by CodeMan38, rendered into the
+  game's 8x8 font. License: SIL Open Font License, Version 1.1 (Reserved Font
+  Name "Press Start 2P"). See third_party/pressstart2p/OFL.txt.

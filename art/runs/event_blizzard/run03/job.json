@@ -1,0 +1,26 @@
+{
+ "id": "event_blizzard",
+ "_asset": "event_blizzard",
+ "_note": "blizzard snow cloud (72x24)",
+ "style": "rd_pro__default",
+ "width": 72,
+ "height": 24,
+ "prompt": "a wide white snow cloud with a heavy blizzard of many white snowflakes blowing below it, on a plain dark blue background",
+ "remove_bg": true,
+ "return_non_bg_removed": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "reference_image_paths": [
+  "art/inputs/event_blizzard_ref.png"
+ ],
+ "_original": "EVENTS.IMA 3",
+ "_accept": [
+  "one wide white snow cloud",
+  "white snowflakes blowing below and out of it",
+  "clean transparent background: no leftover background colour, block or frame",
+  "the same colours and feel as the original",
+  "not: grey cloud, rain, lightning, ground"
+ ]
+}

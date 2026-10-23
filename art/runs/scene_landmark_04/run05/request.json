@@ -1,0 +1,10 @@
+{
+ "prompt": "Chimney Rock in Nebraska standing alone on the open Great Plains, a single tall narrow rock spire dead centre on top of a broad low cone shaped hill, the spire reaching the very top edge of the picture, the spire banded tan and brown with its right side in shadow, the cone with pale bands, dark gullies and small green patches, a low reddish outcrop at the left edge, the flat horizon just below the middle of the picture, a wide flat dry pale prairie with sparse grass tufts filling the bottom half, blue sky with long white clouds on either side of the spire, nothing else on the horizon",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

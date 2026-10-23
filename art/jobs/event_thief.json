@@ -1,0 +1,26 @@
+{
+ "id": "event_thief",
+ "_asset": [
+  "event_thief"
+ ],
+ "_note": "a thief sneaking away at night (64x72). Redone in the hunt sprites' muted style (the first was bright and cartoonish)",
+ "style": "rd_pro__default",
+ "width": 64,
+ "height": 72,
+ "prompt": "a thief sneaking away to the left at night, seen from the side, hunched under a heavy sack of stolen goods slung on his back, dark brown wide-brimmed hat, worn brown coat, dark trousers, muted earthy frontier colours, detailed pixel art in the same style as the reference, on a plain dark purple background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_original": "EVENTS.IMA 7",
+ "_accept": [
+  "one man, side view, facing left, hunched under a sack",
+  "muted browns, the same pixel style as the hunter",
+  "clean transparent background",
+  "not: a second figure, ground, bright saturated colours"
+ ],
+ "reference_image_paths": [
+  "art/inputs/style_ref_hunter.png"
+ ]
+}

@@ -1,0 +1,10 @@
+{
+ "prompt": "a cavalry soldier in a blue cap and blue uniform riding a white horse walking to the left, large in the centre foreground, behind him a small 1848 army fort on a flat green plain, on the right a long low whitewashed building with a grey roof and a big two-storey dark red-brown brick building with a gabled roof at the right edge, a tall flagpole with a United States flag at the top edge, on the left a covered wagon facing the viewer head-on with a person in its round front opening, two white oxen with horns yoked side by side in front of it in the bottom left corner, in the middle distance a woman in pink with a white bonnet leading a small child and a man in a white hat, dark tree line on the left horizon, blue sky",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

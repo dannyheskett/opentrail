@@ -1,0 +1,23 @@
+{
+ "id": "scene_landmark_10",
+ "_asset": [
+  "scene_landmark_10"
+ ],
+ "_note": "Landmark 10: Soda Springs (384x216)",
+ "style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "prompt": "Soda Springs in 1848, a flat pale grey-white mineral crusted plain, a long range of snow-capped purple mountains along the horizon a quarter of the way down, clear blue sky, a big round blue spring pool filling the bottom right corner of the picture, two small pools in the bottom left corner, half of a covered wagon with a barrel cut off by the left edge, one white long-horned ox lying loose, four pioneers: a woman in a pink skirt sitting in the middle, a man in a white hat and blue trousers lying on his side beside a small campfire with a coffee pot, a child kneeling at the big pool dipping a bottle, a woman in a white dress and pink bonnet kneeling at the big pool with her hands in the water",
+ "num_images": 1,
+ "seed": 5399,
+ "bypass_prompt_expansion": true,
+ "figure": false,
+ "_original": "L10.PCK",
+ "_accept": [
+  "pale grey-white crusted plain under snow-capped purple and blue-grey mountains (horizon about a quarter down); clear sky",
+  "big blue pool filling the bottom-right third; smaller pools at the bottom left",
+  "covered wagon with a barrel at the left edge, cut off; one white long-horned ox standing loose",
+  "four people: woman in a pink skirt sitting at the centre; man in white hat and blue trousers reclining by a campfire with a coffee pot and a black pot; child kneeling at the pool dipping a bottle; woman in white dress and pink bonnet at the pool's edge with her hands in the water",
+  "not: green meadow, geysers, a crowd, extra wagons or oxen"
+ ]
+}

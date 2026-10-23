@@ -1,0 +1,10 @@
+{
+ "prompt": "close-up three-quarter length portrait of a Shoshone guide in 1848, he is large and fills the whole left half of the picture from top to bottom, cut off at the knees by the bottom edge, facing the viewer, long black hair with one white feather, white shirt, dark vest over a blue, white and orange beaded breastplate, white trousers, his right arm stretched straight out pointing to the right, his left hand on his waist, behind him a high green grassy plateau, to the right a deep gorge seen from above its rim, a near wall of tall layered tan rock columns falling to the bottom edge, pale far cliffs with green scrub, a blue river winding in sharp bends to the bottom right corner, white clouds in a blue sky",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 99,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

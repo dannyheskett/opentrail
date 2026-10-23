@@ -1,0 +1,38 @@
+# Build output
+build/
+dist/
+*.o
+*.a
+*.so
+*.exe
+*.obj
+
+# Vendored raylib, built from source by scripts/build_raylib_<platform>.sh
+third_party/raylib/
+third_party/raylib-install*/
+
+# Gameplay recordings
+*.mp4
+
+# Local agent state. `.claude/*` rather than `.claude/` because git cannot
+# re-include a path whose parent directory is excluded, and committed skills
+# must stay tracked.
+.claude/*
+!.claude/skills/
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Tooling scratch
+.playwright-mcp/
+__pycache__/
+*.pyc
+
+# Local notes for coding agents (the docs are in docs/)
+CLAUDE.md

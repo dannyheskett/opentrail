@@ -1,0 +1,198 @@
+; simple variables
+D$ = '\x04'
+CC$ = '\x03'
+CL$ = '\x0c'
+CM$ = '\r'
+CE$ = '\x05'
+CF$ = '\x06'
+PA = 12288
+SA = 15900
+SR = 1
+DF = 1
+C0 = 0.0
+C1 = 1
+C2 = 2
+C3 = 3
+C4 = 4
+P5 = 0.5
+PQ = 0.25
+RE = 14
+DI = 0.0
+NP = 5
+AR = 3
+S = 0.0
+P = 1
+R = 1
+H = 0.0
+M = 0.0
+LM = 0.0
+L = 6
+L1 = 2
+PN$ = 'OREGON TRAIL'
+WW$ = 'What is your choice? '
+; arrays
+RE(14):
+  [0] 0.0
+  [1] 0.0
+  [2] 0.0
+  [3] 0.0
+  [4] 0.0
+  [5] 0.0
+  [6] 0.0
+  [7] 0.0
+  [8] 0.0
+  [9] 0.0
+  [10] 0.0
+  [11] 0.0
+  [12] 0.0
+  [13] 0.0
+  [14] 0.0
+B(5):
+  [0] 95
+  [1] 70
+  [2] 81
+  [3] 95
+  [4] 23
+  [5] 20
+T$(10):
+  [0] '<@$0000 len 0>'
+  [1] '<@$0000 len 0>'
+  [2] '<@$0000 len 0>'
+  [3] '<@$0000 len 0>'
+  [4] '<@$0000 len 0>'
+  [5] '<@$0000 len 0>'
+  [6] '<@$0000 len 0>'
+  [7] '<@$0000 len 0>'
+  [8] '<@$0000 len 0>'
+  [9] '<@$0000 len 0>'
+  [10] '<@$0000 len 0>'
+M$(11):
+  [0] 'January'
+  [1] 'February'
+  [2] 'March'
+  [3] 'April'
+  [4] 'May'
+  [5] 'June'
+  [6] 'July'
+  [7] 'August'
+  [8] 'September'
+  [9] 'October'
+  [10] 'November'
+  [11] 'December'
+I$(8):
+  [0] '<@$0000 len 0>'
+  [1] 'Wagon'
+  [2] 'oxen'
+  [3] 'sets of clothing'
+  [4] 'bullets'
+  [5] 'wagon wheels'
+  [6] 'wagon axles'
+  [7] 'wagon tongues'
+  [8] 'pounds of food'
+I(8):
+  [0] 0.0
+  [1] 0.0
+  [2] 0.0
+  [3] 0.0
+  [4] 0.0
+  [5] 0.0
+  [6] 0.0
+  [7] 0.0
+  [8] 0.0
+P$(2):
+  [0] 'steady'
+  [1] 'strenuous'
+  [2] 'grueling'
+R$(2):
+  [0] 'filling'
+  [1] 'meager'
+  [2] 'bare bones'
+LM$(17,3):
+  [*,0] 'Independence', 'the Kansas River crossing', 'the Big Blue River crossing', 'Fort Kearney', 'Chimney Rock', 'Fort Laramie', 'Independence Rock', 'South Pass', 'Fort Bridger', 'Green River crossing', 'Soda Springs', 'Fort Hall', 'the Snake River crossing', 'Fort Boise', 'the Blue Mountains', 'Fort Walla Walla', 'The Dalles', 'the Willamette Valley'
+  [*,1] '1', '2', '2', '1', '0', '1', '0', '0', '1', '2', '0', '1', '2', '1', '0', '1', '0', '0'
+  [*,2] '0', '1', '2', '3', '4', '5', '6', '7', '9', '10', '11', '12', '13', '14', '15', '17', '18', '99'
+  [*,3] '0', '0', '0', '0', '0', '0', '0', '8', '0', '0', '0', '0', '0', '0', '16', '0', '0', '0'
+LM(18,2):
+  [*,0] 102, 83, 119, 250, 86, 190, 102, 57, 125, 162, 144, 57, 182, 114, 160, 55, 125, 120, 100
+  [*,1] 20, 20, 20, 20, 20, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12
+  [*,2] 1, 2, 3, 4, 5, 6, 7, 9, 8, 10, 10, 11, 12, 13, 14, 15, 16, 16, 17
+MP%(17,1):
+  [*,0] 245, 235, 226, 207, 185, 170, 155, 143, 132, 134, 124, 110, 93, 80, 70, 69, 55, 45
+  [*,1] 139, 136, 126, 122, 120, 114, 100, 108, 117, 108, 104, 101, 102, 87, 76, 66, 71, 70
+S$(6,3):
+  [*,0] 'Oxen', 'Clothing', 'Ammunition', 'Wagon wheels', 'Wagon axles', 'Wagon tongues', 'Food'
+  [*,1] '20', '10', '2.00', '10', '10', '10', '0.20'
+  [*,2] 'ox', 'set', 'box', 'wheel', 'axle', 'tongue', 'pound'
+  [*,3] 'en', 's', 'es', 's', 's', 's', 's'
+AQ$(9):
+  [0] 'Continue on trail'
+  [1] 'Check supplies'
+  [2] 'Look at map'
+  [3] 'Change pace'
+  [4] 'Change food rations'
+  [5] 'Stop to rest'
+  [6] 'Attempt to trade'
+  [7] 'Talk to people'
+  [8] 'Buy supplies'
+  [9] 'Hunt for food'
+IL$(8):
+  [0] 'a broken arm'
+  [1] 'a broken leg'
+  [2] 'a snakebite'
+  [3] 'exhaustion'
+  [4] 'typhoid'
+  [5] 'cholera'
+  [6] 'measles'
+  [7] 'dysentery'
+  [8] 'a fever'
+H1(4):
+  [0] 0.0
+  [1] 0.0
+  [2] 0.0
+  [3] 0.0
+  [4] 0.0
+H2(4):
+  [0] 0.0
+  [1] 0.0
+  [2] 0.0
+  [3] 0.0
+  [4] 0.0
+N$(4):
+  [0] '<@$0000 len 0>'
+  [1] '<@$0000 len 0>'
+  [2] '<@$0000 len 0>'
+  [3] '<@$0000 len 0>'
+  [4] '<@$0000 len 0>'
+WC$(5):
+  [0] ';+?,I8V?_NiNnElFdHY<K1@-'
+  [1] '5#:#B(O3Y<c?i9g4].Q(C#9#'
+  [2] "5#9#>'H.R3\\+e(c$X'M'?%8#"
+  [3] '1#6%>*I5R7[+c&a#W)L,=&3$'
+  [4] "<-B+H+P*X*_'h!f!]$R(F+>,"
+  [5] 'DWIGLBQ5W3[.`#`(]/T?LTG^'
+W$(9):
+  [0] 'very cold'
+  [1] 'cold'
+  [2] 'cool'
+  [3] 'warm'
+  [4] 'hot'
+  [5] 'very hot'
+  [6] 'rainy'
+  [7] 'snowy'
+  [8] 'very rainy'
+  [9] 'very snowy'
+H$(3):
+  [0] 'good'
+  [1] 'fair'
+  [2] 'poor'
+  [3] 'very poor'
+RC(3,5):
+  [*,0] 1, 1, 20, 6
+  [*,1] 600, 220, 400, 1000
+  [*,2] 3, 2, 5, 7
+  [*,3] 0.0, 1, 2, 2
+  [*,4] 3, 2, 12, 9
+  [*,5] 2, 0.0, 2, 1
+L%(16,1):
+  [*,0] 8, 8, 5, 6, 7, 6, 7, 8, 14, 9, 10, 14, 11, 15, 12, 13, 16
+  [*,1] 78, 78, 50, 36, 50, 36, 56, 56, 78, 64, 70, 78, 56, 56, 56, 112, 50

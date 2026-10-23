@@ -1,0 +1,11 @@
+{
+ "prompt": "a wide bright cyan storm cloud with a heavy shower of many white and bright cyan square hailstones falling below it, on a plain dark red background",
+ "prompt_style": "rd_pro__default",
+ "width": 64,
+ "height": 24,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

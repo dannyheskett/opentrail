@@ -1,0 +1,22 @@
+{
+ "id": "ui_button",
+ "_asset": [
+  "ui_button"
+ ],
+ "_note": "Choice button, 9-slice (4-pixel edges) (48x16)",
+ "style": "rd_pro__default",
+ "width": 48,
+ "height": 16,
+ "prompt": "a wide flat game button made of a weathered wooden plank with a thin darker wooden border along all four edges, plain flat middle",
+ "remove_bg": false,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_accept": [
+  "a flat wooden plank button",
+  "a thin darker border along all four edges, about 4 pixels",
+  "a plain flat middle with no text",
+  "not: text, icons"
+ ]
+}
