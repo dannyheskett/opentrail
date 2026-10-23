@@ -1,0 +1,29 @@
+{
+ "id": "hunt_hunter_right_anim",
+ "_asset": [
+  "hunt_hunter_right_1",
+  "hunt_hunter_right_2",
+  "hunt_hunter_right_3",
+  "hunt_hunter_right_4"
+ ],
+ "_note": "the hunter aiming right, walking, 4 frames (48x64): side view, aiming east; from cell (0,0) of hunt_hunter_dirs/run04, the one hunter turned to every direction, so every aim is the same man at the same size (feet on row 60)",
+ "style": "rd_advanced_animation__walking",
+ "width": 48,
+ "height": 64,
+ "prompt": "the pioneer hunter walks in place, aiming his rifle to the right",
+ "frames_duration": 4,
+ "return_spritesheet": true,
+ "input_image_path": "art/inputs/hunt_hunter_right_dir.png",
+ "input_image_keep_alpha": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_accept": [
+  "4 walking frames of the same hunter, the same view and aim as the start frame",
+  "legs stepping, the body and the rifle steady",
+  "no part cut off",
+  "clean transparent background in every frame",
+  "not: a second figure, ground, scenery"
+ ]
+}

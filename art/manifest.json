@@ -1,0 +1,1483 @@
+{
+ "canvas": {
+  "w": 384,
+  "h": 216,
+  "max_w": 480
+ },
+ "notes": "Modern-mode art. One entry per image; the game loads assets/modern/<id>.png. Sizes are final pixel sizes on the 216-pixel-high canvas. 'original' names the art it reimagines. 'tile' images repeat horizontally; 'transparent' images are sprites with transparent backgrounds. 'nine_slice' images are stretched by their edges (16-pixel corners for ui_panel, 4 for ui_button), so they carry no picture in the middle.",
+ "assets": [
+  {
+   "id": "scene_title",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Title screen: pioneer family beside their covered wagon and oxen",
+   "original": "FIRST.IMA 1",
+   "source": "art/runs/scene_title/run01/01_raw.png"
+  },
+  {
+   "id": "scene_matt_store",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Inside Matt's General Store, Independence, Missouri, 1848",
+   "source": "art/runs/scene_matt_store/run01/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_00",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 0: Independence",
+   "original": "L0.PCK",
+   "source": "art/runs/scene_landmark_00/run17/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_01",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 1: Kansas River crossing",
+   "original": "L1.PCK",
+   "source": "art/runs/scene_landmark_01/run07/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_02",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 2: Big Blue River crossing",
+   "original": "L2.PCK",
+   "source": "art/runs/scene_landmark_02/run08/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_03",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 3: Fort Kearney",
+   "original": "L3.PCK",
+   "source": "art/runs/scene_landmark_03/run05/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_04",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 4: Chimney Rock",
+   "original": "L4.PCK",
+   "source": "art/runs/scene_landmark_04/run05/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_05",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 5: Fort Laramie",
+   "original": "L5.PCK",
+   "source": "art/runs/scene_landmark_05/run07/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_06",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 6: Independence Rock",
+   "original": "L6.PCK",
+   "source": "art/runs/scene_landmark_06/run02/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_07",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 7: South Pass",
+   "original": "L7.PCK",
+   "source": "art/runs/scene_landmark_07/run04/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_08",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 8: Fort Bridger",
+   "original": "L8.PCK",
+   "source": "art/runs/scene_landmark_08/run02/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_09",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 9: Green River crossing",
+   "original": "L9.PCK",
+   "source": "art/runs/scene_landmark_09/run04/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_10",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 10: Soda Springs",
+   "original": "L10.PCK",
+   "source": "art/runs/scene_landmark_10/run03/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_11",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 11: Fort Hall",
+   "original": "L11.PCK",
+   "source": "art/runs/scene_landmark_11/run03/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_12",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 12: Snake River crossing",
+   "original": "L12.PCK",
+   "source": "art/runs/scene_landmark_12/run09/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_13",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 13: Fort Boise",
+   "original": "L13.PCK",
+   "source": "art/runs/scene_landmark_13/run14/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_14",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 14: Blue Mountains",
+   "original": "L14.PCK",
+   "source": "art/runs/scene_landmark_14/run06/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_15",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 15: Fort Walla Walla",
+   "original": "L15.PCK",
+   "source": "art/runs/scene_landmark_15/run08/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_16",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 16: The Dalles",
+   "original": "L16.PCK",
+   "source": "art/runs/scene_landmark_16/run04/01_raw.png"
+  },
+  {
+   "id": "scene_landmark_17",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Landmark 17: Willamette Valley",
+   "original": "L17.PCK",
+   "source": "art/runs/scene_landmark_17/run03/01_raw.png"
+  },
+  {
+   "id": "scene_map",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Map of the Oregon Trail, Independence to the Willamette Valley (route drawn by the game)",
+   "original": "M0.PCK",
+   "source": "drawn in code (tools/art.py local)"
+  },
+  {
+   "id": "scene_tombstone",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "A lone grave, drawn in code (art.py draw_tombstone): the whole headstone in frame, a face for the words cut in it, under a night sky",
+   "original": "TS.PCK",
+   "source": "drawn in code (tools/art.py local)"
+  },
+  {
+   "id": "scene_river_crossing",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "The river crossing, drawn in code (art.py draw_crossing): far bank with cottonwoods, the river with its current foreshortened, the near bank with reeds; no trail on either bank",
+   "original": "RIVER.IMA 5",
+   "source": "drawn in code (tools/art.py local)"
+  },
+  {
+   "id": "scene_columbia",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "The Columbia River gorge seen at an angle, for the raft run; in the generated scenes' colours, with conifers on the banks",
+   "original": "RIVER.PCK",
+   "source": "drawn in code (tools/art.py local)"
+  },
+  {
+   "id": "scene_hunt_zone0",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Hunting ground, zone 0: eastern prairie (to the Big Blue), empty field seen from above",
+   "source": "art/runs/scene_hunt_zone0/run03/02_tiled.png"
+  },
+  {
+   "id": "scene_hunt_zone1",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Hunting ground, zone 1: plains (to Fort Laramie), empty field seen from above",
+   "source": "art/runs/scene_hunt_zone1/run03/02_tiled.png"
+  },
+  {
+   "id": "scene_hunt_zone2",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Hunting ground, zone 2: Rockies (to Soda Springs), empty field seen from above",
+   "source": "art/runs/scene_hunt_zone2/run04/02_tiled.png"
+  },
+  {
+   "id": "scene_hunt_zone3",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Hunting ground, zone 3: Snake River plain (to Fort Boise), empty field seen from above",
+   "source": "art/runs/scene_hunt_zone3/run03/02_tiled.png"
+  },
+  {
+   "id": "scene_hunt_zone4",
+   "w": 384,
+   "h": 216,
+   "group": "scene",
+   "desc": "Hunting ground, zone 4: Blue Mountains and beyond, empty field seen from above",
+   "source": "art/runs/scene_hunt_zone4/run03/02_tiled.png"
+  },
+  {
+   "id": "travel_bg_prairie_grass",
+   "w": 192,
+   "h": 64,
+   "group": "travel",
+   "desc": "Travel backdrop: prairie horizon, grass ground; side view, loops left to right (drawn 2x, panned with the landmark)",
+   "tile": true,
+   "source": "drawn in code (tools/art.py local)"
+  },
+  {
+   "id": "travel_bg_prairie_dry",
+   "w": 192,
+   "h": 64,
+   "group": "travel",
+   "desc": "Travel backdrop: prairie horizon, dry ground; side view, loops left to right (drawn 2x, panned with the landmark)",
+   "tile": true,
+   "source": "drawn in code (tools/art.py local)"
+  },
+  {
+   "id": "travel_bg_prairie_snow",
+   "w": 192,
+   "h": 64,
+   "group": "travel",
+   "desc": "Travel backdrop: prairie horizon, snow ground; side view, loops left to right (drawn 2x, panned with the landmark)",
+   "tile": true,
+   "source": "drawn in code (tools/art.py local)"
+  },
+  {
+   "id": "travel_bg_mountains_grass",
+   "w": 192,
+   "h": 64,
+   "group": "travel",
+   "desc": "Travel backdrop: mountains horizon, grass ground; side view, loops left to right (drawn 2x, panned with the landmark)",
+   "tile": true,
+   "source": "drawn in code (tools/art.py local)"
+  },
+  {
+   "id": "travel_bg_mountains_dry",
+   "w": 192,
+   "h": 64,
+   "group": "travel",
+   "desc": "Travel backdrop: mountains horizon, dry ground; side view, loops left to right (drawn 2x, panned with the landmark)",
+   "tile": true,
+   "source": "drawn in code (tools/art.py local)"
+  },
+  {
+   "id": "travel_bg_mountains_snow",
+   "w": 192,
+   "h": 64,
+   "group": "travel",
+   "desc": "Travel backdrop: mountains horizon, snow ground; side view, loops left to right (drawn 2x, panned with the landmark)",
+   "tile": true,
+   "source": "drawn in code (tools/art.py local)"
+  },
+  {
+   "id": "travel_wagon_1",
+   "w": 160,
+   "h": 64,
+   "group": "travel",
+   "desc": "The ox and covered wagon walking left, frame 1 of 8 (walking in place)",
+   "transparent": true,
+   "source": "art/runs/travel_wagon_anim/run01/frame_00.png"
+  },
+  {
+   "id": "travel_wagon_2",
+   "w": 160,
+   "h": 64,
+   "group": "travel",
+   "desc": "The ox and covered wagon walking left, frame 2 of 8 (walking in place)",
+   "transparent": true,
+   "source": "art/runs/travel_wagon_anim/run01/frame_01.png"
+  },
+  {
+   "id": "travel_wagon_3",
+   "w": 160,
+   "h": 64,
+   "group": "travel",
+   "desc": "The ox and covered wagon walking left, frame 3 of 8 (walking in place)",
+   "transparent": true,
+   "source": "art/runs/travel_wagon_anim/run01/frame_02.png"
+  },
+  {
+   "id": "travel_wagon_4",
+   "w": 160,
+   "h": 64,
+   "group": "travel",
+   "desc": "The ox and covered wagon walking left, frame 4 of 8 (walking in place)",
+   "transparent": true,
+   "source": "art/runs/travel_wagon_anim/run01/frame_03.png"
+  },
+  {
+   "id": "travel_wagon_5",
+   "w": 160,
+   "h": 64,
+   "group": "travel",
+   "desc": "The ox and covered wagon walking left, frame 5 of 8 (walking in place)",
+   "transparent": true,
+   "source": "art/runs/travel_wagon_anim/run01/frame_04.png"
+  },
+  {
+   "id": "travel_wagon_6",
+   "w": 160,
+   "h": 64,
+   "group": "travel",
+   "desc": "The ox and covered wagon walking left, frame 6 of 8 (walking in place)",
+   "transparent": true,
+   "source": "art/runs/travel_wagon_anim/run01/frame_05.png"
+  },
+  {
+   "id": "travel_wagon_7",
+   "w": 160,
+   "h": 64,
+   "group": "travel",
+   "desc": "The ox and covered wagon walking left, frame 7 of 8 (walking in place)",
+   "transparent": true,
+   "source": "art/runs/travel_wagon_anim/run01/frame_06.png"
+  },
+  {
+   "id": "travel_wagon_8",
+   "w": 160,
+   "h": 64,
+   "group": "travel",
+   "desc": "The ox and covered wagon walking left, frame 8 of 8 (walking in place)",
+   "transparent": true,
+   "source": "art/runs/travel_wagon_anim/run01/frame_07.png"
+  },
+  {
+   "id": "travel_icon_01",
+   "w": 97,
+   "h": 33,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: Kansas River crossing",
+   "transparent": true,
+   "source": "art/runs/travel_icon_01/run04/02_edited.png"
+  },
+  {
+   "id": "travel_icon_02",
+   "w": 97,
+   "h": 33,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: Big Blue River crossing",
+   "transparent": true,
+   "source": "art/runs/travel_icon_01/run04/02_edited.png"
+  },
+  {
+   "id": "travel_icon_03",
+   "w": 120,
+   "h": 60,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: Fort Kearney",
+   "transparent": true,
+   "source": "art/runs/travel_icon_03/run02/02_edited.png"
+  },
+  {
+   "id": "travel_icon_04",
+   "w": 40,
+   "h": 26,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: Chimney Rock",
+   "transparent": true,
+   "source": "art/runs/travel_icon_04/run01/01_raw.png"
+  },
+  {
+   "id": "travel_icon_05",
+   "w": 170,
+   "h": 72,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: Fort Laramie",
+   "transparent": true,
+   "source": "art/runs/travel_icon_05/run04/02_edited.png"
+  },
+  {
+   "id": "travel_icon_06",
+   "w": 150,
+   "h": 44,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: Independence Rock",
+   "transparent": true,
+   "source": "art/runs/travel_icon_06/run03/01_raw.png"
+  },
+  {
+   "id": "travel_icon_07",
+   "w": 96,
+   "h": 44,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: South Pass",
+   "transparent": true,
+   "source": "none: made before the art/ tree; its run was never committed"
+  },
+  {
+   "id": "travel_icon_08",
+   "w": 170,
+   "h": 72,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: Fort Bridger",
+   "transparent": true,
+   "source": "art/runs/travel_icon_08/run01/01_raw.png"
+  },
+  {
+   "id": "travel_icon_09",
+   "w": 97,
+   "h": 33,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: Green River crossing",
+   "transparent": true,
+   "source": "art/runs/travel_icon_01/run04/02_edited.png"
+  },
+  {
+   "id": "travel_icon_10",
+   "w": 140,
+   "h": 48,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: Soda Springs",
+   "transparent": true,
+   "source": "art/runs/travel_icon_10/run04/01_raw.png"
+  },
+  {
+   "id": "travel_icon_11",
+   "w": 150,
+   "h": 64,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: Fort Hall",
+   "transparent": true,
+   "source": "art/runs/travel_icon_11/run01/01_raw.png"
+  },
+  {
+   "id": "travel_icon_12",
+   "w": 97,
+   "h": 33,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: Snake River crossing",
+   "transparent": true,
+   "source": "art/runs/travel_icon_01/run04/02_edited.png"
+  },
+  {
+   "id": "travel_icon_13",
+   "w": 170,
+   "h": 72,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: Fort Boise",
+   "transparent": true,
+   "source": "art/runs/travel_icon_13/run03/01_raw.png"
+  },
+  {
+   "id": "travel_icon_14",
+   "w": 130,
+   "h": 26,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: Blue Mountains",
+   "transparent": true,
+   "source": "art/runs/travel_icon_14/run03/01_raw.png"
+  },
+  {
+   "id": "travel_icon_15",
+   "w": 170,
+   "h": 72,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: Fort Walla Walla",
+   "transparent": true,
+   "source": "art/runs/travel_icon_15/run02/01_raw.png"
+  },
+  {
+   "id": "travel_icon_16",
+   "w": 97,
+   "h": 33,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: The Dalles",
+   "transparent": true,
+   "source": "art/runs/travel_icon_16/run01/01_raw.png"
+  },
+  {
+   "id": "travel_icon_17",
+   "w": 160,
+   "h": 36,
+   "group": "travel",
+   "desc": "Distant landmark on the horizon while travelling: Willamette Valley",
+   "transparent": true,
+   "source": "art/runs/travel_icon_17/run07/01_raw.png"
+  },
+  {
+   "id": "event_thunderstorm",
+   "w": 80,
+   "h": 24,
+   "group": "event",
+   "desc": "thunderstorm cloud with lightning",
+   "original": "EVENTS.IMA 1",
+   "transparent": true,
+   "source": "art/runs/event_thunderstorm/run07/01_raw.png"
+  },
+  {
+   "id": "event_hail",
+   "w": 64,
+   "h": 24,
+   "group": "event",
+   "desc": "hail cloud",
+   "original": "EVENTS.IMA 2",
+   "transparent": true,
+   "source": "art/runs/event_hail/run09/01_raw.png"
+  },
+  {
+   "id": "event_blizzard",
+   "w": 72,
+   "h": 24,
+   "group": "event",
+   "desc": "blizzard snow cloud",
+   "original": "EVENTS.IMA 3",
+   "transparent": true,
+   "source": "art/runs/event_blizzard/run03/01_raw.png"
+  },
+  {
+   "id": "event_broken_part",
+   "w": 168,
+   "h": 66,
+   "group": "event",
+   "desc": "wagon with a broken part",
+   "original": "EVENTS.IMA 4",
+   "transparent": true,
+   "source": "art/runs/event_broken_part/run03/01_raw.png"
+  },
+  {
+   "id": "event_fire",
+   "w": 216,
+   "h": 60,
+   "group": "event",
+   "desc": "covered wagon on fire",
+   "original": "EVENTS.IMA 5",
+   "transparent": true,
+   "source": "art/runs/event_fire/run07/01_raw.png"
+  },
+  {
+   "id": "event_fruit",
+   "w": 48,
+   "h": 20,
+   "group": "event",
+   "desc": "wild fruit bushes",
+   "original": "EVENTS.IMA 6",
+   "transparent": true,
+   "source": "art/runs/event_fruit/run02/01_raw.png"
+  },
+  {
+   "id": "event_thief",
+   "w": 64,
+   "h": 72,
+   "group": "event",
+   "desc": "a thief sneaking away at night",
+   "original": "EVENTS.IMA 7",
+   "transparent": true,
+   "source": "art/runs/event_thief/run17/01_raw.png"
+  },
+  {
+   "id": "event_snowdrift",
+   "w": 80,
+   "h": 20,
+   "group": "event",
+   "desc": "snowdrift",
+   "original": "EVENTS.IMA 8",
+   "transparent": true,
+   "source": "art/runs/event_snowdrift/run03/01_raw.png"
+  },
+  {
+   "id": "cross_ferry",
+   "w": 112,
+   "h": 56,
+   "group": "crossing",
+   "desc": "wagon on a ferry raft",
+   "original": "RIVER.IMA 1",
+   "transparent": true,
+   "source": "art/runs/cross_ferry/run01/01_raw.png"
+  },
+  {
+   "id": "cross_ford",
+   "w": 112,
+   "h": 56,
+   "group": "crossing",
+   "desc": "wagon fording, oxen in the water",
+   "original": "RIVER.IMA 2",
+   "transparent": true,
+   "source": "art/runs/cross_ford/run04/01_raw.png"
+  },
+  {
+   "id": "cross_float",
+   "w": 112,
+   "h": 56,
+   "group": "crossing",
+   "desc": "caulked wagon floating",
+   "original": "RIVER.IMA 3",
+   "transparent": true,
+   "source": "art/runs/cross_float/run02/01_raw.png"
+  },
+  {
+   "id": "cross_tipped",
+   "w": 112,
+   "h": 56,
+   "group": "crossing",
+   "desc": "wagon tipped over in the river",
+   "original": "RIVER.IMA 4",
+   "transparent": true,
+   "source": "art/runs/cross_tipped/run01/01_raw.png"
+  },
+  {
+   "id": "raft_raft",
+   "w": 64,
+   "h": 40,
+   "group": "raft",
+   "desc": "Makeshift log raft carrying a covered wagon, seen at an angle",
+   "original": "ORSPRITE.IMA 2",
+   "transparent": true,
+   "source": "art/runs/raft_raft/run03/01_raw.png"
+  },
+  {
+   "id": "raft_rock",
+   "w": 52,
+   "h": 20,
+   "group": "raft",
+   "desc": "River rock breaking the rapids",
+   "original": "ORSPRITE.IMA 4",
+   "transparent": true,
+   "source": "art/runs/raft_rock/run03/01_raw.png"
+  },
+  {
+   "id": "raft_sign",
+   "w": 60,
+   "h": 36,
+   "group": "raft",
+   "desc": "Wooden direction sign on the river bank",
+   "original": "ORSPRITE.IMA 5",
+   "transparent": true,
+   "source": "art/runs/raft_sign/run02/01_raw.png"
+  },
+  {
+   "id": "raft_landing",
+   "w": 60,
+   "h": 48,
+   "group": "raft",
+   "desc": "Landing and trail up the bank to the Willamette Valley",
+   "original": "ORSPRITE.IMA 6",
+   "transparent": true,
+   "source": "art/runs/raft_landing/run03/01_raw.png"
+  },
+  {
+   "id": "hunt_deer_buck_1",
+   "w": 48,
+   "h": 32,
+   "group": "hunt",
+   "desc": "deer buck running right, frame 1 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_deer_buck_anim/run01/frame_00.png"
+  },
+  {
+   "id": "hunt_deer_buck_2",
+   "w": 48,
+   "h": 32,
+   "group": "hunt",
+   "desc": "deer buck running right, frame 2 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_deer_buck_anim/run01/frame_01.png"
+  },
+  {
+   "id": "hunt_deer_buck_3",
+   "w": 48,
+   "h": 32,
+   "group": "hunt",
+   "desc": "deer buck running right, frame 3 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_deer_buck_anim/run01/frame_02.png"
+  },
+  {
+   "id": "hunt_deer_buck_4",
+   "w": 48,
+   "h": 32,
+   "group": "hunt",
+   "desc": "deer buck running right, frame 4 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_deer_buck_anim/run01/frame_03.png"
+  },
+  {
+   "id": "hunt_deer_buck_dead",
+   "w": 48,
+   "h": 32,
+   "group": "hunt",
+   "desc": "deer buck shot, lying dead",
+   "transparent": true,
+   "source": "art/runs/hunt_deer_buck_dead/run02/frame_03.png"
+  },
+  {
+   "id": "hunt_bear_1",
+   "w": 48,
+   "h": 32,
+   "group": "hunt",
+   "desc": "bear running right, frame 1 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_bear_anim/run01/frame_00.png"
+  },
+  {
+   "id": "hunt_bear_2",
+   "w": 48,
+   "h": 32,
+   "group": "hunt",
+   "desc": "bear running right, frame 2 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_bear_anim/run01/frame_01.png"
+  },
+  {
+   "id": "hunt_bear_3",
+   "w": 48,
+   "h": 32,
+   "group": "hunt",
+   "desc": "bear running right, frame 3 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_bear_anim/run01/frame_02.png"
+  },
+  {
+   "id": "hunt_bear_4",
+   "w": 48,
+   "h": 32,
+   "group": "hunt",
+   "desc": "bear running right, frame 4 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_bear_anim/run01/frame_03.png"
+  },
+  {
+   "id": "hunt_bear_dead",
+   "w": 48,
+   "h": 32,
+   "group": "hunt",
+   "desc": "bear shot, lying dead",
+   "transparent": true,
+   "source": "art/runs/hunt_bear_dead/run02/frame_03.png"
+  },
+  {
+   "id": "hunt_buffalo_1",
+   "w": 56,
+   "h": 40,
+   "group": "hunt",
+   "desc": "buffalo running right, frame 1 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_buffalo_anim/run01/frame_00.png"
+  },
+  {
+   "id": "hunt_buffalo_2",
+   "w": 56,
+   "h": 40,
+   "group": "hunt",
+   "desc": "buffalo running right, frame 2 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_buffalo_anim/run01/frame_01.png"
+  },
+  {
+   "id": "hunt_buffalo_3",
+   "w": 56,
+   "h": 40,
+   "group": "hunt",
+   "desc": "buffalo running right, frame 3 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_buffalo_anim/run01/frame_02.png"
+  },
+  {
+   "id": "hunt_buffalo_4",
+   "w": 56,
+   "h": 40,
+   "group": "hunt",
+   "desc": "buffalo running right, frame 4 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_buffalo_anim/run01/frame_03.png"
+  },
+  {
+   "id": "hunt_buffalo_dead",
+   "w": 56,
+   "h": 40,
+   "group": "hunt",
+   "desc": "buffalo shot, lying dead",
+   "transparent": true,
+   "source": "art/runs/hunt_buffalo_dead/run03/frame_03.png"
+  },
+  {
+   "id": "hunt_deer_1",
+   "w": 48,
+   "h": 32,
+   "group": "hunt",
+   "desc": "deer running right, frame 1 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_deer_anim/run01/frame_00.png"
+  },
+  {
+   "id": "hunt_deer_2",
+   "w": 48,
+   "h": 32,
+   "group": "hunt",
+   "desc": "deer running right, frame 2 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_deer_anim/run01/frame_01.png"
+  },
+  {
+   "id": "hunt_deer_3",
+   "w": 48,
+   "h": 32,
+   "group": "hunt",
+   "desc": "deer running right, frame 3 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_deer_anim/run01/frame_02.png"
+  },
+  {
+   "id": "hunt_deer_4",
+   "w": 48,
+   "h": 32,
+   "group": "hunt",
+   "desc": "deer running right, frame 4 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_deer_anim/run01/frame_03.png"
+  },
+  {
+   "id": "hunt_deer_dead",
+   "w": 48,
+   "h": 32,
+   "group": "hunt",
+   "desc": "deer shot, lying dead",
+   "transparent": true,
+   "source": "art/runs/hunt_deer_dead/run02/frame_03.png"
+  },
+  {
+   "id": "hunt_rabbit_1",
+   "w": 40,
+   "h": 32,
+   "group": "hunt",
+   "desc": "rabbit running right, frame 1 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_rabbit_anim/run01/frame_00.png"
+  },
+  {
+   "id": "hunt_rabbit_2",
+   "w": 40,
+   "h": 32,
+   "group": "hunt",
+   "desc": "rabbit running right, frame 2 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_rabbit_anim/run01/frame_01.png"
+  },
+  {
+   "id": "hunt_rabbit_3",
+   "w": 40,
+   "h": 32,
+   "group": "hunt",
+   "desc": "rabbit running right, frame 3 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_rabbit_anim/run01/frame_02.png"
+  },
+  {
+   "id": "hunt_rabbit_4",
+   "w": 40,
+   "h": 32,
+   "group": "hunt",
+   "desc": "rabbit running right, frame 4 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_rabbit_anim/run01/frame_03.png"
+  },
+  {
+   "id": "hunt_rabbit_dead",
+   "w": 40,
+   "h": 32,
+   "group": "hunt",
+   "desc": "rabbit shot, lying dead",
+   "transparent": true,
+   "source": "art/runs/hunt_rabbit_dead/run02/frame_03.png"
+  },
+  {
+   "id": "hunt_squirrel_1",
+   "w": 40,
+   "h": 32,
+   "group": "hunt",
+   "desc": "squirrel running right, frame 1 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_squirrel_anim/run01/frame_00.png"
+  },
+  {
+   "id": "hunt_squirrel_2",
+   "w": 40,
+   "h": 32,
+   "group": "hunt",
+   "desc": "squirrel running right, frame 2 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_squirrel_anim/run01/frame_01.png"
+  },
+  {
+   "id": "hunt_squirrel_3",
+   "w": 40,
+   "h": 32,
+   "group": "hunt",
+   "desc": "squirrel running right, frame 3 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_squirrel_anim/run01/frame_02.png"
+  },
+  {
+   "id": "hunt_squirrel_4",
+   "w": 40,
+   "h": 32,
+   "group": "hunt",
+   "desc": "squirrel running right, frame 4 of 4",
+   "transparent": true,
+   "source": "art/runs/hunt_squirrel_anim/run01/frame_03.png"
+  },
+  {
+   "id": "hunt_squirrel_dead",
+   "w": 40,
+   "h": 32,
+   "group": "hunt",
+   "desc": "squirrel shot, lying dead",
+   "transparent": true,
+   "source": "art/runs/hunt_squirrel_dead/run02/frame_03.png"
+  },
+  {
+   "id": "hunt_hunter_up_1",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming north (away from the viewer), seen from behind, walking frame 1 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_up_anim/run02/frame_00.png"
+  },
+  {
+   "id": "hunt_hunter_up_2",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming north (away from the viewer), seen from behind, walking frame 2 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_up_anim/run02/frame_01.png"
+  },
+  {
+   "id": "hunt_hunter_up_3",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming north (away from the viewer), seen from behind, walking frame 3 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_up_anim/run02/frame_02.png"
+  },
+  {
+   "id": "hunt_hunter_up_4",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming north (away from the viewer), seen from behind, walking frame 4 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_up_anim/run02/frame_03.png"
+  },
+  {
+   "id": "hunt_hunter_upright_1",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming north-east, a 3/4 back view with the rifle raised halfway between north and east (the art faces north-west; the game mirrors it), walking frame 1 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_upright_anim/run05/frame_00.png"
+  },
+  {
+   "id": "hunt_hunter_upright_2",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming north-east, a 3/4 back view with the rifle raised halfway between north and east (the art faces north-west; the game mirrors it), walking frame 2 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_upright_anim/run05/frame_01.png"
+  },
+  {
+   "id": "hunt_hunter_upright_3",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming north-east, a 3/4 back view with the rifle raised halfway between north and east (the art faces north-west; the game mirrors it), walking frame 3 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_upright_anim/run05/frame_02.png"
+  },
+  {
+   "id": "hunt_hunter_upright_4",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming north-east, a 3/4 back view with the rifle raised halfway between north and east (the art faces north-west; the game mirrors it), walking frame 4 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_upright_anim/run05/frame_03.png"
+  },
+  {
+   "id": "hunt_hunter_right_1",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming east, side view, walking frame 1 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_right_anim/run02/frame_00.png"
+  },
+  {
+   "id": "hunt_hunter_right_2",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming east, side view, walking frame 2 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_right_anim/run02/frame_01.png"
+  },
+  {
+   "id": "hunt_hunter_right_3",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming east, side view, walking frame 3 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_right_anim/run02/frame_02.png"
+  },
+  {
+   "id": "hunt_hunter_right_4",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming east, side view, walking frame 4 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_right_anim/run02/frame_03.png"
+  },
+  {
+   "id": "hunt_hunter_downright_1",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming south-east, a 3/4 front view with the rifle lowered halfway between east and south, walking frame 1 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_downright_anim/run04/frame_00.png"
+  },
+  {
+   "id": "hunt_hunter_downright_2",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming south-east, a 3/4 front view with the rifle lowered halfway between east and south, walking frame 2 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_downright_anim/run04/frame_01.png"
+  },
+  {
+   "id": "hunt_hunter_downright_3",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming south-east, a 3/4 front view with the rifle lowered halfway between east and south, walking frame 3 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_downright_anim/run04/frame_02.png"
+  },
+  {
+   "id": "hunt_hunter_downright_4",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming south-east, a 3/4 front view with the rifle lowered halfway between east and south, walking frame 4 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_downright_anim/run04/frame_03.png"
+  },
+  {
+   "id": "hunt_hunter_down_1",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming south (towards the viewer), seen from the front, walking frame 1 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_down_anim/run04/frame_00.png"
+  },
+  {
+   "id": "hunt_hunter_down_2",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming south (towards the viewer), seen from the front, walking frame 2 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_down_anim/run04/frame_01.png"
+  },
+  {
+   "id": "hunt_hunter_down_3",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming south (towards the viewer), seen from the front, walking frame 3 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_down_anim/run04/frame_02.png"
+  },
+  {
+   "id": "hunt_hunter_down_4",
+   "w": 48,
+   "h": 64,
+   "group": "hunt",
+   "desc": "hunter aiming south (towards the viewer), seen from the front, walking frame 4 of 4 (the west side mirrors the east)",
+   "original": "HUNT_HUNTER.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_hunter_down_anim/run04/frame_03.png"
+  },
+  {
+   "id": "hunt_tree_1",
+   "w": 60,
+   "h": 56,
+   "group": "hunt",
+   "desc": "deciduous tree, variant 1, seen from above at an angle",
+   "original": "HUNT_SCENERY.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_tree_1/run01/01_raw.png"
+  },
+  {
+   "id": "hunt_tree_2",
+   "w": 60,
+   "h": 56,
+   "group": "hunt",
+   "desc": "deciduous tree, variant 2, seen from above at an angle",
+   "original": "HUNT_SCENERY.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_tree_2/run01/01_raw.png"
+  },
+  {
+   "id": "hunt_tree_3",
+   "w": 60,
+   "h": 56,
+   "group": "hunt",
+   "desc": "deciduous tree, variant 3, seen from above at an angle",
+   "original": "HUNT_SCENERY.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_tree_3/run01/01_raw.png"
+  },
+  {
+   "id": "hunt_pine_1",
+   "w": 60,
+   "h": 56,
+   "group": "hunt",
+   "desc": "pine tree, variant 1, seen from above at an angle",
+   "original": "HUNT_SCENERY.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_pine_1/run02/01_raw.png"
+  },
+  {
+   "id": "hunt_pine_2",
+   "w": 60,
+   "h": 56,
+   "group": "hunt",
+   "desc": "pine tree, variant 2, seen from above at an angle",
+   "original": "HUNT_SCENERY.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_pine_2/run01/01_raw.png"
+  },
+  {
+   "id": "hunt_pine_3",
+   "w": 60,
+   "h": 56,
+   "group": "hunt",
+   "desc": "pine tree, variant 3, seen from above at an angle",
+   "original": "HUNT_SCENERY.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_pine_3/run01/01_raw.png"
+  },
+  {
+   "id": "hunt_grass_1",
+   "w": 60,
+   "h": 20,
+   "group": "hunt",
+   "desc": "clump of grass and brush, variant 1, seen from above at an angle",
+   "original": "HUNT_SCENERY.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_grass_1/run02/01_raw.png"
+  },
+  {
+   "id": "hunt_grass_2",
+   "w": 60,
+   "h": 20,
+   "group": "hunt",
+   "desc": "clump of grass and brush, variant 2, seen from above at an angle",
+   "original": "HUNT_SCENERY.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_grass_2/run01/02_edited.png"
+  },
+  {
+   "id": "hunt_grass_3",
+   "w": 60,
+   "h": 20,
+   "group": "hunt",
+   "desc": "clump of grass and brush, variant 3, seen from above at an angle",
+   "original": "HUNT_SCENERY.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_grass_3/run01/01_raw.png"
+  },
+  {
+   "id": "hunt_cactus_1",
+   "w": 60,
+   "h": 44,
+   "group": "hunt",
+   "desc": "cactus, variant 1, seen from above at an angle",
+   "original": "HUNT_SCENERY.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_cactus_1/run02/01_raw.png"
+  },
+  {
+   "id": "hunt_cactus_2",
+   "w": 60,
+   "h": 44,
+   "group": "hunt",
+   "desc": "cactus, variant 2, seen from above at an angle",
+   "original": "HUNT_SCENERY.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_cactus_2/run01/01_raw.png"
+  },
+  {
+   "id": "hunt_cactus_3",
+   "w": 60,
+   "h": 44,
+   "group": "hunt",
+   "desc": "cactus, variant 3, seen from above at an angle",
+   "original": "HUNT_SCENERY.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_cactus_3/run01/01_raw.png"
+  },
+  {
+   "id": "hunt_rock_1",
+   "w": 60,
+   "h": 36,
+   "group": "hunt",
+   "desc": "rock, variant 1, seen from above at an angle",
+   "original": "HUNT_SCENERY.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_rock_1/run02/01_raw.png"
+  },
+  {
+   "id": "hunt_rock_2",
+   "w": 60,
+   "h": 36,
+   "group": "hunt",
+   "desc": "rock, variant 2, seen from above at an angle",
+   "original": "HUNT_SCENERY.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_rock_2/run01/01_raw.png"
+  },
+  {
+   "id": "hunt_rock_3",
+   "w": 60,
+   "h": 36,
+   "group": "hunt",
+   "desc": "rock, variant 3, seen from above at an angle",
+   "original": "HUNT_SCENERY.IMA",
+   "transparent": true,
+   "source": "art/runs/hunt_rock_3/run02/01_raw.png"
+  },
+  {
+   "id": "portrait_matt",
+   "w": 64,
+   "h": 160,
+   "group": "ui",
+   "desc": "Matt the storekeeper, full figure, apron and pipe",
+   "original": "FIRST.IMA 4",
+   "transparent": true,
+   "source": "art/runs/portrait_matt/run01/01_raw.png"
+  },
+  {
+   "id": "ui_logo",
+   "w": 256,
+   "h": 64,
+   "group": "ui",
+   "desc": "\"Open Trail\" title lettering",
+   "original": "FIRST.IMA 2",
+   "transparent": true,
+   "source": "art/runs/ui_logo/run02/01_raw.png"
+  },
+  {
+   "id": "ui_divider",
+   "w": 320,
+   "h": 16,
+   "group": "ui",
+   "desc": "Decorative ornament divider line",
+   "original": "FIRST.IMA 3",
+   "transparent": true,
+   "source": "drawn in code (tools/art.py local)"
+  },
+  {
+   "id": "ui_banner_topten",
+   "w": 256,
+   "h": 32,
+   "group": "ui",
+   "desc": "\"The Open Top Ten\" banner",
+   "original": "FIRST.IMA 5",
+   "transparent": true,
+   "source": "art/runs/ui_banner_topten/run03/01_raw.png"
+  },
+  {
+   "id": "ui_banner_arrival",
+   "w": 256,
+   "h": 32,
+   "group": "ui",
+   "desc": "\"On Arriving in Oregon\" banner",
+   "original": "FIRST.IMA 6",
+   "transparent": true,
+   "source": "art/runs/ui_banner_arrival/run02/01_raw.png"
+  },
+  {
+   "id": "ui_panel",
+   "w": 48,
+   "h": 48,
+   "group": "ui",
+   "desc": "Dialog panel frame, 9-slice (16-pixel corners), weathered wood and parchment",
+   "transparent": true,
+   "nine_slice": true,
+   "source": "art/runs/ui_panel/run01/01_raw.png"
+  },
+  {
+   "id": "ui_button",
+   "w": 48,
+   "h": 16,
+   "group": "ui",
+   "desc": "Choice button, 9-slice (4-pixel edges)",
+   "transparent": true,
+   "nine_slice": true,
+   "source": "art/runs/ui_button/run01/01_raw.png"
+  },
+  {
+   "id": "ui_icon_oxen",
+   "w": 32,
+   "h": 32,
+   "group": "ui",
+   "desc": "Supply icon: ox",
+   "original": "OREGON.IMA",
+   "transparent": true,
+   "source": "art/runs/ui_icon_oxen/run01/01_raw.png"
+  },
+  {
+   "id": "ui_icon_clothing",
+   "w": 32,
+   "h": 32,
+   "group": "ui",
+   "desc": "Supply icon: set of clothing",
+   "original": "OREGON.IMA",
+   "transparent": true,
+   "source": "art/runs/ui_icon_clothing/run01/01_raw.png"
+  },
+  {
+   "id": "ui_icon_bullets",
+   "w": 32,
+   "h": 32,
+   "group": "ui",
+   "desc": "Supply icon: box of bullets",
+   "original": "OREGON.IMA",
+   "transparent": true,
+   "source": "art/runs/ui_icon_bullets/run01/01_raw.png"
+  },
+  {
+   "id": "ui_icon_wheel",
+   "w": 32,
+   "h": 32,
+   "group": "ui",
+   "desc": "Supply icon: wagon wheel",
+   "original": "OREGON.IMA",
+   "transparent": true,
+   "source": "art/runs/ui_icon_wheel/run01/01_raw.png"
+  },
+  {
+   "id": "ui_icon_axle",
+   "w": 32,
+   "h": 32,
+   "group": "ui",
+   "desc": "Supply icon: wagon axle",
+   "original": "OREGON.IMA",
+   "transparent": true,
+   "source": "art/runs/ui_icon_axle/run01/01_raw.png"
+  },
+  {
+   "id": "ui_icon_tongue",
+   "w": 32,
+   "h": 32,
+   "group": "ui",
+   "desc": "Supply icon: wagon tongue",
+   "original": "OREGON.IMA",
+   "transparent": true,
+   "source": "art/runs/ui_icon_tongue/run01/01_raw.png"
+  },
+  {
+   "id": "ui_icon_food",
+   "w": 32,
+   "h": 32,
+   "group": "ui",
+   "desc": "Supply icon: sack of food",
+   "original": "OREGON.IMA",
+   "transparent": true,
+   "source": "art/runs/ui_icon_food/run01/01_raw.png"
+  },
+  {
+   "id": "ui_icon_money",
+   "w": 32,
+   "h": 32,
+   "group": "ui",
+   "desc": "Supply icon: money",
+   "original": "OREGON.IMA",
+   "transparent": true,
+   "source": "art/runs/ui_icon_money/run01/01_raw.png"
+  },
+  {
+   "id": "ui_font",
+   "w": 128,
+   "h": 48,
+   "group": "ui",
+   "desc": "The text font: Press Start 2P (SIL OFL 1.1), 8x8 cells for characters 32-126",
+   "transparent": true,
+   "source": "drawn in code (tools/art.py local)"
+  }
+ ]
+}

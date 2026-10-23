@@ -1,0 +1,23 @@
+{
+ "id": "hunt_hunter_dirs",
+ "_asset": [],
+ "_note": "the one hunter turned to face all 8 directions on the 3/4-view field (north = away from the viewer, south = towards), aiming his rifle the way he faces; from the approved right-aim still (hunt_hunter_right_still/run03) padded to 48x64 (body column 24, feet row 60). The 3x3 sheet: top front (south), bottom back (north), left and right the sides, corners the diagonals",
+ "style": "rd_advanced_animation__rotate",
+ "width": 48,
+ "height": 64,
+ "prompt": "the pioneer hunter aiming his rifle straight ahead of him",
+ "return_spritesheet": true,
+ "input_image_path": "art/inputs/hunt_hunter_master_padded.png",
+ "input_image_keep_alpha": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_accept": [
+  "the same man in all 8 views: hat, shirt, size, feet on one line",
+  "the rifle aimed the way he faces: north away from the viewer, south towards",
+  "3/4 top-down views matching the hunting field",
+  "no part cut off",
+  "clean transparent background"
+ ]
+}

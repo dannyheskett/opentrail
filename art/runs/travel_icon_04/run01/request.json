@@ -1,0 +1,11 @@
+{
+ "prompt": "a tall narrow tan rock spire rising from a cone-shaped hill, seen from the side",
+ "prompt_style": "rd_pro__default",
+ "width": 40,
+ "height": 26,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

@@ -1,0 +1,10 @@
+{
+ "prompt": "wide open river valley seen from a grassy right bank, a broad blue river flowing out of a distant gap between bluffs in the far centre and widening toward the bottom left, low tan rust-streaked fluted sandstone bluffs set back in the distance on both sides, the left bluff topped with dark pine trees, the right bluff a long grey and rust wall with grass along its top, a small log raft in the middle of the river carrying one covered wagon and one man at its stern, on the grassy right bank facing the river a large covered wagon with a yoked pair of white oxen in the bottom right corner, a smaller wagon and oxen further up the bank, a small white dog, big white cumulus clouds in a blue sky",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

@@ -1,0 +1,22 @@
+{
+ "id": "ui_icon_money",
+ "_asset": [
+  "ui_icon_money"
+ ],
+ "_note": "Supply icon: money (32x32)",
+ "style": "rd_pro__default",
+ "width": 32,
+ "height": 32,
+ "prompt": "a game inventory icon of a small pile of gold and silver coins, on a plain magenta background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_accept": [
+  "a small pile of gold and silver coins",
+  "fills most of the icon",
+  "clean transparent background",
+  "not: a purse, paper money, people"
+ ]
+}

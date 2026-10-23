@@ -1,0 +1,19 @@
+{
+ "id": "scene_hunt_zone0",
+ "_asset": "scene_hunt_zone0",
+ "_note": "Hunting ground, zone 0: a seamless 64x64 tile, repeated across the 384x216 ground",
+ "style": "rd_tile__single_tile",
+ "width": 64,
+ "height": 64,
+ "prompt": "seamless ground texture seen from directly above: short green prairie grass with a few tiny wildflowers, an even pattern",
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "remove_bg": false,
+ "_accept": [
+  "short green prairie grass with a few tiny wildflowers, seen from directly above",
+  "an even texture that repeats with no visible seams",
+  "nothing standing on it: no trees, rocks, paths, water or objects"
+ ]
+}

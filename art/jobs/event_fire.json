@@ -1,0 +1,29 @@
+{
+ "id": "event_fire",
+ "_asset": [
+  "event_fire"
+ ],
+ "_note": "covered wagon on fire (216x60)",
+ "style": "rd_pro__default",
+ "width": 216,
+ "height": 60,
+ "prompt": "this ox and covered wagon with the wagon on fire: orange and white flames rising from the wagon's canvas cover and streaming out behind it to the right, orange fire under the wagon box, the ox in front at the left untouched and well clear of the flames, dark wooden wheels with dark shadow between the spokes, on a plain magenta background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "input_image_path": "art/inputs/event_fire_seed.png",
+ "strength": 0.6,
+ "_original": "EVENTS.IMA 5",
+ "_accept": [
+  "the modern ox at the left, side view, facing left, pulling the wagon",
+  "a covered wagon to its right: white canvas with two blue hoop lines, two white spoked wheels",
+  "flames only on and behind the wagon",
+  "no flames on, over or touching the ox",
+  "orange fire under the wagon box between the wheels",
+  "clean transparent background: no leftover background colour, block or frame",
+  "the same colours and feel as the original",
+  "not: smoke clouds, people, a second ox, ground"
+ ]
+}

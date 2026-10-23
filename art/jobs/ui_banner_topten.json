@@ -1,0 +1,24 @@
+{
+ "id": "ui_banner_topten",
+ "_asset": [
+  "ui_banner_topten"
+ ],
+ "_note": "ui_banner_topten (256x32)",
+ "style": "rd_pro__default",
+ "width": 256,
+ "height": 32,
+ "prompt": "a wide parchment scroll banner filling the whole image from edge to edge, with the words \"The Open Top Ten\" across it in rustic western lettering, warm parchment gold letters with a dark brown outline",
+ "remove_bg": false,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_original": "FIRST.IMA 5",
+ "_accept": [
+  "the words \"The Open Top Ten\", spelled exactly, nothing else written",
+  "rustic western lettering, parchment gold with a dark outline",
+  "a solid parchment scroll filling the image",
+  "no see-through holes anywhere",
+  "not: other words, pictures"
+ ]
+}

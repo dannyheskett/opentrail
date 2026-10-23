@@ -1,0 +1,23 @@
+{
+ "id": "travel_icon_16",
+ "_asset": [
+  "travel_icon_16"
+ ],
+ "_note": "The Dalles: a river like the crossings', from the river crossing icon on the meadow's green; placed like it (far end by the horizon, wide end above the hedge). Its input (build/art/travel_in/dalles_input_97x33.png) was made in build/, which is not committed, and is NOT KEPT: the approved run is the record, and the job cannot be re-run as it is.",
+ "style": "rd_pro__default",
+ "width": 97,
+ "height": 33,
+ "_target": [
+  97,
+  33
+ ],
+ "input_image_path": "build/art/travel_in/dalles_input_97x33.png",
+ "strength": 0.6,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "num_images": 1,
+ "seed": 1848,
+ "_raw_only": true,
+ "figure": false,
+ "prompt": "a wide blue river with rushing white rapids and foam winding away into the distance, wide at the front and narrowing toward the horizon, jagged dark rocks along both banks, seen from the side"
+}

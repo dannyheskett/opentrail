@@ -1,0 +1,23 @@
+{
+ "id": "portrait_matt",
+ "_asset": "portrait_matt",
+ "_note": "Matt the storekeeper, full figure, apron and pipe (64x160)",
+ "style": "rd_pro__default",
+ "width": 64,
+ "height": 160,
+ "prompt": "full figure of Matt, an 1848 frontier storekeeper standing and facing the viewer, white shirt, a long brown apron, a dark vest, holding a pipe in one hand, on a plain magenta background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_original": "FIRST.IMA 4",
+ "_accept": [
+  "one storekeeper, full figure, facing the viewer",
+  "white shirt, long apron",
+  "holding a pipe",
+  "fills the height of the image",
+  "clean transparent background",
+  "not: a counter, shelves, other people"
+ ]
+}

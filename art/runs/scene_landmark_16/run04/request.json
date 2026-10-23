@@ -1,0 +1,10 @@
+{
+ "prompt": "looking down at the Columbia River from above, bright blue water with white rapids filling the whole picture, no sky, grey rock shores at the top left with a rounded headland and at the top right, one long low log raft floating across the lower middle with a wooden rail at each end, one covered wagon on the raft with white hooped canvas, a dark puckered opening at its right end and two big spoked wheels, a pair of white oxen side by side on the raft in front of the wagon at the right end facing right, one with a dark face patch, one man in white at the left end of the raft pushing a single long pole slanting into the water",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 1814,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

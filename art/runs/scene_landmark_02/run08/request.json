@@ -1,0 +1,10 @@
+{
+ "prompt": "a long wide river winding from the distant horizon toward the viewer and filling the lower two thirds of the picture, seen from above the water, flat green meadow banks on both sides, on the right side of the river a small covered wagon wading in deep water heading to the left, its team of three oxen in a single file ahead of it on the left, water up to the oxen's bellies, two white oxen leading and a black and white ox closest to the wagon, a small cluster of four bare leafless trees far away on the horizon at the top right, grey boulders at the bottom left corner and the bottom right corner, pale rounded hills on the horizon, clear blue sky, three oxen in all, the black and white one yoked right next to the wagon, wild land with no buildings",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 3372,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

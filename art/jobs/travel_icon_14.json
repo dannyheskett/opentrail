@@ -1,0 +1,21 @@
+{
+ "style": "rd_pro__default",
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "num_images": 1,
+ "seed": 1848,
+ "_raw_only": true,
+ "figure": false,
+ "id": "travel_icon_14",
+ "_asset": [
+  "travel_icon_14"
+ ],
+ "_note": "Blue Mountains, a horizon landmark: the backdrop's pixel scale (drawn 2x), standing on the horizon (y=56).",
+ "width": 130,
+ "height": 26,
+ "_target": [
+  130,
+  26
+ ],
+ "prompt": "a short range of rounded mountains covered in dark green pine forest, fading to hazy blue at their peaks, the mountains sloping down at both ends to meet flat level ground, seen straight from the side"
+}

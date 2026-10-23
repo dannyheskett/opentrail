@@ -1,0 +1,20 @@
+{
+ "id": "travel_icon_01",
+ "_asset": "travel_icon_01",
+ "_note": "Landmark icon while travelling: river crossings (01, 02, 09, 12 share it). 97x33: the original's ink at the approved wagon's scale (1.45x), generated at that size.",
+ "style": "rd_pro__default",
+ "width": 97,
+ "height": 33,
+ "target": [
+  97,
+  33
+ ],
+ "bypass_prompt_expansion": true,
+ "raw_only": true,
+ "figure": false,
+ "remove_bg": true,
+ "input_image_path": "build/art/travel_in/river_shape_water.png",
+ "strength": 0.5,
+ "_original": "PRAIRIE.IMA 8's shape, filled with scene_landmark_01 run02's water (x 72..189, y 90..129), magenta around",
+ "prompt": "a blue river with grassy banks winding away into the distance, wide at the front and narrowing toward the horizon"
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Fullscreen, no title bar, and (API 28+) drawn into the display cutout
+         on the short edges; the insets go to native (src/host/safe_area.c), so
+         the game keeps clear of the camera and the gesture bar. -->
+    <style name="OpenTrailTheme" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    </style>
+</resources>

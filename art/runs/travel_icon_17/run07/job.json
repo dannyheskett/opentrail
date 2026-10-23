@@ -1,0 +1,21 @@
+{
+ "id": "travel_icon_17",
+ "_asset": "travel_icon_17",
+ "_note": "Willamette Valley: The Dalles' recipe (the river crossing on meadow green, remove_bg); placed like the rivers, its wide end on the hedge.",
+ "style": "rd_pro__default",
+ "width": 160,
+ "height": 36,
+ "target": [
+  160,
+  36
+ ],
+ "input_image_path": "build/art/travel_in/willamette_input_160x36.png",
+ "strength": 0.6,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "num_images": 1,
+ "seed": 1848,
+ "raw_only": true,
+ "figure": false,
+ "prompt": "a calm blue river winding away into the distance, wide at the front and narrowing toward the horizon, a few small red barns and orchard trees along both banks, seen from the side"
+}

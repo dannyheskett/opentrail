@@ -1,0 +1,11 @@
+{
+ "prompt": "a thief sneaking away to the left at night, seen from the side, hunched under a heavy sack of stolen goods slung on his back, dark brown wide-brimmed hat, worn brown coat, dark trousers, muted earthy frontier colours, detailed pixel art in the same style as the reference, on a plain dark purple background",
+ "prompt_style": "rd_pro__default",
+ "width": 64,
+ "height": 72,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

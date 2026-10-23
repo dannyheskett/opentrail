@@ -1,0 +1,10 @@
+{
+ "prompt": "high viewpoint over a very wide blue river that fills most of the picture, the broad river flows from the upper right corner diagonally down to the bottom left corner, its far bank a flat green meadow with a dark tree line along a high horizon near the top of the picture, only a thin strip of blue sky with small white clouds above, one big leafy green tree with a forked trunk at the right edge with its crown nearly touching the top, grassy near bank in the bottom right corner with dark brush at the water's edge, Kansas prairie, empty peaceful wilderness",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 2026,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

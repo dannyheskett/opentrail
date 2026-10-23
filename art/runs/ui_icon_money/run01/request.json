@@ -1,0 +1,11 @@
+{
+ "prompt": "a game inventory icon of a small pile of gold and silver coins, on a plain magenta background",
+ "prompt_style": "rd_pro__default",
+ "width": 32,
+ "height": 32,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

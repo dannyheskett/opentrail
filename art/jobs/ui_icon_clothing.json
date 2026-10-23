@@ -1,0 +1,23 @@
+{
+ "id": "ui_icon_clothing",
+ "_asset": [
+  "ui_icon_clothing"
+ ],
+ "_note": "Supply icon: set of clothing (32x32)",
+ "style": "rd_pro__default",
+ "width": 32,
+ "height": 32,
+ "prompt": "a game inventory icon of a folded shirt and trousers, a stack of folded clothes, on a plain magenta background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_original": "OREGON.IMA 5",
+ "_accept": [
+  "a folded shirt and trousers",
+  "fills most of the icon",
+  "clean transparent background",
+  "not: people, a hanger, a wardrobe"
+ ]
+}

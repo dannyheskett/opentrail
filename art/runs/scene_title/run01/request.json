@@ -1,0 +1,10 @@
+{
+ "prompt": "on plain black, no ground, no shadow: a pioneer man holding a long rifle across his chest, two white yoked oxen pulling a whole prairie schooner wagon facing left, brown box, white canvas hoops, spoked wheels, then a mother in a green dress and white bonnet, a boy, and a little girl in an orange dress, side view",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 1857,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

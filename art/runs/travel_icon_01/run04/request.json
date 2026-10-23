@@ -1,0 +1,11 @@
+{
+ "prompt": "a blue river with grassy banks winding away into the distance, wide at the front and narrowing toward the horizon",
+ "prompt_style": "rd_pro__default",
+ "width": 97,
+ "height": 33,
+ "num_images": 1,
+ "remove_bg": true,
+ "strength": 0.5,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

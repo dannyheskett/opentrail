@@ -1,0 +1,309 @@
+name: ci
+
+# Every push to main and every pull request: the tests on Linux (engine,
+# sound, random-key games under the sanitizers, the harness), the single-file
+# game on each desktop platform, the two web games (classic, modern), and
+# Android and iOS (each built, and launched on an emulator or a Simulator).
+#
+# Each platform's raylib is cached, keyed on its build script and the feature
+# trim (raylib_flags.sh), so it is built only when one of them changes. apt
+# goes through scripts/apt_install.sh (time-limited, retried), and every step
+# that downloads has its own time limit, so a stuck mirror fails fast.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  linux:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v7
+      - name: Cache the apt packages
+        uses: actions/cache@v4
+        with:
+          path: ~/apt-archives
+          key: apt-linux-ubuntu22-${{ hashFiles('scripts/apt_install.sh') }}-${{ github.run_id }}
+          restore-keys: apt-linux-ubuntu22-
+      - name: Install raylib build deps, and numpy and Pillow for art.py's anchor check
+        timeout-minutes: 60
+        env:
+          APT_ARCHIVES: /home/runner/apt-archives
+        run: |
+          ./scripts/apt_install.sh \
+            libgl1-mesa-dev libx11-dev libxrandr-dev libxinerama-dev \
+            libxcursor-dev libxi-dev libasound2-dev python3-numpy python3-pil xvfb libgl1-mesa-dri
+      - name: Cache raylib (Linux)
+        id: raylib
+        uses: actions/cache@v4
+        with:
+          path: third_party/raylib-install
+          key: raylib-linux-ubuntu22-${{ hashFiles('scripts/build_raylib_linux.sh', 'scripts/raylib_flags.sh') }}
+      - name: Build raylib (Linux, static)
+        if: steps.raylib.outputs.cache-hit != 'true'
+        timeout-minutes: 10
+        run: ./scripts/build_raylib_linux.sh
+      - name: Run tests
+        run: xvfb-run -a -s '-screen 0 1280x800x24' make test   # a display, so test_harness runs
+      - name: Build the game
+        run: make build/opentrail
+      - name: Check it needs only libc and libm
+        run: |
+          ldd build/opentrail
+          ! ldd build/opentrail | grep -vE 'linux-vdso|libc\.so|libm\.so|ld-linux'
+
+  windows:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v7
+      - name: Cache the apt packages
+        uses: actions/cache@v4
+        with:
+          path: ~/apt-archives
+          key: apt-mingw-ubuntu22-${{ hashFiles('scripts/apt_install.sh') }}-${{ github.run_id }}
+          restore-keys: apt-mingw-ubuntu22-
+      - name: Install mingw cross-toolchain
+        timeout-minutes: 60
+        env:
+          APT_ARCHIVES: /home/runner/apt-archives
+        run: ./scripts/apt_install.sh gcc-mingw-w64-x86-64 gcc-mingw-w64-i686 binutils-mingw-w64
+      - name: Cache raylib (mingw win64 + win32)
+        id: raylib
+        uses: actions/cache@v4
+        with:
+          path: |
+            third_party/raylib-install-win64
+            third_party/raylib-install-win32
+          key: raylib-windows-ubuntu22-${{ hashFiles('scripts/build_raylib_windows.sh', 'scripts/raylib_flags.sh') }}
+      - name: Build raylib (mingw win64 + win32)
+        if: steps.raylib.outputs.cache-hit != 'true'
+        timeout-minutes: 10
+        run: ./scripts/build_raylib_windows.sh
+      - name: Cross-compile Win64 + Win32
+        run: make windows
+
+  mac:
+    runs-on: macos-14
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v7
+      - name: Cache raylib (universal arm64 + x86_64)
+        id: raylib
+        uses: actions/cache@v4
+        with:
+          path: third_party/raylib-install-mac
+          key: raylib-mac-macos14-${{ hashFiles('scripts/build_raylib_mac.sh', 'scripts/raylib_flags.sh') }}
+      - name: Build raylib (universal arm64 + x86_64)
+        if: steps.raylib.outputs.cache-hit != 'true'
+        timeout-minutes: 10
+        run: ./scripts/build_raylib_mac.sh
+      - name: Build universal binary
+        run: make mac
+
+  web:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v7
+      - name: Set up Emscripten
+        timeout-minutes: 15
+        uses: emscripten-core/setup-emsdk@v16
+        with:
+          version: 6.0.3
+      - name: Cache raylib (web)
+        id: raylib
+        uses: actions/cache@v4
+        with:
+          path: third_party/raylib-install-web
+          key: raylib-web-emsdk6.0.3-${{ hashFiles('scripts/build_raylib_web.sh', 'scripts/raylib_flags.sh') }}
+      - name: Build raylib (web)
+        if: steps.raylib.outputs.cache-hit != 'true'
+        timeout-minutes: 10
+        run: ./scripts/build_raylib_web.sh
+      - name: Build both web games
+        run: make web
+      - name: Upload web builds
+        uses: actions/upload-artifact@v7
+        with:
+          name: web
+          path: build/web
+
+  android:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 75
+    env:
+      NDK_VERSION: "26.3.11579264"
+      ANDROID_BUILD_TOOLS: "36.0.0"
+      ANDROID_PLATFORM_VER: "36"
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Install the NDK, build-tools and platform
+        timeout-minutes: 20
+        run: |
+          yes | "${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+          "${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager" --install "ndk;${NDK_VERSION}" \
+            "build-tools;${ANDROID_BUILD_TOOLS}" "platforms;android-${ANDROID_PLATFORM_VER}" > /dev/null
+      - name: Cache raylib (Android arm64 + x86_64)
+        id: raylib
+        uses: actions/cache@v4
+        with:
+          path: third_party/raylib-install-android
+          key: raylib-android-ndk26.3-${{ hashFiles('scripts/build_raylib_android.sh', 'scripts/raylib_flags.sh', 'scripts/raylib-android-eglconfig.patch') }}
+      - name: Build raylib (Android arm64 + x86_64)
+        if: steps.raylib.outputs.cache-hit != 'true'
+        timeout-minutes: 15
+        run: ./scripts/build_raylib_android.sh --ndk "${ANDROID_SDK_ROOT}/ndk/${NDK_VERSION}" --arch arm64 --arch x86_64
+      - name: Build the APK and the App Bundle (arm64)
+        run: |
+          make android android-play \
+            ANDROID_NDK="${ANDROID_SDK_ROOT}/ndk/${NDK_VERSION}" ANDROID_SDK_ROOT="${ANDROID_SDK_ROOT}" \
+            ANDROID_BUILD_TOOLS="${ANDROID_BUILD_TOOLS}" ANDROID_PLATFORM_VER="${ANDROID_PLATFORM_VER}"
+      - name: Check the APK carries the library and the code
+        run: |
+          unzip -l build/opentrail.apk > /tmp/apk.txt
+          grep -q "lib/arm64-v8a/libopentrail.so" /tmp/apk.txt
+          grep -q "classes.dex" /tmp/apk.txt
+      - name: Upload the APK
+        uses: actions/upload-artifact@v7
+        with:
+          name: android-apk
+          path: build/opentrail.apk
+          retention-days: 5
+      # The emulator smoke test: an x86_64 APK, built only to run here.
+      - name: Build the APK (x86_64, for the emulator)
+        run: |
+          make android \
+            ANDROID_NDK="${ANDROID_SDK_ROOT}/ndk/${NDK_VERSION}" ANDROID_SDK_ROOT="${ANDROID_SDK_ROOT}" \
+            ANDROID_ABI=x86_64 ANDROID_APK=build/opentrail-x86_64.apk ANDROID_APK_DIR=build/android-x86_64 \
+            ANDROID_BUILD_TOOLS="${ANDROID_BUILD_TOOLS}" ANDROID_PLATFORM_VER="${ANDROID_PLATFORM_VER}"
+      - name: Make room for the emulator (its data partition wants more than the runner has free)
+        run: sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/share/boost /usr/local/lib/node_modules "$AGENT_TOOLSDIRECTORY/CodeQL" || true
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Install, launch and screenshot on an emulator
+        uses: ReactiveCircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d   # v2.38.0
+        with:
+          api-level: 34
+          arch: x86_64
+          target: google_apis
+          profile: pixel_6
+          disk-size: 2048M
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          script: ./scripts/android_smoke.sh build/opentrail-x86_64.apk
+      - name: Upload the emulator's screenshots and log
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: android-emulator
+          path: |
+            android-shot.png
+            android-shot-late.png
+            android-logcat.txt
+          retention-days: 5
+
+  ios:
+    # The only machine that can compile it: Xcode's SDK and the Simulator are
+    # macOS's. macos-26, as the release: Apple refuses uploads built against an
+    # SDK older than iOS 26.
+    runs-on: macos-26
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - name: The iOS build's C needs no raylib
+        run: make ios-purity
+      - name: Build the Simulator app
+        run: make ios-sim
+      - name: Boot a Simulator, install, launch, screenshot
+        run: |
+          set -eux
+          UDID=$(xcrun simctl list devices available -j \
+            | python3 -c "import json,sys; d=json.load(sys.stdin)['devices']; print(next(x['udid'] for r in d.values() for x in r if 'iPhone' in x.get('name','')))")
+          xcrun simctl boot "$UDID"
+          xcrun simctl bootstatus "$UDID" -b
+          app=build/ios-sim/OpenTrail.app
+          xcrun simctl install "$UDID" "$app"
+          xcrun simctl launch "$UDID" com.danheskett.opentrail
+          sleep 10
+          xcrun simctl io "$UDID" screenshot ios-shot.png
+          sips -r 270 ios-shot.png >/dev/null          # the device stays portrait; the app is landscape
+          xcrun simctl spawn "$UDID" log show --style compact --last 5m \
+            --predicate 'eventMessage CONTAINS "opentrail"' 2>/dev/null | head -60 || true
+          sleep 20
+          xcrun simctl io "$UDID" screenshot ios-shot-late.png
+          sips -r 270 ios-shot-late.png >/dev/null
+          alive=1
+          xcrun simctl spawn "$UDID" launchctl list | grep -i opentrail || { echo "gone by now"; alive=0; }
+          for f in $(find ~/Library/Logs/DiagnosticReports ~/Library/Logs/CoreSimulator \
+                          -name '*OpenTrail*' -newermt '-10 minutes' 2>/dev/null | head -2); do
+            echo "== $f"; head -80 "$f"
+          done
+          [ "$alive" = 1 ]                               # running 30 s after launch
+      - name: Upload the Simulator screenshots
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: ios-sim-screenshot
+          path: |
+            ios-shot.png
+            ios-shot-late.png
+          retention-days: 5
+      - name: Build the device .ipa (unsigned)
+        run: make ios
+      - name: Detect iOS signing secrets
+        id: iossecret
+        env:
+          C: ${{ secrets.IOS_CERT_P12 }}
+          P: ${{ secrets.IOS_CERT_PASSWORD }}
+          M: ${{ secrets.IOS_PROVISIONING_PROFILE }}
+          T: ${{ secrets.IOS_TEAM_ID }}
+        run: |
+          if [ -n "$C" ] && [ -n "$P" ] && [ -n "$M" ] && [ -n "$T" ]; then echo "present=true" >> "$GITHUB_OUTPUT";
+          else echo "present=false" >> "$GITHUB_OUTPUT"; echo "No iOS signing secrets; the signed build is skipped."; fi
+      - name: Sign the .ipa and check it is App Store-shaped
+        if: steps.iossecret.outputs.present == 'true'
+        env:
+          IOS_CERT_P12:             ${{ secrets.IOS_CERT_P12 }}
+          IOS_CERT_PASSWORD:        ${{ secrets.IOS_CERT_PASSWORD }}
+          IOS_PROVISIONING_PROFILE: ${{ secrets.IOS_PROVISIONING_PROFILE }}
+          IOS_TEAM_ID:              ${{ secrets.IOS_TEAM_ID }}
+        run: |
+          set -euo pipefail
+          KEYCHAIN="$RUNNER_TEMP/ot-ci.keychain-db"
+          KEYCHAIN_PASS="$(uuidgen)"
+          echo "$IOS_CERT_P12"             | base64 -d > "$RUNNER_TEMP/dist.p12"
+          echo "$IOS_PROVISIONING_PROFILE" | base64 -d > "$RUNNER_TEMP/profile.mobileprovision"
+          security create-keychain -p "$KEYCHAIN_PASS" "$KEYCHAIN"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN"
+          security unlock-keychain -p "$KEYCHAIN_PASS" "$KEYCHAIN"
+          security import "$RUNNER_TEMP/dist.p12" -k "$KEYCHAIN" -P "$IOS_CERT_PASSWORD" -T /usr/bin/codesign -f pkcs12
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$KEYCHAIN_PASS" "$KEYCHAIN" >/dev/null
+          security list-keychains -d user -s "$KEYCHAIN" login.keychain-db
+          IDENTITY=$(security find-identity -v -p codesigning "$KEYCHAIN" | awk -F'"' '/Apple Distribution/ {print $2; exit}')
+          test -n "$IDENTITY" || { echo "::error::no Apple Distribution identity"; exit 1; }
+          rm -rf build/ios-device build/OpenTrail.ipa
+          make ios IOS_SIGN_IDENTITY="$IDENTITY" IOS_PROFILE="$RUNNER_TEMP/profile.mobileprovision" IOS_TEAM_ID="$IOS_TEAM_ID"
+          app="build/ios-device/Payload/OpenTrail.app"
+          codesign --verify --strict --verbose=2 "$app"
+          test -f "$app/embedded.mobileprovision" && test -f "$app/Assets.car"
+          security cms -D -i "$app/embedded.mobileprovision" > "$RUNNER_TEMP/p.plist"
+          /usr/libexec/PlistBuddy -c 'Print :Entitlements:application-identifier' "$RUNNER_TEMP/p.plist"
+      - name: Upload the device .ipa
+        uses: actions/upload-artifact@v7
+        with:
+          name: ios-ipa
+          path: build/*.ipa
+          retention-days: 5

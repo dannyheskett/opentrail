@@ -1,0 +1,12 @@
+{
+ "prompt": "a covered wagon pulled by one ox walking left, the ox's legs stepping and the wagon's wheels turning, walking in place",
+ "prompt_style": "rd_advanced_animation__walking",
+ "width": 156,
+ "height": 60,
+ "num_images": 1,
+ "seed": 1848,
+ "frames_duration": 8,
+ "return_spritesheet": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

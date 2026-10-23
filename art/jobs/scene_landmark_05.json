@@ -1,0 +1,24 @@
+{
+ "id": "scene_landmark_05",
+ "_asset": [
+  "scene_landmark_05"
+ ],
+ "_note": "Landmark 5: Fort Laramie (384x216). Redone to match the trail icon: it starts from inputs/scene_landmark_05_base.png, the approved vista (run04) with its white fort replaced by travel_icon_05's fort (lengthened along its plain wall, 1.5x wide, 1.75x tall), so the layout and the fort are the approved ones and the run draws them as one picture",
+ "style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "prompt": "Fort Laramie in 1848 on the open prairie: a long low sandy tan adobe fort with a flat-topped wall, a square crenellated tan adobe tower at each end with small dark windows, a heavy dark wooden double gate in the middle of the wall, an American flag on a tall wooden pole, a small adobe tower behind the wall, a black iron cannon by the wall at the right, a white tipi and two small wooden wagons in front of the wall, snow-capped blue-grey mountains and white clouds behind, green grass, a wide dark dirt road from the gate straight down to the bottom edge, two riders in red buckskin and wide-brimmed hats on white horses galloping toward each other in the foreground",
+ "num_images": 1,
+ "seed": 2026,
+ "bypass_prompt_expansion": true,
+ "figure": false,
+ "_original": "L5.PCK",
+ "_accept": [
+  "the base's layout kept: the fort across the middle, its gate at the road, the two riders where they are",
+  "the trail icon's fort: tan adobe, a crenellated square tower at each end, the dark wooden gate, the flag on its pole, the small tower behind, the cannon",
+  "drawn as one picture: no seams, the fort's pixels the scene's size",
+  "not: a white fort, a pyramid roof, a gatehouse tower over the gate"
+ ],
+ "input_image_path": "art/inputs/scene_landmark_05_base.png",
+ "strength": 0.55
+}

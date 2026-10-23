@@ -1,0 +1,24 @@
+{
+ "id": "hunt_rock_2",
+ "_asset": [
+  "hunt_rock_2"
+ ],
+ "_note": "rock, variant 2, seen from above at an angle (60x36)",
+ "style": "rd_pro__default",
+ "width": 60,
+ "height": 36,
+ "prompt": "a flat grey rock slab, seen from above at an angle, on a plain magenta background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_original": "HUNT_SCENERY.IMA 20",
+ "_accept": [
+  "a flat grey rock slab",
+  "seen from above at an angle",
+  "fills most of the frame",
+  "clean transparent background: no leftover background colour, block or frame",
+  "not: animals, people, a second object, scenery"
+ ]
+}

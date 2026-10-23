@@ -1,0 +1,29 @@
+{
+ "id": "event_broken_part",
+ "_asset": [
+  "event_broken_part"
+ ],
+ "_note": "wagon with a broken part (168x66)",
+ "style": "rd_pro__default",
+ "width": 168,
+ "height": 66,
+ "prompt": "this ox and covered wagon broken down: the wagon's front wheel broken off so the wagon tilts steeply with its front end down on the ground and its back end raised, the canvas tilting up to the right, on a plain magenta background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "input_image_path": "art/inputs/event_broken_part_seed.png",
+ "strength": 0.6,
+ "_original": "EVENTS.IMA 4",
+ "_accept": [
+  "one white horned ox at the left, side view, facing left, with a blue yoke",
+  "a covered wagon to its right, joined to the ox",
+  "the wagon's front collapsed: the blue box tilted with its front on the ground, the white canvas rising to the right",
+  "orange and blue marks along the canvas hoops",
+  "one white spoked wheel at the back right",
+  "clean transparent background: no leftover background colour, block or frame",
+  "the same colours and feel as the original",
+  "not: a second ox, people, a strip of ground, both wheels upright"
+ ]
+}

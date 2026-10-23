@@ -1,0 +1,11 @@
+{
+ "prompt": "a wide flat game button made of a weathered wooden plank with a thin darker wooden border along all four edges, plain flat middle",
+ "prompt_style": "rd_pro__default",
+ "width": 48,
+ "height": 16,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": false,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

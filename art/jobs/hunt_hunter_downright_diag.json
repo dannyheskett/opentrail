@@ -1,0 +1,23 @@
+{
+ "id": "hunt_hunter_downright_diag",
+ "_asset": [],
+ "_note": "the south-east view (hunt_hunter_dirs/run04 cell (0,1)) with the rifle turned to halfway between the main directions: the frame where the barrel is at 45 degrees on screen is the start frame of hunt_hunter_downright_anim. An animation, so the man stays the same (run01 of the downright job was an rd_pro__edit: it redrew him larger, browner, on white; rejected)",
+ "style": "rd_advanced_animation__custom_action",
+ "width": 48,
+ "height": 64,
+ "prompt": "the pioneer hunter keeps his feet and body still and slowly lowers the barrel of his rifle until it points diagonally down to the lower right of the picture, along the ground towards the viewer",
+ "frames_duration": 4,
+ "return_spritesheet": true,
+ "input_image_path": "art/inputs/hunt_hunter_downright_dir.png",
+ "input_image_keep_alpha": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_accept": [
+  "the same man, same size, same view in every frame",
+  "one frame with the barrel at about 45 degrees on screen",
+  "feet and body still",
+  "clean transparent background"
+ ]
+}

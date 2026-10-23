@@ -1,0 +1,12 @@
+{
+ "prompt": "the pioneer hunter walks in place, aiming his rifle down and to the lower right",
+ "prompt_style": "rd_advanced_animation__walking",
+ "width": 48,
+ "height": 64,
+ "num_images": 1,
+ "seed": 1848,
+ "frames_duration": 4,
+ "return_spritesheet": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

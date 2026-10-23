@@ -1,0 +1,12 @@
+{
+ "prompt": "the pioneer hunter keeps his feet and body still and slowly raises the barrel of his rifle until it points diagonally up to the upper left of the picture, far away into the distance",
+ "prompt_style": "rd_advanced_animation__custom_action",
+ "width": 48,
+ "height": 64,
+ "num_images": 1,
+ "seed": 1848,
+ "frames_duration": 4,
+ "return_spritesheet": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

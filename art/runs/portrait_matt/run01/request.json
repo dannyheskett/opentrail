@@ -1,0 +1,11 @@
+{
+ "prompt": "full figure of Matt, an 1848 frontier storekeeper standing and facing the viewer, white shirt, a long brown apron, a dark vest, holding a pipe in one hand, on a plain magenta background",
+ "prompt_style": "rd_pro__default",
+ "width": 64,
+ "height": 160,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

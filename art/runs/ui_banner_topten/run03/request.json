@@ -1,0 +1,11 @@
+{
+ "prompt": "a wide parchment scroll banner filling the whole image from edge to edge, with the words \"The Open Top Ten\" across it in rustic western lettering, warm parchment gold letters with a dark brown outline",
+ "prompt_style": "rd_pro__default",
+ "width": 256,
+ "height": 32,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": false,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  NativeActivity manifest (the family's): the game is native C, the only Java
+  is OpenTrailActivity (immersive mode, display-cutout insets, the fastest
+  refresh rate). Android loads libopentrail.so through
+  android.app.NativeActivity ("android.app.lib_name" names it without "lib"
+  and ".so"). Modern mode only, played by touch.
+
+  Landscape: modern mode's canvas is 384-480 x 252, which has no portrait form.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.danheskett.opentrail">
+
+    <!-- versionCode/versionName are absent on purpose: aapt/aapt2
+         - -version-code/- -version-name only inject them when the manifest has
+         none (the Makefile passes the release's number). -->
+    <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="36" />
+
+    <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+
+    <!-- tools/art.py icon draws the launcher icon from the modern art. -->
+    <application android:label="OpenTrail"
+                 android:icon="@mipmap/ic_launcher"
+                 android:hasCode="true"
+                 android:allowBackup="false">
+
+        <!-- API 36 ignores screenOrientation on displays of sw600dp and up;
+             this keeps the landscape lock there too (until API 37). -->
+        <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY"
+                  android:value="true" />
+
+        <activity android:name="com.danheskett.opentrail.OpenTrailActivity"
+                  android:label="OpenTrail"
+                  android:screenOrientation="sensorLandscape"
+                  android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
+                  android:exported="true"
+                  android:theme="@style/OpenTrailTheme">
+            <meta-data android:name="android.app.lib_name" android:value="opentrail" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

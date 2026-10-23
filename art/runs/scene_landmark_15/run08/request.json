@@ -1,0 +1,10 @@
+{
+ "prompt": "exactly three Cayuse men trading on open dark bare ground with sparse grass tufts outside Fort Walla Walla in 1848, a small log stockade with a gateway far off on the left, snowy purple-hazed mountains along a high horizon, a green brush band in the middle distance, one white cloud at the top right: on the left a tall standing man facing the viewer wrapped in a white blanket with a brown hat with a blue band and a feather and a blue necklace, in the middle a man with long brown hair sitting on the ground in profile facing left in a white shirt, on the right a standing man in profile facing left in a white shirt, fringed breechcloth and white leggings with two feathers in a white headband, one hand held out, white bundles with brown hides at the left and the right edge, a large brown hide spread flat at the bottom left",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

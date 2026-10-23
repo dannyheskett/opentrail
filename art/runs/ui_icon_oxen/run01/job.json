@@ -1,0 +1,21 @@
+{
+ "id": "ui_icon_oxen",
+ "_asset": "ui_icon_oxen",
+ "_note": "Supply icon: ox (32x32)",
+ "style": "rd_pro__default",
+ "width": 32,
+ "height": 32,
+ "prompt": "a game inventory icon of one ox seen from the side, brown and white with curved horns, on a plain magenta background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_original": "OREGON.IMA 8",
+ "_accept": [
+  "one ox, side view, horns",
+  "fills most of the icon",
+  "clean transparent background",
+  "not: a cart, people, ground"
+ ]
+}

@@ -1,0 +1,27 @@
+{
+ "id": "event_hail",
+ "_asset": [
+  "event_hail"
+ ],
+ "_note": "hail cloud (64x24)",
+ "style": "rd_pro__default",
+ "width": 64,
+ "height": 24,
+ "prompt": "a wide bright cyan storm cloud with a heavy shower of many white and bright cyan square hailstones falling below it, on a plain dark red background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "reference_image_paths": [
+  "art/inputs/event_hail_ref.png"
+ ],
+ "_original": "EVENTS.IMA 2",
+ "_accept": [
+  "one light blue storm cloud",
+  "white and light blue hailstones falling below it",
+  "clean transparent background: no leftover background colour, block or frame",
+  "the same colours and feel as the original",
+  "not: grey cloud, rain streaks, lightning, ground"
+ ]
+}

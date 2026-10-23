@@ -1,0 +1,21 @@
+{
+ "id": "ui_icon_bullets",
+ "_asset": "ui_icon_bullets",
+ "_note": "Supply icon: box of bullets (32x32)",
+ "style": "rd_pro__default",
+ "width": 32,
+ "height": 32,
+ "prompt": "a game inventory icon of a small open wooden box of brass bullets, on a plain magenta background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_original": "OREGON.IMA 6",
+ "_accept": [
+  "a small wooden box with brass bullets",
+  "fills most of the icon",
+  "clean transparent background",
+  "not: a gun, people"
+ ]
+}

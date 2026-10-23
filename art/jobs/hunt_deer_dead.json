@@ -1,0 +1,26 @@
+{
+ "id": "hunt_deer_dead",
+ "_asset": [
+  "hunt_deer_dead"
+ ],
+ "_note": "the brown doe deer without antlers shot dead: the last frame of an animation from the same start frame as its run (hunt_deer_anim), so it is the same animal at the same size and on the same canvas (48x32); replaces the separate RD Pro still",
+ "style": "rd_advanced_animation__custom_action",
+ "width": 48,
+ "height": 32,
+ "prompt": "the brown doe deer without antlers is shot, collapses and rolls over, ending lying dead on its back with its legs in the air",
+ "frames_duration": 4,
+ "return_spritesheet": true,
+ "input_image_path": "art/inputs/hunt_deer_still_padded.png",
+ "input_image_keep_alpha": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_accept": [
+  "the same animal as its run: colours, size, markings",
+  "the last frame: lying dead on its back, legs up, seen from the side",
+  "no part cut off",
+  "clean transparent background",
+  "not: blood, a second animal, ground"
+ ]
+}

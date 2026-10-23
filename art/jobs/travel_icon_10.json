@@ -1,0 +1,21 @@
+{
+ "style": "rd_pro__default",
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "num_images": 1,
+ "seed": 1848,
+ "_raw_only": true,
+ "figure": false,
+ "id": "travel_icon_10",
+ "_asset": [
+  "travel_icon_10"
+ ],
+ "_note": "Soda Springs, a foreground landmark: the wagon's pixel scale, standing on the ground line (y=76).",
+ "width": 140,
+ "height": 48,
+ "_target": [
+  140,
+  48
+ ],
+ "prompt": "a small oval pool of clear light-blue spring water edged with rounded grey rocks, tufts of green grass between the rocks, the pool sitting in the middle with open space all around it, seen from the side"
+}

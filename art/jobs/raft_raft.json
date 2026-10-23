@@ -1,0 +1,25 @@
+{
+ "id": "raft_raft",
+ "_asset": [
+  "raft_raft"
+ ],
+ "_note": "Makeshift log raft carrying a covered wagon, seen at an angle (64x40)",
+ "style": "rd_pro__default",
+ "width": 64,
+ "height": 40,
+ "prompt": "a small makeshift raft of orange logs carrying a covered wagon, seen from above at an angle, the wagon's white canvas cover spotted all over with small orange dots, a dark opening at the front, two dark wheels on the raft, on a plain magenta background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_original": "ORSPRITE.IMA 2",
+ "_accept": [
+  "a covered wagon on a small log raft, seen from above at an angle",
+  "white canvas with orange dots, a dark opening",
+  "orange logs under it",
+  "not: people, oxen, river banks, a solid band of water",
+  "clean transparent background: no leftover background colour, block or frame",
+  "the same colours and feel as the original"
+ ]
+}

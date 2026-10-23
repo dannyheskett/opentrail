@@ -1,0 +1,11 @@
+{
+ "prompt": "Fort Laramie in 1848 on the open prairie: a long low sandy tan adobe fort with a flat-topped wall, a square crenellated tan adobe tower at each end with small dark windows, a heavy dark wooden double gate in the middle of the wall, an American flag on a tall wooden pole, a small adobe tower behind the wall, a black iron cannon by the wall at the right, a white tipi and two small wooden wagons in front of the wall, snow-capped blue-grey mountains and white clouds behind, green grass, a wide dark dirt road from the gate straight down to the bottom edge, two riders in red buckskin and wide-brimmed hats on white horses galloping toward each other in the foreground",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 2026,
+ "strength": 0.55,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

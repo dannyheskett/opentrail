@@ -1,0 +1,12 @@
+{
+ "prompt": "the black bear runs to the right in a galloping cycle, legs stretching out and gathering under, the body stays in place",
+ "prompt_style": "rd_advanced_animation__custom_action",
+ "width": 48,
+ "height": 32,
+ "num_images": 1,
+ "seed": 1848,
+ "frames_duration": 4,
+ "return_spritesheet": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

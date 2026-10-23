@@ -1,0 +1,23 @@
+{
+ "id": "ui_icon_wheel",
+ "_asset": [
+  "ui_icon_wheel"
+ ],
+ "_note": "Supply icon: wagon wheel (32x32)",
+ "style": "rd_pro__default",
+ "width": 32,
+ "height": 32,
+ "prompt": "a game inventory icon of one wooden wagon wheel with spokes and an iron rim, seen straight on, on a plain magenta background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_original": "OREGON.IMA 3",
+ "_accept": [
+  "one wooden spoked wagon wheel with an iron rim",
+  "fills most of the icon",
+  "clean transparent background",
+  "not: a wagon, a second wheel"
+ ]
+}

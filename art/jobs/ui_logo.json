@@ -1,0 +1,24 @@
+{
+ "id": "ui_logo",
+ "_asset": [
+  "ui_logo"
+ ],
+ "_note": "ui_logo (256x64)",
+ "style": "rd_pro__typography",
+ "width": 256,
+ "height": 64,
+ "prompt": "the title lettering \"Open Trail\" for a pioneer wagon trail video game, bold rustic western wooden letters in warm parchment gold with a dark brown outline, on a plain dark blue background",
+ "remove_bg": true,
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "_original": "FIRST.IMA 2",
+ "_accept": [
+  "the words \"Open Trail\", spelled exactly, nothing else written",
+  "bold rustic western lettering, parchment gold with a dark outline",
+  "fills most of the width",
+  "clean transparent background: no leftover background colour, block or frame",
+  "not: \"Oregon\", other words, pictures"
+ ]
+}

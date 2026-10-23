@@ -1,0 +1,19 @@
+{
+ "style": "rd_pro__default",
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "num_images": 1,
+ "seed": 1848,
+ "raw_only": true,
+ "figure": false,
+ "id": "travel_icon_05",
+ "_asset": "travel_icon_05",
+ "_note": "Fort Laramie, a foreground landmark: the wagon's pixel scale, standing on the ground line (y=76).",
+ "width": 170,
+ "height": 72,
+ "target": [
+  170,
+  72
+ ],
+ "prompt": "a frontier-era fort seen straight from the side, one long flat weathered white adobe wall facing the viewer with a heavy wooden gate in the middle, a square tower with small dark windows at each end, a black iron cannon on a wooden carriage beside the gate, a red white and blue American flag on a tall pole inside the fort rising above the wall, the fort standing alone and empty"
+}

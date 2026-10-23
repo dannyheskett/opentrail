@@ -1,0 +1,22 @@
+{
+ "id": "scene_landmark_08",
+ "_asset": "scene_landmark_08",
+ "_note": "Landmark 8: Fort Bridger (384x216)",
+ "style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "prompt": "Fort Bridger in 1848, a long low log trading post across the middle distance from a quarter in to the right edge, horizontal log cabins joined by upright log palisade walls, a beam gateway and a taller post at the right end, a dark band of shadow along its base, purple hazy snow-topped mountains across the whole horizon with a big snowy peak at the right, large white clouds in a blue sky, three white tipis in the left foreground on green grass, one cut off by the left edge, the back of one covered wagon in the bottom right corner cut off by the frame, green grass meadow, quiet empty scene",
+ "num_images": 1,
+ "seed": 8975,
+ "bypass_prompt_expansion": true,
+ "figure": false,
+ "_original": "L8.PCK",
+ "_accept": [
+  "long low log post across the middle distance from about a quarter in to the right edge, about a quarter of the height: horizontal-log cabins, upright-log palisades, a beam gateway and a taller post at the right end",
+  "purple hazy snow-topped mountains across the whole horizon, big snowy peak at the right; large clouds",
+  "three white tipis in the left foreground, one cut off at the left edge",
+  "one covered wagon in the bottom-right corner cut off by the frame, its team off-frame",
+  "dark band along the fort's base; green grass",
+  "not: people, loose oxen, a second wagon, a river"
+ ]
+}

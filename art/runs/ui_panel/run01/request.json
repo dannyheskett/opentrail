@@ -1,0 +1,11 @@
+{
+ "prompt": "a square dialog box frame made of weathered brown wooden planks with iron corner brackets, a plain flat parchment-coloured middle, the frame running along all four edges of the image",
+ "prompt_style": "rd_pro__default",
+ "width": 48,
+ "height": 48,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": false,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

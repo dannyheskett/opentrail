@@ -1,0 +1,11 @@
+{
+ "prompt": "seamless ground texture seen from directly above: dark green forest floor of moss and fallen pine needles, an even pattern",
+ "prompt_style": "rd_tile__single_tile",
+ "width": 64,
+ "height": 64,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": false,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

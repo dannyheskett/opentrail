@@ -1,0 +1,21 @@
+{
+ "style": "rd_pro__default",
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "num_images": 1,
+ "seed": 1848,
+ "_raw_only": true,
+ "figure": false,
+ "id": "travel_icon_13",
+ "_asset": [
+  "travel_icon_13"
+ ],
+ "_note": "Fort Boise, a foreground landmark: the wagon's pixel scale, standing on the ground line (y=76).",
+ "width": 170,
+ "height": 72,
+ "_target": [
+  170,
+  72
+ ],
+ "prompt": "a compact frontier-era trading post fort seen straight from the side, a short high adobe wall facing the viewer with a wooden gate, a two-story square adobe bastion at each corner, the roof of a log building showing above the wall inside, a red Hudson's Bay Company flag on a tall pole inside the fort rising above the wall, the fort standing alone and empty"
+}

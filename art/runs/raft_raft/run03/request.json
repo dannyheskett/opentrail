@@ -1,0 +1,11 @@
+{
+ "prompt": "a small makeshift raft of orange logs carrying a covered wagon, seen from above at an angle, the wagon's white canvas cover spotted all over with small orange dots, a dark opening at the front, two dark wheels on the raft, on a plain magenta background",
+ "prompt_style": "rd_pro__default",
+ "width": 64,
+ "height": 40,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

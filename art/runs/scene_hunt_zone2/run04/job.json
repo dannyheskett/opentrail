@@ -1,0 +1,19 @@
+{
+ "id": "scene_hunt_zone2",
+ "_asset": "scene_hunt_zone2",
+ "_note": "Hunting ground, zone 2: a seamless 64x64 tile, repeated across the 384x216 ground",
+ "style": "rd_tile__single_tile",
+ "width": 64,
+ "height": 64,
+ "prompt": "seamless ground texture seen from directly above: green mountain meadow grass with small grey pebbles scattered through it, an even pattern that runs off every edge",
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": false,
+ "figure": false,
+ "remove_bg": false,
+ "_accept": [
+  "green mountain meadow grass with scattered small pebbles, seen from directly above",
+  "an even texture that repeats with no visible seams",
+  "nothing standing on it: no trees, rocks, paths, water or objects"
+ ]
+}

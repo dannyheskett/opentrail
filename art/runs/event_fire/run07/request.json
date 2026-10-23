@@ -1,0 +1,12 @@
+{
+ "prompt": "this ox and covered wagon with the wagon on fire: orange and white flames rising from the wagon's canvas cover and streaming out behind it to the right, orange fire under the wagon box, the ox in front at the left untouched and well clear of the flames, dark wooden wheels with dark shadow between the spokes, on a plain magenta background",
+ "prompt_style": "rd_pro__default",
+ "width": 216,
+ "height": 60,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "strength": 0.6,
+ "bypass_prompt_expansion": false,
+ "async": true
+}
