@@ -529,5 +529,5 @@ build/scr2png: tools/c/scr2png.c tools/c/png.h src/legacy/ntsc.c | build
 	gcc $(CFLAGS_COMMON) -O2 tools/c/scr2png.c src/legacy/ntsc.c -o $@
 
 # Originals for the art pipeline: build/ima2png SET OUTPREFIX [raw]
-build/ima2png: tools/c/ima2png.c tools/c/png.h $(CORE_SRC) $(HDRS) | build
-	gcc $(CFLAGS_COMMON) -O1 tools/c/ima2png.c $(CORE_SRC) -o $@ -lm
+build/ima2png: tools/c/ima2png.c tools/c/png.h $(CORE_SRC) $(HDRS) build/embed_art_none.c | build
+	gcc $(CFLAGS_COMMON) -O1 tools/c/ima2png.c $(CORE_SRC) build/embed_art_none.c -o $@ -lm
