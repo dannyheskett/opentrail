@@ -317,13 +317,13 @@ def cmd_embed(args):
 # Art drawn here: the map, the river scenes, the travel backdrop
 # ============================================================================
 
-MAP_X, MAP_Y = 4, 12    # the map's place on the canvas (src/modern/modern.c)
+MAP_X, MAP_Y = 52, 12   # the map's place on the canvas, in the middle (src/modern/modern.c)
 
 
 def draw_map():
     """The original map at one Apple pixel per pixel, its lettering and marks
     taken out by hand (art/inputs/map_clean.png), framed on the panels' dark
-    brown (view_modern.c), the legend's room to its right."""
+    brown (draw.c), in the middle: the legend goes under it."""
     m = Image.open("art/inputs/map_clean.png").convert("RGB")
     out = Image.new("RGB", (384, 216), (12, 10, 8))
     out.paste((60, 48, 36), (MAP_X - 1, MAP_Y - 1, MAP_X + m.width + 1, MAP_Y + m.height + 1))
