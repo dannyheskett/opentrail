@@ -39,6 +39,9 @@ typedef struct {
     int n;                          // in drawing order
     int shot, sx, sy;               // a shot in flight at (sx, sy)
     int bullets;
+    int aim;                        // the way the rifle points, 0 east counting counter-clockwise (REQ-192g)
+    int turning;                    // steps of turning still to come
+    int walking;                    // the hunter walks (Return toggles it)
 } HuntView;
 void hunt_view(HuntView *v);
 int hunt_running(void);             // a hunt is on the field (hunt_view is meaningful)

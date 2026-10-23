@@ -21,6 +21,7 @@ typedef struct {
 typedef struct {
     int w, h, cap;                  // cap: the pixels allocated
     uint8_t *px;                    // RGBA, opaque
+    int clip, cx0, cy0, cx1, cy1;   // drawing kept inside [cx0, cx1) x [cy0, cy1) while clip is set
 } Canvas;
 
 #define CV_WHITE ((CvColor){ 255, 255, 255, 255 })
@@ -29,6 +30,8 @@ typedef struct {
 void cv_size(Canvas *cv, int w, int h);         // (re)allocate; contents undefined
 void cv_clear(Canvas *cv, CvColor c);
 void cv_flatten(Canvas *cv);                    // over black: every pixel opaque
+void cv_clip(Canvas *cv, float x, float y, float w, float h);   // keep drawing inside this rectangle
+void cv_unclip(Canvas *cv);
 CvColor cv_fade(CvColor c, float alpha);
 
 void cv_rect(Canvas *cv, float x, float y, float w, float h, CvColor c);
