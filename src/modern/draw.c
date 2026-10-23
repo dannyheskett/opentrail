@@ -302,7 +302,7 @@ static void draw_panel(MScene *sc, int cw, float ox, Vec2 mouse) {
     if (page) { top = 4; h = CH - 8; }
     else {                                          // measure
         h = 8;
-        if (sc->title[0]) h += wrapped(sc->title, 0, 0, inner - pw_pic, CV_WHITE, 0) + 4;
+        if (sc->title[0]) h += wrapped(sc->title, 0, 0, inner, CV_WHITE, 0) + 4;   // the whole width: the picture goes under it
         if (div) h += div->h + 4;
         if (sc->body[0]) h += wrapped(sc->body, 0, 0, inner - pw_pic, CV_WHITE, 0) + 4;
         if (sc->nicon) h += 36;
@@ -344,8 +344,8 @@ static void draw_panel(MScene *sc, int cw, float ox, Vec2 mouse) {
         }
         if (sc->keys_x > 0) draw_keys(sc->keys_x, sc->keys_y);
     }
-    if (pt) image(pid, px + pw - pad - pt->w, y - 2, 0);
-    if (!page && sc->title[0]) y += wrapped(sc->title, x, y, inner - pw_pic, TITLE_INK, 1) + 4;
+    if (!page && sc->title[0]) y += wrapped(sc->title, x, y, inner, TITLE_INK, 1) + 4;
+    if (pt) image(pid, px + pw - pad - pt->w, y - 2, 0);     // at the top right, under the title
     if (!page && div) { image("ui_divider", (float)(int)(px + (pw - div->w) / 2), y, 0); y += div->h + 4; }
     if (sc->body[0]) y += wrapped(sc->body, x, y, inner - pw_pic, CV_WHITE, 1) + 4;
     if (sc->nicon) {                                // a row of pictures, centred
@@ -452,29 +452,31 @@ static void draw_map(const MScene *sc, int cw, float ox) {
         const MMark *m = &sc->mark[i];
         map_symbol(m->kind, ox + m->x, m->y);
         if (m->kind == MK_START) map_label("START", ox + m->x - 18, m->y + 5);
-        if (m->kind == MK_FINISH) map_label("FINISH", ox + 5, m->y - 7);
+        if (m->kind == MK_FINISH) map_label("FINISH", ox + m->x - 27, m->y + 5);   // under its mark, as START
     }
 
-    // the legend
-    float x = cw - ox - 116, y = 12, w = 112;           // ten characters and a symbol
-    panel_box((Rect){ x, y, w, 112 });
-    x += 8; y += 8;
-    CvColor gold = { 255, 220, 120, 255 }, ink = { 220, 220, 200, 255 };
-    text("Map of the", x, y, gold); y += FONT + 2;
-    text("Open Trail", x, y, gold); y += FONT + 8;
-    static const char *const L[5] = { "Forts", "Landmarks", "Your route", "Rivers", "Mountains" };
-    for (int i = 0; i < 5; i++, y += FONT + 4) {
-        float sx = x + 5, sy = y + FONT / 2.0f;
-        cv_rect(CV, (int)x - 1, (int)y - 1, 13, FONT + 2, CV_WHITE);
+    // the title over the map, the legend in a row under the picture
+    centred("Map of the Open Trail", cw / 2.0f, 2, (CvColor){ 255, 220, 120, 255 }, 1);
+    cv_rect(CV, 0, MS_ART_H, cw, CH - MS_ART_H, (CvColor){ 20, 16, 12, 255 });
+    cv_rect(CV, 0, MS_ART_H, cw, 1, (CvColor){ 120, 100, 70, 255 });
+    static const char *const L[5] = { "Forts", "Landmarks", "Route", "Rivers", "Mountains" };
+    float w = 0;
+    for (int i = 0; i < 5; i++) w += 13 + 3 + text_w(L[i]) + (i < 4 ? 6 : 0);
+    float x = (float)(int)((cw - w) / 2), y = MS_ART_H + 5;
+    CvColor ink = { 220, 220, 200, 255 };
+    for (int i = 0; i < 5; i++) {
+        float sx = x + 6, sy = y + FONT / 2.0f;
+        cv_rect(CV, (int)x, (int)y - 1, 13, FONT + 2, CV_WHITE);
         if (i < 2) map_symbol(i == 0 ? MK_FORT : MK_LANDMARK, sx, sy);
-        else if (i == 2) cv_rect(CV, (int)x + 1, (int)sy - 1, 9, 2, ROUTE);
-        else if (i == 3) { cv_rect(CV, (int)x + 1, (int)sy - 1, 4, 1, RIVER); cv_rect(CV, (int)x + 5, (int)sy, 5, 1, RIVER); }
+        else if (i == 2) cv_rect(CV, (int)x + 2, (int)sy - 1, 9, 2, ROUTE);
+        else if (i == 3) { cv_rect(CV, (int)x + 2, (int)sy - 1, 4, 1, RIVER); cv_rect(CV, (int)x + 6, (int)sy, 5, 1, RIVER); }
         else for (int k = 0; k < 3; k++) {                    // a peak
-            if (k == 2) cv_rect(CV, (int)x + 5, (int)sy - 1, 1, 1, INK);
-            cv_rect(CV, (int)x + 2 + k, (int)sy + 2 - k, 1, 1, INK);
-            cv_rect(CV, (int)x + 8 - k, (int)sy + 2 - k, 1, 1, INK);
+            if (k == 2) cv_rect(CV, (int)x + 6, (int)sy - 1, 1, 1, INK);
+            cv_rect(CV, (int)x + 3 + k, (int)sy + 2 - k, 1, 1, INK);
+            cv_rect(CV, (int)x + 9 - k, (int)sy + 2 - k, 1, 1, INK);
         }
         text(L[i], x + 16, y, ink);
+        x += 16 + text_w(L[i]) + 6;
     }
 }
 

@@ -575,7 +575,7 @@ static int matt_menu(int change) {
     set_bg("scene_matt_store");
     snprintf(sc()->overlay, MS_ID, "portrait_matt");
     sc()->panel = PANEL_TALL;
-    title("Matt's General Store - %s 1, 1848", MONTH[S->g->mem[902] - 1]);
+    title("Matt's General Store\n%s 1, 1848", MONTH[S->g->mem[902] - 1]);   // the date under the name: clear of the portrait
     body("Total bill: $%s\nAmount you have: $%s", a2_money(mt->bill_cents, a), a2_money(S->g->my_cents, b));
     for (int l = 1; l <= 5; l++) { opt("%-12s $%s", ITEMS[l], a2_money(matt_cost(mt, l), a)); opt_pic(MATT_ICON[l]); }
     opt("Leave store");
@@ -673,7 +673,7 @@ static void supplies(void) {
 
 // The original map (M0.PCK) without its marks, one Apple pixel per pixel,
 // at (MAP_X, MAP_Y) (tools/art.py local); the route and marks drawn over it.
-#define MAP_X 4
+#define MAP_X 52                           // in the middle (art.py MAP_X)
 #define MAP_Y 12
 
 static void map_line(MScene *s, double x0, double y0, double x1, double y1) {
@@ -708,9 +708,7 @@ static void map_screen(void) {
     MScene *s = sc();
     set_bg("scene_map");
     modern_map_scene(s, S->g);
-    s->panel = 0;
-    snprintf(s->hint, sizeof s->hint, "%s", PRESS_SPACE);
-    wait_continue();
+    wait_look();                                 // the legend and the prompt under it (draw.c draw_map)
 }
 
 static int pace(void) {
@@ -1041,6 +1039,13 @@ static void hunt_frame(void *ctx) {
         sp->anchor = an != NULL;                    // none: drawn from its corner, and test_harness fails
         sp->bottom = !an;
         sp->ax = an ? an->x : 0; sp->ay = an ? an->y : 0;
+        if (p->kind == HV_HUNTER && an) {           // bigger than the original's: kept whole in the field, as his is
+            const float W = 48, H = 64;             // the hunter's pictures
+            float left = sp->x - (sp->flip ? W - sp->ax : sp->ax), top = sp->y - sp->ay;
+            float dx = left < 0 ? -left : left + W > 384 ? 384 - W - left : 0;
+            float dy = top < 0 ? -top : top + H > MS_ART_H ? MS_ART_H - H - top : 0;
+            sp->x += dx; sp->y += dy; s->hunter_x += dx; s->hunter_y += dy;
+        }
     }
     s->dot = v.shot;
     s->dot_x = rx((float)v.sx); s->dot_y = ry((float)v.sy);
