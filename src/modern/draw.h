@@ -1,5 +1,5 @@
-// Modern mode's picture of a scene: the MScene drawn on a software canvas 252
-// rows high and 384-480 wide (raylib-free; every host shows this canvas).
+// Modern mode's picture of a scene: the MScene drawn on a software canvas 384
+// by 252 (raylib-free; every host shows this canvas).
 #ifndef OT_MODERN_DRAW_H
 #define OT_MODERN_DRAW_H
 
@@ -8,7 +8,7 @@
 
 #define MS_CANVAS_H 252             // the art's 216 rows (MS_ART_H) and a band under them
 #define MS_CANVAS_W_MIN 384
-#define MS_CANVAS_W_MAX 480
+#define MS_CANVAS_W_MAX 384             // the pictures' width: a wider screen gets plain bars beside the whole game, never beside the art alone
 
 // assets/modern/<id>.png, decoded once: compiled in (embed.h), or from
 // $OPENTRAIL_ART/<id>.png when that is set, to try new art. NULL if missing.
