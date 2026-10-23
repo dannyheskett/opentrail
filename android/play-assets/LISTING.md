@@ -16,7 +16,7 @@ screenshots are made by `tools/store_shots.py` (the real game, by taps).
 ## App name (≤30 chars)
 
 ```
-OpenTrail
+opentrail: 1848
 ```
 
 ## Short description (≤80 chars)
@@ -55,7 +55,7 @@ Read the code, report a bug, or build it yourself: https://github.com/dannyheske
 - **Category:** Educational (or Adventure)
 - **Tags:** educational, adventure, simulation, retro, history
 - **Email:** the contact address the family's other listings use
-- **Website:** https://danheskett.com
+- **Website:** https://danheskett.com/projects/opentrail/
 - **Content rating (IARC questionnaire):** hunting animals with a rifle
   (pixel art, no blood) and members of the party dying of disease or
   accidents (told in a line of text, with a tombstone) — answer the violence
