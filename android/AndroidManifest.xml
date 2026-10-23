@@ -19,7 +19,7 @@
     <uses-feature android:glEsVersion="0x00020000" android:required="true" />
 
     <!-- tools/art.py icon draws the launcher icon from the modern art. -->
-    <application android:label="OpenTrail"
+    <application android:label="opentrail"
                  android:icon="@mipmap/ic_launcher"
                  android:hasCode="true"
                  android:allowBackup="false">
@@ -30,7 +30,7 @@
                   android:value="true" />
 
         <activity android:name="com.danheskett.opentrail.OpenTrailActivity"
-                  android:label="OpenTrail"
+                  android:label="opentrail"
                   android:screenOrientation="sensorLandscape"
                   android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
                   android:exported="true"

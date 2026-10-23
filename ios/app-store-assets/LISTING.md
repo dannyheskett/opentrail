@@ -11,7 +11,7 @@ Apple rejects listings that do.
 | Field | Value |
 | --- | --- |
 | Platform | iOS |
-| Name | `OpenTrail 1848` (`OpenTrail` was taken; the home screen still says OpenTrail, `CFBundleDisplayName`) |
+| Name | `OpenTrail 1848` (`OpenTrail` was taken; the home screen says opentrail, `CFBundleDisplayName`) |
 | Primary Language | English (U.S.) |
 | Bundle ID | `com.danheskett.opentrail` |
 | SKU | `opentrail-free` |
