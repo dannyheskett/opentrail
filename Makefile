@@ -298,7 +298,19 @@ ANDROID_OBJ     := $(patsubst %.c,$(ANDROID_OBJ_DIR)/%.o,$(ANDROID_SRC)) $(ANDRO
 ANDROID_APK_DIR := build/android
 ANDROID_LIB     := $(ANDROID_APK_DIR)/lib/$(ANDROID_ABI)/lib$(ANDROID_APP_NAME).so
 ANDROID_APK     := build/$(ANDROID_APP_NAME).apk
+# The sideload APK's key. Releases sign with the project's own sideload key
+# (ANDROID_KEYSTORE, ANDROID_KEY_ALIAS and the passwords; release.yml passes
+# the ANDROID_SIDELOAD_* secrets), registered for the package under Android
+# developer verification, so every release installs over the last. Without
+# one, a throwaway debug key (local and CI builds only).
 ANDROID_KEYSTORE ?= build/debug.keystore
+ANDROID_KEY_ALIAS ?= $(ANDROID_APP_NAME)
+ANDROID_STORE_PASS ?= android
+ANDROID_KEY_PASS ?= $(ANDROID_STORE_PASS)
+# Android developer verification's ownership check: the snippet Play Console
+# gives, put in the APK as assets/adi-registration.properties (make android
+# ANDROID_ADI=...); not for distribution.
+ANDROID_ADI ?=
 ANDROID_JAVA_SRC := android/java/com/danheskett/opentrail/OpenTrailActivity.java
 ANDROID_DEX     := build/dex/classes.dex
 ANDROID_RES     := $(wildcard android/res/*/*)
@@ -328,23 +340,31 @@ $(ANDROID_DEX): $(ANDROID_JAVA_SRC)
 	$(ANDROID_SDK_BT)/d8 --min-api $(ANDROID_API) --lib $(ANDROID_JAR) \
 	    --output build/dex build/java-classes/com/danheskett/opentrail/*.class
 
-# A throwaway debug key for the sideload APK; Play builds sign with PLAY_*.
-$(ANDROID_KEYSTORE):
+# The throwaway debug key, made only at its own path: a real key that is
+# missing stops the build rather than being replaced.
+build/debug.keystore:
 	@mkdir -p $(dir $@)
 	keytool -genkeypair -keystore $@ -storepass android -keypass android \
 	    -alias $(ANDROID_APP_NAME) -keyalg RSA -keysize 2048 -validity 10000 \
 	    -dname "CN=OpenTrail, O=OpenTrail, C=US"
 
-$(ANDROID_APK): $(ANDROID_LIB) $(ANDROID_DEX) $(ANDROID_KEYSTORE) android/AndroidManifest.xml $(ANDROID_RES)
-	$(ANDROID_SDK_BT)/aapt package -f -M android/AndroidManifest.xml -S android/res -I $(ANDROID_JAR) \
+# The passwords reach apksigner through the environment, not the log.
+$(ANDROID_APK): export ANDROID_STORE_PASS_ENV = $(ANDROID_STORE_PASS)
+$(ANDROID_APK): export ANDROID_KEY_PASS_ENV   = $(ANDROID_KEY_PASS)
+$(ANDROID_APK): $(ANDROID_LIB) $(ANDROID_DEX) $(ANDROID_KEYSTORE) android/AndroidManifest.xml $(ANDROID_RES) FORCE
+	@rm -rf build/android-assets && mkdir -p build/android-assets
+	@if [ -n "$(ANDROID_ADI)" ]; then printf '%s\n' "$(ANDROID_ADI)" > build/android-assets/adi-registration.properties; fi
+	$(ANDROID_SDK_BT)/aapt package -f -M android/AndroidManifest.xml -S android/res -A build/android-assets -I $(ANDROID_JAR) \
 	    --version-code $(ANDROID_VERSION_CODE) --version-name $(ANDROID_VERSION_NAME) \
 	    -F build/$(ANDROID_APP_NAME).unaligned.apk
 	(cd $(ANDROID_APK_DIR) && $(ANDROID_SDK_BT)/aapt add ../../build/$(ANDROID_APP_NAME).unaligned.apk \
 	    lib/$(ANDROID_ABI)/lib$(ANDROID_APP_NAME).so)
 	(cd build/dex && $(ANDROID_SDK_BT)/aapt add ../$(ANDROID_APP_NAME).unaligned.apk classes.dex)
 	$(ANDROID_SDK_BT)/zipalign -f 4 build/$(ANDROID_APP_NAME).unaligned.apk build/$(ANDROID_APP_NAME).aligned.apk
-	$(ANDROID_SDK_BT)/apksigner sign --ks $(ANDROID_KEYSTORE) --ks-pass pass:android --key-pass pass:android \
+	@$(ANDROID_SDK_BT)/apksigner sign --ks $(ANDROID_KEYSTORE) --ks-key-alias $(ANDROID_KEY_ALIAS) \
+	    --ks-pass env:ANDROID_STORE_PASS_ENV --key-pass env:ANDROID_KEY_PASS_ENV \
 	    --out $@ build/$(ANDROID_APP_NAME).aligned.apk
+	@$(ANDROID_SDK_BT)/apksigner verify --print-certs $@ | grep -m1 'SHA-256 digest' | sed 's/^/[android] /'
 	@rm -f build/$(ANDROID_APP_NAME).unaligned.apk build/$(ANDROID_APP_NAME).aligned.apk
 	@echo "[android] built $@ (versionCode $(ANDROID_VERSION_CODE), versionName $(ANDROID_VERSION_NAME))"
 
