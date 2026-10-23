@@ -1,0 +1,11 @@
+{
+ "prompt": "a covered wagon tipped over on its side in a river, seen from behind and to the right, its white canvas cover with orange stripes half in the water, a wheel in the air, a white sack and an orange crate floating beside it, dark ripples and white foam, on a plain magenta background",
+ "prompt_style": "rd_pro__default",
+ "width": 112,
+ "height": 56,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

@@ -1,0 +1,11 @@
+{
+ "prompt": "a weathered wooden signpost standing in a small tuft of green grass: a thick dark brown post and one wide brown wooden plank nailed to it, the plank cut to a point at its lower left end and painted with a bold white arrow pointing down and to the lower left, dark outlines, on a plain magenta background",
+ "prompt_style": "rd_pro__default",
+ "width": 64,
+ "height": 40,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

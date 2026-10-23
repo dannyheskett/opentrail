@@ -3,11 +3,11 @@
  "_asset": [
   "cross_ford"
  ],
- "_note": "wagon fording, oxen in the water (112x56)",
+ "_note": "wagon fording, seen from behind heading to the far bank (112x56)",
  "style": "rd_pro__default",
  "width": 112,
  "height": 56,
- "prompt": "a white ox pulling a covered wagon through a shallow river toward the left, seen from the side, the ox in front at the left, the wagon's dark round opening at its back on the right end, white canvas cover with orange stripes, the wheels and the ox's legs half hidden in small patches of white splashing foam, on a plain magenta background",
+ "prompt": "a covered wagon seen from behind, a three-quarter view from the back and right, pulled away from the viewer toward the upper left through a shallow river by a white ox whose back and horns show ahead of the wagon, the round dark back opening of the white canvas cover with orange stripes facing us, the wheels half under the water with white splashing foam and dark ripples, on a plain magenta background",
  "remove_bg": true,
  "num_images": 1,
  "seed": 1848,
@@ -15,12 +15,12 @@
  "figure": false,
  "_original": "RIVER.IMA 2",
  "_accept": [
-  "one covered wagon and one white ox wading toward the left, side view",
-  "white canvas with orange stripes, dark opening at the right",
-  "the wheels and the ox's legs under the water",
-  "dark ripples and white splashes around them",
-  "not: people, a raft, a second wagon, river banks",
+  "one covered wagon and its ox seen from behind, heading up and to the left, wading",
+  "the same white canvas with orange stripes, brown wood and dark outlines as the approved side views",
   "clean transparent background: no leftover background colour, block or frame",
-  "the same colours and feel as the original"
+  "not: people, river banks, trees, a second wagon"
+ ],
+ "reference_image_paths": [
+  "assets/modern/cross_ford.png"
  ]
 }

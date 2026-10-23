@@ -1,0 +1,11 @@
+{
+ "prompt": "a covered wagon seen from behind, a three-quarter view from the back and right, pulled away from the viewer toward the upper left through a shallow river by a white ox whose back and horns show ahead of the wagon, the round dark back opening of the white canvas cover with orange stripes facing us, the wheels half under the water with white splashing foam and dark ripples, on a plain magenta background",
+ "prompt_style": "rd_pro__default",
+ "width": 112,
+ "height": 56,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

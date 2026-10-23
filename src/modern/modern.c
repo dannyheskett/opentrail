@@ -930,7 +930,7 @@ static void cross(int method, int losses) {
     snprintf(s->bar[0], sizeof s->bar[0], "%s", lm_name(S->g->lm));
     td(S->g, s->bar[1]);
     snprintf(s->bar[2], sizeof s->bar[2], "%s", HOW[mi]);
-    sprite(M[mi], CROSS_FROM_X, CROSS_FROM_Y, 0);
+    sprite(M[mi], CROSS_FROM_X, CROSS_FROM_Y, mi == 1);         // the ferry's art heads up-right: mirrored, as the others, to the far bank
     MSprite *w = &s->spr[s->nspr - 1];
     w->anchor = 1; w->ax = 56; w->ay = 50;                       // the 112x56 pictures: the waterline's middle
     const float d0 = CROSS_FROM_Y - CROSS_HORIZON, d1 = CROSS_TO_Y - CROSS_HORIZON;   // distance below the horizon
