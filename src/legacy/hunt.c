@@ -1045,6 +1045,9 @@ void hunt_view(HuntView *v) {
     memset(v, 0, sizeof *v);
     v->zone = V(0xEE6D);
     v->bullets = V(0xEDF1) | V(0xEDF2) << 8;
+    v->aim = V(0xEE05) & 7;
+    v->turning = V(0xEE06);
+    v->walking = (V(0xEE08) & 0x80) != 0;
     for (int i = 0; i < V(0xEDF9) && i < 8 && v->n < 24; i++) {          // scenery
         HuntSprite *p = &v->s[v->n++];
         p->kind = HV_SCENERY; p->img = H.scen_id[i] - 0x28 + 1;          // HUNT_SCENERY 7.. -> 1..

@@ -57,6 +57,6 @@ scripts), modern mode is played by tapping (`modern_tap()` in
 | A message that can be sized up (an event, a part) | "1. Continue" (Space) or "2. Size up the situation" (Return) |
 | A typed field | the keyboard drawn under the panel: letters (capital at a word's start; `^` for one capital), `' . - ,`, `123` for digits where the field takes them, Space, Del, OK |
 | A number | the number pad: 0-9, Del, OK |
-| The hunt | the field: the rifle points that way (the expert key for the direction from the hunter); Walk (Return) and Fire (Space) under the field |
+| The hunt | the field: the hunter walks to that spot, round what is in the way, and stops there; a double-tap turns him that way and fires (the hunt's own keys: the expert key for a direction, Return, Space) |
 | The raft | the left or right side of the screen |
 | The menu button (top right) | a menu: Continue, sound on / off (Ctrl-S), and Quit to the main menu (Esc Esc), Stop hunting in the hunt, or Management options at the main menu (Ctrl-A); Android's Back opens it too |

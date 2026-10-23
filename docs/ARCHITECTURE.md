@@ -105,8 +105,8 @@ See [BUILD.md](BUILD.md) for building and testing.
   `OPENTRAIL_ART=DIR` loads `DIR/<id>.png` instead, to try art without a
   rebuild). The web's classic game carries none (`build/embed_art_none.c`).
 - **Modern mode**: a second shell answering the same engine
-  Reqs with new Retro Diffusion art on a fixed-height 252-pixel canvas (384
-  to ~480 wide, following the window; 1152x756 at 3x): the art's 216 rows
+  Reqs with new Retro Diffusion art on a 384 by 252 canvas (1152x756 at 3x;
+  a wider window or phone gets plain bars beside it): the art's 216 rows
   (`MS_ART_H`) at the top, a band under them for a caption and the prompt;
   scene and UI as separate layers
   so portrait can stack them. Retro Diffusion jobs cost money: run them
@@ -192,7 +192,7 @@ See [BUILD.md](BUILD.md) for building and testing.
     it. No audio files: `build/music_wav OUTDIR` renders previews (and the
     speaker's originals) to WAV for listening. Legacy mode keeps the speaker.
   - Drawing: `src/modern/draw.c` lays every screen out on a software canvas
-    (`canvas.c`: RGBA, 252 rows by 384-480, the GPU's pixel-centre rule,
+    (`canvas.c`: RGBA, 384 by 252, the GPU's pixel-centre rule,
     nearest sampling, PNGs by stb_image), raylib-free; a host only uploads it
     as one texture and scales it (`view_modern.c`), so every platform shows
     the same pixels.

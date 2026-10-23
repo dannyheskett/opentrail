@@ -11,7 +11,7 @@ Apple rejects listings that do.
 | Field | Value |
 | --- | --- |
 | Platform | iOS |
-| Name | `OpenTrail 1848` (`OpenTrail` was taken; the home screen still says OpenTrail, `CFBundleDisplayName`) |
+| Name | `OpenTrail 1848` (`OpenTrail` was taken; the home screen says opentrail, `CFBundleDisplayName`) |
 | Primary Language | English (U.S.) |
 | Bundle ID | `com.danheskett.opentrail` |
 | SKU | `opentrail-free` |
@@ -20,32 +20,32 @@ Apple rejects listings that do.
 ## Subtitle (≤30 chars)
 
 ```
-The 1985 wagon trail classic
+A wagon journey west in 1848
 ```
 
 ## Promotional text (≤170 chars)
 
 ```
-The classic journey west in 1848, rebuilt rule for rule with new pixel art and the original tunes. No ads, no tracking, no accounts. Free and open source.
+Lead your wagon party 2,000 miles west in 1848: rivers, hunting, trading and the rapids of the Columbia. No ads, no tracking, no accounts. Free and open source.
 ```
 
 ## Keywords (≤100 chars, comma separated, no spaces)
 
 ```
-wagon,pioneer,1848,frontier,history,educational,retro,classic,hunting,river,MECC
+wagon,pioneer,1848,frontier,history,educational,retro,hunting,river,raft,oxen,pixel
 ```
 
 ## Description (≤4000 chars)
 
 ```
-It is 1848. Your wagon party of five sets out from Independence, Missouri, on the 2,000-mile trail to Oregon's Willamette Valley. Buy oxen, food and spare parts at Matt's General Store, choose your pace and rations, hunt for food, ford rivers or float your wagon across, trade with the people you meet, and keep your party alive through storms, broken axles and disease.
+It is 1848. Your wagon party of five sets out from Independence, Missouri, on the 2,000-mile journey to Oregon's Willamette Valley. Buy oxen, food and spare parts at Matt's General Store, choose your pace and rations, hunt for food, ford rivers or float your wagon across, trade with the people you meet, and keep your party alive through storms, broken axles and disease.
 
-OpenTrail is the 1985 MECC classic, rebuilt rule for rule: the same trail, landmarks, rivers, events, hunting game, raft run down the Columbia and Top Ten, published with the permission of the original game's rights holder. Every choice is numbered and answered with a tap.
+The trail passes the Kansas River crossing, Fort Laramie, Independence Rock and the Blue Mountains, and ends with a raft run down the rapids of the Columbia River. Make it to the valley with your party, your supplies and your money, and earn your place on the Top Ten. Every choice is numbered and answered with a tap.
 
-NEW PIXEL ART, THE ORIGINAL TUNES
-• Every landmark, river crossing and event redrawn as new pixel art
-• The original's tunes, note for note, played by a small orchestra
-• The hunt is the original's game: tap the field to aim, then fire
+PIXEL ART AND MUSIC
+• Every landmark, river crossing and event drawn as pixel art
+• Folk tunes of the trail played by a small orchestra
+• A hunting game: tap the field to aim, then fire
 
 MADE FOR TOUCH
 • Tap a choice; type names and epitaphs on the built-in keyboard
@@ -62,14 +62,14 @@ Read the code, report a bug, or build it yourself: https://github.com/dannyheske
 ## App Review notes
 
 ```
-Thank you for reviewing OpenTrail, a rebuild of the 1985 MECC classic, published with the permission of the original game's rights holder. It needs no account, sign-in or network access. Every choice is answered by tapping it; the menu button at the top right turns the sound off or quits a game. In the hunt, tap the field to aim and use Walk and Fire under it.
+Thank you for reviewing OpenTrail. It needs no account, sign-in or network access. Every choice is answered by tapping it; the menu button at the top right turns the sound off or quits a game. In the hunt, tap the field to aim and use Walk and Fire under it.
 ```
 
 ## App information
 
 - **Category:** Games → Adventure, and Simulation (Apple has no Educational
   subcategory for games)
-- **Content Rights:** contains third-party content (the original game's, used with its rights holder's permission)
+- **Content Rights:** contains third-party content, used with permission (NOTICE)
 - **Age Rating:** infrequent/mild cartoon violence and guns (hunting animals, pixel art), infrequent/mild mature themes (members of the party die of disease and accidents); everything else None
 - **Copyright:** `2026 Dan Heskett`
 - **Support URL:** https://github.com/dannyheskett/opentrail/issues

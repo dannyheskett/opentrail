@@ -281,6 +281,11 @@ static void draw_panel(MScene *sc, int cw, float ox, Vec2 mouse) {
     }
     int hint_out = page || trail || tall;           // the prompt on the bottom line (a tall panel's: in the band)
     int row = trail && (sc->prompt == MP_YESNO || sc->nopts == 2);   // on the trail, two choices side by side (Yes and No: the original reads one word)
+    if (row) {                                      // unless they are too wide for the box: then one above the other
+        float rw = 0;
+        for (int i = 0; i < sc->nopts; i++) rw += (text_w(optxt[i]) + 20 > 64 ? text_w(optxt[i]) + 20 : 64) + 8;
+        if (rw - 8 > inner + 4) row = 0;
+    }
     // With touch, a long list in two columns (1-4 at the left, 5-8 at the
     // right), so finger-sized rows still fit the screen.
     int cols = s_touch_now && !row && sc->nopts > 6 ? 2 : 1, half = (sc->nopts + 1) / 2;
@@ -308,7 +313,10 @@ static void draw_panel(MScene *sc, int cw, float ox, Vec2 mouse) {
         if (sc->hint[0] && !hint_out) h += wrapped(sc->hint, 0, 0, inner, CV_WHITE, 0) + 2;
         h += 6;
         const CvImage *ov = sc->overlay[0] ? modern_image(sc->overlay) : NULL;
-        if (trail) top = TR_BOX_Y;
+        if (trail) {                                // on the ground, and clear of the status under the scene
+            top = TR_BOX_Y;
+            if (top + h > TR_STATUS_Y - 2) top = TR_STATUS_Y - 2 - h;
+        }
         else if (tall) {
             top = 6;
             if (ov && ov->h <= 100) top = 6 + ov->h + 4;   // a banner above the panel: start below it
@@ -500,12 +508,17 @@ void modern_draw(Canvas *cv, MScene *sc, float mouse_x, float mouse_y, int ask, 
         }
     if (sc->veil)                                                   // the weather over the scene
         cv_rect(CV, 0, 0, cw, sc->travel ? MS_SCENE_H : MS_ART_H, sc->veil == 1 ? (CvColor){ 20, 24, 40, 110 } : (CvColor){ 235, 240, 250, 120 });
+    // the picture's sprites stay in the picture: none in the bands beside a
+    // 384-wide scene (the hunt's animals walking on), none under its caption
+    if (!sc->travel && sc->bg[0]) cv_clip(CV, ox, 0, 384, MS_ART_H);
     for (int i = 0; i < sc->nspr; i++) {
         const MSprite *p = &sc->spr[i];
         const CvImage *t = modern_image(p->id);
         float k = p->size > 0 ? p->size : p->scale > 1 ? p->scale : 1;
         float x = ox + p->x - (p->right && t ? t->w * k : 0);
         float y = p->y - (p->bottom && t ? t->h * k : 0);
+        if (sc->travel && sc->panel == PANEL_BOX && t && p->above_box && y + t->h * k > TR_BOX_Y - 1)
+            y = TR_BOX_Y - 1 - t->h * k;            // a landmark reaching under the box (a river, a pool) stands above it
         if (p->anchor && t) {                       // on whole pixels, so the art stays crisp
             x = floorf(x - (p->flip ? t->w - p->ax : p->ax) * k + .5f);
             y = floorf(y - p->ay * k + .5f);
@@ -515,6 +528,7 @@ void modern_draw(Canvas *cv, MScene *sc, float mouse_x, float mouse_y, int ask, 
         else image(p->id, x, y, p->flip);
     }
     if (sc->dot) cv_rect(CV, (int)(ox + sc->dot_x), (int)sc->dot_y, 2, 2, CV_WHITE);   // the hunt's shot
+    cv_unclip(CV);
     if (sc->carve[0]) {                             // the words on the tombstone's face, centred, cut dark
         char line[64];
         const char *p = sc->carve;
@@ -689,15 +703,6 @@ int modern_quit_hit(float x, float y) {
     return in_rect(p, s_quit[0]) ? 1 : in_rect(p, s_quit[1]) ? 2 : 0;
 }
 
-// The direction from the hunter to (x, y), as the hunt's expert key for it
-// (east, then counter-clockwise: ; P O I K , . /).
-static int aim_key(const MScene *sc, float x, float y) {
-    static const char EXPERT[8] = { ';', 'P', 'O', 'I', 'K', ',', '.', '/' };
-    float a = atan2f(-(y - sc->hunter_y), x - sc->hunter_x);
-    int d = (int)floorf(a / 0.78539816f + .5f);
-    return EXPERT[(d % 8 + 8) % 8];
-}
-
 int modern_tap(MScene *sc, float x, float y, int *keys, int max) {
     Vec2 p = { x, y };
     float ox = (CV ? CV->w - 384 : 0) / 2.0f;
@@ -742,7 +747,15 @@ int modern_tap(MScene *sc, float x, float y, int *keys, int max) {
         }
         if (in_rect(p, r)) { keys[n++] = b->key; return n; }
     }
-    if (sc->hunting && y < MS_ART_H) { keys[n++] = aim_key(sc, x - ox, y); return n; }
+    if (sc->hunting && y < MS_ART_H) {          // the field: a tap walks there, a second tap soon after shoots
+        static double last_t = -1;
+        static float last_x, last_y;
+        int dbl = s_time - last_t < 0.4 && fabsf(x - last_x) < 32 && fabsf(y - last_y) < 32;
+        sc->hunt_goal = dbl ? 2 : 1;
+        sc->hunt_gx = x - ox; sc->hunt_gy = y;
+        last_t = dbl ? -1 : s_time; last_x = x; last_y = y;
+        return 0;
+    }
     if (sc->prompt == MP_CONTINUE) { keys[n++] = ' '; return n; }
     if (sc->tap_key) keys[n++] = sc->tap_key;
     return n;

@@ -1,6 +1,7 @@
 // Modern mode's screens: every engine Req answered with a scene, and the
 // modern main menu. The words are the original's; the layout is new.
 #include "modern.h"
+#include "draw.h"
 #include "data.h"
 #include "a2str.h"
 #include "hunt.h"
@@ -133,7 +134,7 @@ static void sprite(const char *id, float x, float y, int flip) {
     if (s->nspr >= MS_SPRITES) return;
     MSprite *p = &s->spr[s->nspr++];
     snprintf(p->id, MS_ID, "%s", id);
-    p->x = x; p->y = y; p->flip = flip; p->bottom = 0; p->right = 0; p->scale = 1; p->size = 0; p->anchor = 0;
+    p->x = x; p->y = y; p->flip = flip; p->bottom = 0; p->right = 0; p->scale = 1; p->size = 0; p->anchor = 0; p->above_box = 0;
 }
 
 // A sprite placed by its bottom-right corner, at a whole-number scale.
@@ -384,8 +385,12 @@ static void travel_view(void) {
     if (!s->wagon_frame) s->wagon_frame = 1;
     if (g->nm > 0) {                                             // it slides in as IX does, stopping at
         snprintf(id, sizeof id, "travel_icon_%02d", g->nm);     // LANDMARK_STOP, and stays on arrival
-        sprite_by_corner(id, LANDMARK_STOP + rx((float)s_ix) - rx((float)s_fx), LANDMARK_ART[g->nm].y,
-                         LANDMARK_ART[g->nm].kind == ON_HORIZON ? 2 : 1);
+        int k = LANDMARK_ART[g->nm].kind == ON_HORIZON ? 2 : 1;
+        const CvImage *im = modern_image(id);
+        float stop = LANDMARK_STOP;                              // far off, a wide one (the Blue Mountains)
+        if (k == 2 && im && 8 + im->w * k > stop) stop = 8.0f + im->w * k;   // stops whole in view, behind the wagon
+        sprite_by_corner(id, stop + rx((float)s_ix) - rx((float)s_fx), LANDMARK_ART[g->nm].y, k);
+        s->spr[s->nspr - 1].above_box = LANDMARK_ART[g->nm].kind == ON_GROUND;   // a river runs on under it
     }
     snprintf(id, sizeof id, "travel_wagon_%d", s->wagon_frame);
     sprite(id, WAGON_X, WAGON_Y, 0);                             // walking in place, as at (186, 32)
@@ -849,6 +854,150 @@ static const char *hunter_aim(int img, int *left) {
     return "down";
 }
 
+// Touch in the hunt (modern_tap sets MScene.hunt_goal): the hunt is the
+// original's game, steered by its own keys. A tap walks the hunter to the
+// spot: a distance map over the field (the hunt's own field and boxes: he may
+// not leave it or touch scenery or a carcass, REQ-192i) is made from the spot,
+// and he is aimed (the expert key for a direction) and started (Return) in
+// whichever of his eight steps gets furthest down the map in a straight line,
+// aimed anew when that line stops gaining, and stopped (Return) there. A
+// double-tap stops him, turns him that way and fires (Space) once he faces
+// it. After each key the game is given a few frames to take it.
+static const int STEP_X[8] = { 2, 2, 0, -2, -2, -2, 0, 2 }, STEP_Y[8] = { 0, -1, -1, -1, 0, 1, 1, 1 };
+
+// The direction whose step (and shot) points nearest (dx, dy), canvas pixels:
+// a step is 2 pixels across and 1 row up or down, so the diagonals are shallow.
+static int aim_dir(float dx, float dy) {
+    int best = 0;
+    float bv = -1e9f, len = sqrtf(dx * dx + dy * dy) + 1e-6f;
+    for (int d = 0; d < 8; d++) {
+        float mx = rx((float)STEP_X[d]), my = ry((float)STEP_Y[d]), ml = sqrtf(mx * mx + my * my);
+        float c = (mx * dx + my * dy) / (ml * len);
+        if (c > bv) { bv = c; best = d; }
+    }
+    return best;
+}
+
+#define FIELD_W 280
+#define FIELD_H 192
+#define CELLS_X (FIELD_W / 2)
+static short s_dist[FIELD_H][CELLS_X];          // steps to the spot, -1 none; x = 2 * cell + parity
+static int s_par, s_hw, s_hh;                     // the hunter's x parity and box size, as planned
+
+static int hunter_box(const HuntView *v, int *x1, int *y1, int *x2, int *y2) {
+    for (int i = 0; i < v->n; i++)
+        if (v->s[i].kind == HV_HUNTER) { *x1 = v->s[i].x1; *y1 = v->s[i].y1; *x2 = v->s[i].x2; *y2 = v->s[i].y2; return 1; }
+    return 0;
+}
+
+// The hunter's box at (x, y) (its top left) is in the field and touches no
+// scenery or carcass (the hunt's own inclusive test).
+static int free_at(const HuntView *v, int x, int y) {
+    if (x < 0 || y < 0 || x + s_hw >= FIELD_W || y + s_hh >= FIELD_H) return 0;
+    for (int i = 0; i < v->n; i++) {
+        const HuntSprite *p = &v->s[i];
+        if (p->kind != HV_SCENERY && p->kind != HV_DEAD) continue;
+        if (x + s_hw >= p->x1 && p->x2 >= x && y + s_hh >= p->y1 && p->y2 >= y) return 0;
+    }
+    return 1;
+}
+
+static short dist_at(int x, int y) {
+    int c = (x - s_par) / 2;
+    if (y < 0 || y >= FIELD_H || c < 0 || c >= CELLS_X || (x - s_par) % 2) return -1;
+    return s_dist[y][c];
+}
+
+// The distance map from the spot (fx, fy) (field pixels): breadth first
+// over the hunter's positions, from those within reach of the spot (the
+// nearest free ones when the spot itself is blocked).
+static void plan(const HuntView *v, float fx, float fy) {
+    static int qx[FIELD_H * CELLS_X], qy[FIELD_H * CELLS_X];
+    int x1, y1, x2, y2;
+    if (!hunter_box(v, &x1, &y1, &x2, &y2)) return;
+    s_par = x1 & 1; s_hw = x2 - x1; s_hh = y2 - y1;
+    memset(s_dist, 0xFF, sizeof s_dist);
+    int n = 0;
+    for (int r = 6; r <= 60 && !n; r += 6)
+        for (int y = 0; y < FIELD_H; y++)
+            for (int c = 0; c < CELLS_X; c++) {
+                int x = 2 * c + s_par;
+                float mx = x + s_hw / 2.0f - fx, my = y + s_hh / 2.0f - fy;
+                if (mx * mx + my * my <= r * r && free_at(v, x, y)) { s_dist[y][c] = 0; qx[n] = c; qy[n] = y; n++; }
+            }
+    for (int h = 0; h < n; h++)
+        for (int d = 0; d < 8; d++) {
+            int c = qx[h] - STEP_X[d] / 2, y = qy[h] - STEP_Y[d];          // whence a step d arrives here
+            if (y < 0 || y >= FIELD_H || c < 0 || c >= CELLS_X || s_dist[y][c] >= 0) continue;
+            if (!free_at(v, 2 * c + s_par, y)) continue;
+            s_dist[y][c] = (short)(s_dist[qy[h]][qx[h]] + 1);
+            qx[n] = c; qy[n] = y; n++;
+        }
+}
+
+// Where a straight walk in direction d from (x, y) gets, down the map: the
+// least distance it passes.
+static int run_best(const HuntView *v, int x, int y, int d) {
+    int best = dist_at(x, y);
+    for (int k = 0; k < 80; k++) {
+        x += STEP_X[d]; y += STEP_Y[d];
+        int dd = dist_at(x, y);
+        if (dd < 0 || !free_at(v, x, y)) break;
+        if (dd < best) best = dd;
+    }
+    return best;
+}
+
+static void hunt_drive(MScene *s, const HuntView *v) {
+    static const char EXPERT[8] = { ';', 'P', 'O', 'I', 'K', ',', '.', '/' };
+    static int wait, frames, way = -1;
+    static float gx = -1, gy = -1;
+    if (!s->hunt_goal) { frames = 0; gx = gy = -1; return; }
+    if (wait > 0) { wait--; return; }
+    if (++frames > 60 * 20) { s->hunt_goal = 0; if (v->walking) mach_key_push(S->m, 0x0D); return; }   // give up
+    if (s->hunt_goal == 2) {                         // shoot that way
+        int want = aim_dir(s->hunt_gx - s->hunter_x, s->hunt_gy - s->hunter_y);
+        if (v->walking) { mach_key_push(S->m, 0x0D); wait = 6; return; }
+        if (v->turning) return;
+        if (v->aim != want) { mach_key_push(S->m, (uint8_t)EXPERT[want]); wait = 6; return; }
+        if (!v->shot && v->bullets > 0) mach_key_push(S->m, ' ');
+        s->hunt_goal = 0;
+        return;
+    }
+    int x1, y1, x2, y2;
+    if (!hunter_box(v, &x1, &y1, &x2, &y2)) return;
+    if (s->hunt_gx != gx || s->hunt_gy != gy) {      // a new spot: its map
+        gx = s->hunt_gx; gy = s->hunt_gy;
+        plan(v, gx * FIELD_W / 384.0f, gy * FIELD_H / (float)MS_ART_H);
+        way = -1;
+    }
+    int here = dist_at(x1, y1);
+    if (here == 0 || here < 0) {                     // there (or nowhere to go)
+        if (v->walking) mach_key_push(S->m, 0x0D);
+        s->hunt_goal = 0;
+        return;
+    }
+    if (v->turning) return;
+    // keep on while the line still gains; else the best straight line from here
+    int nx = x1 + STEP_X[v->aim], ny = y1 + STEP_Y[v->aim], nd = dist_at(nx, ny);
+    if (v->walking && way == v->aim && nd >= 0 && nd < here && free_at(v, nx, ny)) return;
+    int best = here, bd = -1;
+    for (int d = 0; d < 8; d++) {
+        int r = run_best(v, x1, y1, d);
+        if (r < best || (r == best && d == v->aim && bd >= 0)) { best = r; bd = d; }
+    }
+    if (bd < 0) {                                    // no line gains: a step that does (round a corner)
+        for (int d = 0; d < 8; d++) {
+            int dd = dist_at(x1 + STEP_X[d], y1 + STEP_Y[d]);
+            if (dd >= 0 && dd < here && free_at(v, x1 + STEP_X[d], y1 + STEP_Y[d])) { bd = d; break; }
+        }
+        if (bd < 0) { if (v->walking) mach_key_push(S->m, 0x0D); s->hunt_goal = 0; return; }
+    }
+    way = bd;
+    if (v->aim != bd) { mach_key_push(S->m, (uint8_t)EXPERT[bd]); wait = 6; return; }
+    if (!v->walking) { mach_key_push(S->m, 0x0D); wait = 6; }
+}
+
 static void hunt_frame(void *ctx) {
     (void)ctx;
     HuntView v;
@@ -895,12 +1044,10 @@ static void hunt_frame(void *ctx) {
     s->dot = v.shot;
     s->dot_x = rx((float)v.sx); s->dot_y = ry((float)v.sy);
     snprintf(s->bar[0], sizeof s->bar[0], "Bullets left: %d", v.bullets);
-    if (TOUCH) {                                 // a tap on the field aims; Walk (Return) and Fire (Space)
-        snprintf(s->bar[2], sizeof s->bar[2], "Tap the field to aim");
+    if (TOUCH) {                                 // a tap walks there, a double-tap shoots that way
+        snprintf(s->bar[2], sizeof s->bar[2], "Tap: walk there   Double-tap: shoot");
         s->hunting = 1;
-        s->btn[0] = (MButton){ .x = 384 - 132, .y = MS_ART_H + 4, .w = 60, .h = 28, .label = "Walk", .key = 0x0D };
-        s->btn[1] = (MButton){ .x = 384 - 68, .y = MS_ART_H + 4, .w = 60, .h = 28, .label = "Fire", .key = ' ' };
-        s->nbtn = 2;
+        hunt_drive(s, &v);
     } else snprintf(s->bar[2], sizeof s->bar[2], "Arrows aim   Space fires   Return walks");
 }
 
@@ -930,7 +1077,7 @@ static void cross(int method, int losses) {
     snprintf(s->bar[0], sizeof s->bar[0], "%s", lm_name(S->g->lm));
     td(S->g, s->bar[1]);
     snprintf(s->bar[2], sizeof s->bar[2], "%s", HOW[mi]);
-    sprite(M[mi], CROSS_FROM_X, CROSS_FROM_Y, 0);
+    sprite(M[mi], CROSS_FROM_X, CROSS_FROM_Y, mi == 1);         // the ferry's art heads up-right: mirrored, as the others, to the far bank
     MSprite *w = &s->spr[s->nspr - 1];
     w->anchor = 1; w->ax = 56; w->ay = 50;                       // the 112x56 pictures: the waterline's middle
     const float d0 = CROSS_FROM_Y - CROSS_HORIZON, d1 = CROSS_TO_Y - CROSS_HORIZON;   // distance below the horizon
@@ -965,10 +1112,10 @@ static int hunt(Req *r) {
     MScene *s = sc();                            // two columns, the expert keys' grid (OREGON.IMA 1 at
     title("Hunting Instructions");               // (30, 78)), the bullets' picture at the lower left (6)
     if (TOUCH)                                   // the same controls, as taps
-        body("  Tap the field  To point the rifle that way\n\n\n"
-             "  Walk           To start or stop walking\n\n\n"
-             "  Fire           To fire the rifle\n\n\n"
-             "  The buttons are under the field, at the right.");
+        body("  Tap            To walk to that spot\n\n\n"
+             "  Double-tap     To turn that way and fire\n\n\n"
+             "  The hunter walks and turns in the eight\n"
+             "  directions of the compass.");
     else {
         body("  Return Key     To start or stop walking\n\n\n\n"
              "  Arrow Keys     To point the rifle\n"

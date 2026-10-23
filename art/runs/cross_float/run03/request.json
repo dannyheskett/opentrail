@@ -1,0 +1,11 @@
+{
+ "prompt": "a covered wagon floating in a river like a boat, seen from behind, a three-quarter view from the back and right, moving away from the viewer toward the upper left, its caulked wagon box low in the water with the wheels hidden, the round dark back opening of the white canvas cover with orange stripes facing us, dark ripples and a white wake trailing toward us, on a plain magenta background",
+ "prompt_style": "rd_pro__default",
+ "width": 112,
+ "height": 56,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

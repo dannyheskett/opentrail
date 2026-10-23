@@ -46,6 +46,7 @@ typedef struct {
     float size;                     // or at this fraction (0: as it is): the crossing's distance
     int anchor;                     // (x, y) is where the image's point (ax, ay) lands (mirrored with it)
     float ax, ay;                   // the hunt: each sprite's feet (hunt_anchor.h)
+    int above_box;                  // the travel scene: kept above the box (a landmark standing on the ground)
 } MSprite;
 
 typedef struct { float x0, y0, x1, y1; } MLine;    // canvas pixels
@@ -129,8 +130,10 @@ typedef struct {
     int tap_key;                    // a tap that meets nothing else types this (0: none)
     MButton btn[MS_BUTTONS];        // buttons on the scene (the hunt's Fire and Walk, the raft's halves)
     int nbtn;
-    int hunting;                    // the hunt's field: a tap on it aims the rifle from (hunter_x, hunter_y)
-    float hunter_x, hunter_y;
+    int hunting;                    // the hunt's field: a tap walks the hunter there, a double-tap shoots that way
+    float hunter_x, hunter_y;       // the hunter's middle, canvas pixels (the 384 columns')
+    int hunt_goal;                  // 0 none, 1 walk to (hunt_gx, hunt_gy), 2 turn that way and fire
+    float hunt_gx, hunt_gy;
 } MScene;
 
 typedef struct {
