@@ -88,7 +88,7 @@ jobs:
         with:
           ref: ${{ needs.prepare.outputs.sha }}
       - name: Cache the apt packages
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/apt-archives
           key: apt-linux-mingw-ubuntu22-${{ hashFiles('scripts/apt_install.sh') }}-${{ github.run_id }}
@@ -105,7 +105,7 @@ jobs:
             python3-numpy python3-pil xvfb libgl1-mesa-dri
       - name: Cache raylib (Linux)
         id: raylib-linux
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: third_party/raylib-install
           key: raylib-linux-ubuntu22-${{ hashFiles('scripts/build_raylib_linux.sh', 'scripts/raylib_flags.sh') }}
@@ -117,7 +117,7 @@ jobs:
         run: xvfb-run -a -s '-screen 0 1280x800x24' make test   # a display, so test_harness runs
       - name: Cache raylib (mingw win64 + win32)
         id: raylib-windows
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: |
             third_party/raylib-install-win64
@@ -147,7 +147,7 @@ jobs:
           ref: ${{ needs.prepare.outputs.sha }}
       - name: Cache raylib (universal arm64 + x86_64)
         id: raylib
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: third_party/raylib-install-mac
           key: raylib-mac-macos14-${{ hashFiles('scripts/build_raylib_mac.sh', 'scripts/raylib_flags.sh') }}
@@ -177,7 +177,7 @@ jobs:
         with:
           version: 6.0.3
       - name: Cache the apt packages
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/apt-archives
           key: apt-zip-ubuntu22-${{ hashFiles('scripts/apt_install.sh') }}-${{ github.run_id }}
@@ -189,7 +189,7 @@ jobs:
         run: ./scripts/apt_install.sh zip
       - name: Cache raylib (web)
         id: raylib
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: third_party/raylib-install-web
           key: raylib-web-emsdk6.0.3-${{ hashFiles('scripts/build_raylib_web.sh', 'scripts/raylib_flags.sh') }}
@@ -299,7 +299,7 @@ jobs:
             "build-tools;${ANDROID_BUILD_TOOLS}" "platforms;android-${ANDROID_PLATFORM_VER}" > /dev/null
       - name: Cache raylib (Android)
         id: raylib
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: third_party/raylib-install-android
           key: raylib-android-ndk26.3-${{ hashFiles('scripts/build_raylib_android.sh', 'scripts/raylib_flags.sh', 'scripts/raylib-android-eglconfig.patch') }}
