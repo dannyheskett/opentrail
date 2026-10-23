@@ -281,6 +281,11 @@ static void draw_panel(MScene *sc, int cw, float ox, Vec2 mouse) {
     }
     int hint_out = page || trail || tall;           // the prompt on the bottom line (a tall panel's: in the band)
     int row = trail && (sc->prompt == MP_YESNO || sc->nopts == 2);   // on the trail, two choices side by side (Yes and No: the original reads one word)
+    if (row) {                                      // unless they are too wide for the box: then one above the other
+        float rw = 0;
+        for (int i = 0; i < sc->nopts; i++) rw += (text_w(optxt[i]) + 20 > 64 ? text_w(optxt[i]) + 20 : 64) + 8;
+        if (rw - 8 > inner + 4) row = 0;
+    }
     // With touch, a long list in two columns (1-4 at the left, 5-8 at the
     // right), so finger-sized rows still fit the screen.
     int cols = s_touch_now && !row && sc->nopts > 6 ? 2 : 1, half = (sc->nopts + 1) / 2;
@@ -308,7 +313,10 @@ static void draw_panel(MScene *sc, int cw, float ox, Vec2 mouse) {
         if (sc->hint[0] && !hint_out) h += wrapped(sc->hint, 0, 0, inner, CV_WHITE, 0) + 2;
         h += 6;
         const CvImage *ov = sc->overlay[0] ? modern_image(sc->overlay) : NULL;
-        if (trail) top = TR_BOX_Y;
+        if (trail) {                                // on the ground, and clear of the status under the scene
+            top = TR_BOX_Y;
+            if (top + h > TR_STATUS_Y - 2) top = TR_STATUS_Y - 2 - h;
+        }
         else if (tall) {
             top = 6;
             if (ov && ov->h <= 100) top = 6 + ov->h + 4;   // a banner above the panel: start below it
