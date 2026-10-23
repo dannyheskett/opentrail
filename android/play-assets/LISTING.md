@@ -22,20 +22,20 @@ OpenTrail
 ## Short description (≤80 chars)
 
 ```
-The 1985 classic of the wagon trail west, rebuilt. Free, open source, no ads.
+Lead a wagon party 2,000 miles west in 1848. Free, open source, no ads.
 ```
 
 ## Full description (≤4000 chars)
 
 ```
-It is 1848. Your wagon party of five sets out from Independence, Missouri, on the 2,000-mile trail to Oregon's Willamette Valley. Buy oxen, food and spare parts at Matt's General Store, choose your pace and rations, hunt for food, ford rivers or float your wagon across, trade with the people you meet, and keep your party alive through storms, broken axles and disease.
+It is 1848. Your wagon party of five sets out from Independence, Missouri, on the 2,000-mile journey to Oregon's Willamette Valley. Buy oxen, food and spare parts at Matt's General Store, choose your pace and rations, hunt for food, ford rivers or float your wagon across, trade with the people you meet, and keep your party alive through storms, broken axles and disease.
 
-OpenTrail is the 1985 MECC classic, rebuilt rule for rule: the same trail, landmarks, rivers, events, hunting game, raft run down the Columbia and Top Ten, published with the permission of the original game's rights holder. Every choice is numbered and answered with a tap.
+The trail passes the Kansas River crossing, Fort Laramie, Independence Rock and the Blue Mountains, and ends with a raft run down the rapids of the Columbia River. Make it to the valley with your party, your supplies and your money, and earn your place on the Top Ten. Every choice is numbered and answered with a tap.
 
-NEW PIXEL ART, THE ORIGINAL TUNES
-• Every landmark, river crossing and event redrawn as new pixel art
-• The original's tunes, note for note, played by a small orchestra
-• The hunt is the original's game: tap the field to aim, then fire
+PIXEL ART AND MUSIC
+• Every landmark, river crossing and event drawn as pixel art
+• Folk tunes of the trail played by a small orchestra
+• A hunting game: tap the field to aim, then fire
 
 MADE FOR TOUCH
 • Tap a choice; type names and epitaphs on the built-in keyboard
