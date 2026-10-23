@@ -99,7 +99,7 @@ def asc_listing():
 # "Tetris" is a trademark the Tetris Company enforces aggressively. Both rules
 # are recorded in the listing files themselves; this makes them fail a build
 # rather than a review.
-BANNED_EVERYWHERE = ("oregon trail",)   # the store name is OpenTrail; the trademark stays out of the copy
+BANNED_EVERYWHERE = ("oregon trail", "mecc", "1985", "rebuilt", "remake", "original")   # the store copy describes OpenTrail alone
 BANNED_ON_APPLE = ("android", "google play", "play store")
 
 
