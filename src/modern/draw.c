@@ -264,6 +264,7 @@ static void draw_panel(MScene *sc, int cw, float ox, Vec2 mouse) {
     float px = 8, pw = (float)cw - 16;
     if (page) { px = 4; pw = (float)cw - 8; }
     if (trail) { px = ox + TR_BOX_X; pw = TR_BOX_W; }
+    if (sc->box_mid && sc->panel == PANEL_BOX) { px = 4; pw = (float)cw - 8; }   // a band across the picture, as the original's
     const CvImage *por = sc->overlay[0] ? modern_image(sc->overlay) : NULL;
     if (tall && por && por->h > 100) pw -= por->w + 8;   // a portrait at the right: the panel leaves it room
     // the picture at the top right: the choice under the mouse's, else the panel's
@@ -321,7 +322,8 @@ static void draw_panel(MScene *sc, int cw, float ox, Vec2 mouse) {
             top = 6;
             if (ov && ov->h <= 100) top = 6 + ov->h + 4;   // a banner above the panel: start below it
             if (top + h > MS_ART_H - 4) top = MS_ART_H - 4 - h;   // the band under the picture keeps the hint
-        } else top = CH - kb_height(sc) - 6 - h;    // above the touch keyboard when it is up
+        } else if (sc->box_mid && !kb_height(sc)) top = (float)(int)((MS_ART_H - h) / 2);   // across the middle, over the wagon
+        else top = CH - kb_height(sc) - 6 - h;      // above the touch keyboard when it is up
         if (top < 2) top = 2;
     }
     panel_box((Rect){ px, top, pw, h });
@@ -494,7 +496,11 @@ void modern_draw(Canvas *cv, MScene *sc, float mouse_x, float mouse_y, int ask, 
         return;
     }
     if (sc->travel) draw_travel(sc, cw, ox);
-    else if (sc->bg[0]) image_alpha(sc->bg, ox, 0, 0, 1 - sc->bg_hide);
+    else if (sc->bg[0]) {
+        cv_clip(CV, ox, 0, 384, MS_ART_H);                          // a tall strip shows its window only
+        image_alpha(sc->bg, ox + sc->bg_x, sc->bg_y, 0, 1 - sc->bg_hide);
+        cv_unclip(CV);
+    }
     if (sc->map) draw_map(sc, cw, ox);
     if (sc->ripple > 0)                                             // the crossing's wake
         for (int k = 0; k < 3; k++) {
@@ -523,9 +529,24 @@ void modern_draw(Canvas *cv, MScene *sc, float mouse_x, float mouse_y, int ask, 
             x = floorf(x - (p->flip ? t->w - p->ax : p->ax) * k + .5f);
             y = floorf(y - p->ay * k + .5f);
         }
+        if (p->sink > 0 && t && p->anchor) {          // under the water from below its waterline up
+            float line = y + (p->ay - p->sink) * k;
+            cv_clip(CV, ox, 0, 384, line < MS_ART_H ? line : MS_ART_H);
+        }
         if (t && k != 1)
             cv_image(CV, t, p->flip, x, y, (float)t->w * k, (float)t->h * k, CV_WHITE);
         else image(p->id, x, y, p->flip);
+        if (p->sink > 0 && t && p->anchor) {          // the waterline: foam hugging the shape where it goes under
+            cv_clip(CV, ox, 0, 384, MS_ART_H);
+            int r = (int)(p->ay - p->sink), line = (int)(y + r * k);
+            for (int c = 0; r >= 0 && r + 1 < t->h && c < t->w; c++) {
+                int in = t->px[(r * t->w + c) * 4 + 3] > 128 || t->px[((r + 1) * t->w + c) * 4 + 3] > 128;
+                if (!in) continue;
+                int sx = (int)(x + (p->flip ? t->w - 1 - c : c) * k);
+                cv_rect(CV, sx, line - 1, 1, 1, (CvColor){ 253, 254, 254, 230 });
+                if ((c * 7 + (int)(s_time * 12)) % 5) cv_rect(CV, sx, line, 1, 1, (CvColor){ 150, 248, 253, 200 });
+            }
+        }
     }
     if (sc->dot) cv_rect(CV, (int)(ox + sc->dot_x), (int)sc->dot_y, 2, 2, CV_WHITE);   // the hunt's shot
     cv_unclip(CV);
