@@ -194,7 +194,7 @@ static void hunt_json(void) {
     static const char *const K[] = { "scenery", "dead", "animal", "hunter" };
     HuntView v;
     hunt_view(&v);
-    printf("{\"zone\":%d,\"bullets\":%d,\"shot\":", v.zone, v.bullets);
+    printf("{\"zone\":%d,\"bullets\":%d,\"aim\":%d,\"turning\":%d,\"walking\":%d,\"shot\":", v.zone, v.bullets, v.aim, v.turning, v.walking);
     if (v.shot) printf("[%d,%d]", v.sx, v.sy); else fputs("null", stdout);
     fputs(",\"sprites\":[", stdout);
     for (int i = 0; i < v.n; i++) {
@@ -308,7 +308,7 @@ static void command_loop(void) {
         } else if (!strcmp(cmd, "tap") || !strcmp(cmd, "tapopt")) {   // a tap at canvas pixels X Y, or on choice N
             float x = 0, y = 0, w, h;
             static Canvas cv;                        // the scene as it is now (384 wide), so the tap meets it
-            if (s_modern) { cv_size(&cv, 384, 252); modern_draw(&cv, &s_ms.sc, -1, -1, 0, 0, NULL); }
+            if (s_modern) { cv_size(&cv, 384, 252); modern_draw(&cv, &s_ms.sc, -1, -1, 0, s_frame / 60.0, NULL); }
             int bad = !s_modern;
             if (!bad && cmd[3] == 'o') {
                 bad = !modern_option_rect(atoi(arg), &x, &y, &w, &h);

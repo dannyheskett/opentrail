@@ -68,18 +68,29 @@ void cv_flatten(Canvas *cv) {
     }
 }
 
-// The pixels whose centres fall in [a, a + len): first and one past the last.
-static void span(float a, float len, int max, int *lo, int *hi) {
+// The pixels whose centres fall in [a, a + len): first and one past the last,
+// inside [min, max).
+static void span_in(float a, float len, int min, int max, int *lo, int *hi) {
     *lo = (int)ceilf(a - .5f);
     *hi = (int)ceilf(a + len - .5f);
-    if (*lo < 0) *lo = 0;
+    if (*lo < min) *lo = min;
     if (*hi > max) *hi = max;
 }
+#define SPAN_X(cv, a, len, lo, hi) span_in(a, len, (cv)->clip ? (cv)->cx0 : 0, (cv)->clip ? (cv)->cx1 : (cv)->w, lo, hi)
+#define SPAN_Y(cv, a, len, lo, hi) span_in(a, len, (cv)->clip ? (cv)->cy0 : 0, (cv)->clip ? (cv)->cy1 : (cv)->h, lo, hi)
+
+void cv_clip(Canvas *cv, float x, float y, float w, float h) {
+    cv->clip = 1;
+    cv->cx0 = x < 0 ? 0 : (int)x; cv->cy0 = y < 0 ? 0 : (int)y;
+    cv->cx1 = x + w > cv->w ? cv->w : (int)(x + w); cv->cy1 = y + h > cv->h ? cv->h : (int)(y + h);
+}
+
+void cv_unclip(Canvas *cv) { cv->clip = 0; }
 
 void cv_rect(Canvas *cv, float x, float y, float w, float h, CvColor c) {
     int x0, x1, y0, y1;
-    span(x, w, cv->w, &x0, &x1);
-    span(y, h, cv->h, &y0, &y1);
+    SPAN_X(cv, x, w, &x0, &x1);
+    SPAN_Y(cv, y, h, &y0, &y1);
     for (int j = y0; j < y1; j++)
         for (int i = x0; i < x1; i++) blend(cv, i, j, c.r, c.g, c.b, c.a);
 }
@@ -123,7 +134,8 @@ void cv_ellipse_lines(Canvas *cv, float cx, float cy, float rx, float ry, CvColo
         int x = (int)floorf(cx + sinf(a) * rx), y = (int)floorf(cy + cosf(a) * ry);
         if (x == lastx && y == lasty) continue;
         lastx = x; lasty = y;
-        if (x >= 0 && y >= 0 && x < cv->w && y < cv->h) blend(cv, x, y, c.r, c.g, c.b, c.a);
+        if (x >= 0 && y >= 0 && x < cv->w && y < cv->h && (!cv->clip || (x >= cv->cx0 && x < cv->cx1 && y >= cv->cy0 && y < cv->cy1)))
+            blend(cv, x, y, c.r, c.g, c.b, c.a);
     }
 }
 
@@ -132,8 +144,8 @@ static void blit(Canvas *cv, const CvImage *img, int flip, float sx, float sy, f
                  float x, float y, float w, float h, CvColor tint) {
     if (w <= 0 || h <= 0 || sw <= 0 || sh <= 0) return;
     int x0, x1, y0, y1;
-    span(x, w, cv->w, &x0, &x1);
-    span(y, h, cv->h, &y0, &y1);
+    SPAN_X(cv, x, w, &x0, &x1);
+    SPAN_Y(cv, y, h, &y0, &y1);
     for (int j = y0; j < y1; j++) {
         int v = (int)floorf(sy + (j + .5f - y) / h * sh);
         if (v < 0) v = 0;
