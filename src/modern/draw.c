@@ -264,6 +264,7 @@ static void draw_panel(MScene *sc, int cw, float ox, Vec2 mouse) {
     float px = 8, pw = (float)cw - 16;
     if (page) { px = 4; pw = (float)cw - 8; }
     if (trail) { px = ox + TR_BOX_X; pw = TR_BOX_W; }
+    if (sc->box_mid && sc->panel == PANEL_BOX) { px = 4; pw = (float)cw - 8; }   // a band across the picture, as the original's
     const CvImage *por = sc->overlay[0] ? modern_image(sc->overlay) : NULL;
     if (tall && por && por->h > 100) pw -= por->w + 8;   // a portrait at the right: the panel leaves it room
     // the picture at the top right: the choice under the mouse's, else the panel's
@@ -301,7 +302,7 @@ static void draw_panel(MScene *sc, int cw, float ox, Vec2 mouse) {
     if (page) { top = 4; h = CH - 8; }
     else {                                          // measure
         h = 8;
-        if (sc->title[0]) h += wrapped(sc->title, 0, 0, inner - pw_pic, CV_WHITE, 0) + 4;
+        if (sc->title[0]) h += wrapped(sc->title, 0, 0, inner, CV_WHITE, 0) + 4;   // the whole width: the picture goes under it
         if (div) h += div->h + 4;
         if (sc->body[0]) h += wrapped(sc->body, 0, 0, inner - pw_pic, CV_WHITE, 0) + 4;
         if (sc->nicon) h += 36;
@@ -321,7 +322,8 @@ static void draw_panel(MScene *sc, int cw, float ox, Vec2 mouse) {
             top = 6;
             if (ov && ov->h <= 100) top = 6 + ov->h + 4;   // a banner above the panel: start below it
             if (top + h > MS_ART_H - 4) top = MS_ART_H - 4 - h;   // the band under the picture keeps the hint
-        } else top = CH - kb_height(sc) - 6 - h;    // above the touch keyboard when it is up
+        } else if (sc->box_mid && !kb_height(sc)) top = (float)(int)((MS_ART_H - h) / 2);   // across the middle, over the wagon
+        else top = CH - kb_height(sc) - 6 - h;      // above the touch keyboard when it is up
         if (top < 2) top = 2;
     }
     panel_box((Rect){ px, top, pw, h });
@@ -342,8 +344,8 @@ static void draw_panel(MScene *sc, int cw, float ox, Vec2 mouse) {
         }
         if (sc->keys_x > 0) draw_keys(sc->keys_x, sc->keys_y);
     }
-    if (pt) image(pid, px + pw - pad - pt->w, y - 2, 0);
-    if (!page && sc->title[0]) y += wrapped(sc->title, x, y, inner - pw_pic, TITLE_INK, 1) + 4;
+    if (!page && sc->title[0]) y += wrapped(sc->title, x, y, inner, TITLE_INK, 1) + 4;
+    if (pt) image(pid, px + pw - pad - pt->w, y - 2, 0);     // at the top right, under the title
     if (!page && div) { image("ui_divider", (float)(int)(px + (pw - div->w) / 2), y, 0); y += div->h + 4; }
     if (sc->body[0]) y += wrapped(sc->body, x, y, inner - pw_pic, CV_WHITE, 1) + 4;
     if (sc->nicon) {                                // a row of pictures, centred
@@ -401,20 +403,28 @@ static void draw_panel(MScene *sc, int cw, float ox, Vec2 mouse) {
 
 // The quit dialog, centred over the scene (legacy mode's words, numbered
 // as every choice is).
+static void button(Rect r, const char *label, int lit);
 static void draw_quit(int cw) {
-    static const char *const L[4] = { "Do you want to quit", "the game?", "", "1. Yes   2. No" };
-    float w = 0;
-    for (int i = 0; i < 4; i++) {
+    static const char *const L[2] = { "Do you want to quit", "the game?" };
+    static const char *const B[2] = { "1. Yes", "2. No" };      // buttons, as every choice is
+    float bw[2], bh = (float)row_h() + 4, w = 0;
+    for (int i = 0; i < 2; i++) {
         float lw = text_w(L[i]);
         if (lw > w) w = lw;
+        bw[i] = text_w(B[i]) + 20 > 64 ? text_w(B[i]) + 20 : 64;
     }
-    Rect r = { (float)(int)((cw - w - 32) / 2), (CH - 4 * (FONT + 2) - 24) / 2.0f, (float)(int)w + 32, 4 * (FONT + 2) + 24 };
+    if (bw[0] + 8 + bw[1] > w) w = bw[0] + 8 + bw[1];
+    float h = 12 + 2 * (FONT + 2) + 8 + bh + 12;
+    Rect r = { (float)(int)((cw - w - 32) / 2), (float)(int)((CH - h) / 2), (float)(int)w + 32, h };
     panel_box(r);
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 2; i++)
         text(L[i], r.x + 16, r.y + 12 + i * (FONT + 2), CV_WHITE);
-    float ly = r.y + 12 + 3 * (FONT + 2) - 3;                     // "1. Yes   2. No": a click on either
-    s_quit[0] = (Rect){ r.x + 12, ly, 7 * FONT, FONT + 6 };
-    s_quit[1] = (Rect){ r.x + 12 + 9 * FONT, ly, 6 * FONT, FONT + 6 };
+    float by = r.y + 12 + 2 * (FONT + 2) + 8, bx = r.x + 16;
+    for (int i = 0; i < 2; i++) {                                 // a click or a tap on either
+        s_quit[i] = (Rect){ bx, by, bw[i], bh };
+        button(s_quit[i], B[i], 0);
+        bx += bw[i] + 8;
+    }
 }
 
 // The trail map's route, landmarks and legend, over its background.
@@ -450,29 +460,31 @@ static void draw_map(const MScene *sc, int cw, float ox) {
         const MMark *m = &sc->mark[i];
         map_symbol(m->kind, ox + m->x, m->y);
         if (m->kind == MK_START) map_label("START", ox + m->x - 18, m->y + 5);
-        if (m->kind == MK_FINISH) map_label("FINISH", ox + 5, m->y - 7);
+        if (m->kind == MK_FINISH) map_label("FINISH", ox + m->x - 27, m->y + 5);   // under its mark, as START
     }
 
-    // the legend
-    float x = cw - ox - 116, y = 12, w = 112;           // ten characters and a symbol
-    panel_box((Rect){ x, y, w, 112 });
-    x += 8; y += 8;
-    CvColor gold = { 255, 220, 120, 255 }, ink = { 220, 220, 200, 255 };
-    text("Map of the", x, y, gold); y += FONT + 2;
-    text("Open Trail", x, y, gold); y += FONT + 8;
-    static const char *const L[5] = { "Forts", "Landmarks", "Your route", "Rivers", "Mountains" };
-    for (int i = 0; i < 5; i++, y += FONT + 4) {
-        float sx = x + 5, sy = y + FONT / 2.0f;
-        cv_rect(CV, (int)x - 1, (int)y - 1, 13, FONT + 2, CV_WHITE);
+    // the title over the map, the legend in a row under the picture
+    centred("Map of the Open Trail", cw / 2.0f, 2, (CvColor){ 255, 220, 120, 255 }, 1);
+    cv_rect(CV, 0, MS_ART_H, cw, CH - MS_ART_H, (CvColor){ 20, 16, 12, 255 });
+    cv_rect(CV, 0, MS_ART_H, cw, 1, (CvColor){ 120, 100, 70, 255 });
+    static const char *const L[5] = { "Forts", "Landmarks", "Route", "Rivers", "Mountains" };
+    float w = 0;
+    for (int i = 0; i < 5; i++) w += 13 + 3 + text_w(L[i]) + (i < 4 ? 6 : 0);
+    float x = (float)(int)((cw - w) / 2), y = MS_ART_H + 5;
+    CvColor ink = { 220, 220, 200, 255 };
+    for (int i = 0; i < 5; i++) {
+        float sx = x + 6, sy = y + FONT / 2.0f;
+        cv_rect(CV, (int)x, (int)y - 1, 13, FONT + 2, CV_WHITE);
         if (i < 2) map_symbol(i == 0 ? MK_FORT : MK_LANDMARK, sx, sy);
-        else if (i == 2) cv_rect(CV, (int)x + 1, (int)sy - 1, 9, 2, ROUTE);
-        else if (i == 3) { cv_rect(CV, (int)x + 1, (int)sy - 1, 4, 1, RIVER); cv_rect(CV, (int)x + 5, (int)sy, 5, 1, RIVER); }
+        else if (i == 2) cv_rect(CV, (int)x + 2, (int)sy - 1, 9, 2, ROUTE);
+        else if (i == 3) { cv_rect(CV, (int)x + 2, (int)sy - 1, 4, 1, RIVER); cv_rect(CV, (int)x + 6, (int)sy, 5, 1, RIVER); }
         else for (int k = 0; k < 3; k++) {                    // a peak
-            if (k == 2) cv_rect(CV, (int)x + 5, (int)sy - 1, 1, 1, INK);
-            cv_rect(CV, (int)x + 2 + k, (int)sy + 2 - k, 1, 1, INK);
-            cv_rect(CV, (int)x + 8 - k, (int)sy + 2 - k, 1, 1, INK);
+            if (k == 2) cv_rect(CV, (int)x + 6, (int)sy - 1, 1, 1, INK);
+            cv_rect(CV, (int)x + 3 + k, (int)sy + 2 - k, 1, 1, INK);
+            cv_rect(CV, (int)x + 9 - k, (int)sy + 2 - k, 1, 1, INK);
         }
         text(L[i], x + 16, y, ink);
+        x += 16 + text_w(L[i]) + 6;
     }
 }
 
@@ -494,7 +506,11 @@ void modern_draw(Canvas *cv, MScene *sc, float mouse_x, float mouse_y, int ask, 
         return;
     }
     if (sc->travel) draw_travel(sc, cw, ox);
-    else if (sc->bg[0]) image_alpha(sc->bg, ox, 0, 0, 1 - sc->bg_hide);
+    else if (sc->bg[0]) {
+        cv_clip(CV, ox, 0, 384, MS_ART_H);                          // a tall strip shows its window only
+        image_alpha(sc->bg, ox + sc->bg_x, sc->bg_y, 0, 1 - sc->bg_hide);
+        cv_unclip(CV);
+    }
     if (sc->map) draw_map(sc, cw, ox);
     if (sc->ripple > 0)                                             // the crossing's wake
         for (int k = 0; k < 3; k++) {
@@ -523,9 +539,24 @@ void modern_draw(Canvas *cv, MScene *sc, float mouse_x, float mouse_y, int ask, 
             x = floorf(x - (p->flip ? t->w - p->ax : p->ax) * k + .5f);
             y = floorf(y - p->ay * k + .5f);
         }
+        if (p->sink > 0 && t && p->anchor) {          // under the water from below its waterline up
+            float line = y + (p->ay - p->sink) * k;
+            cv_clip(CV, ox, 0, 384, line < MS_ART_H ? line : MS_ART_H);
+        }
         if (t && k != 1)
             cv_image(CV, t, p->flip, x, y, (float)t->w * k, (float)t->h * k, CV_WHITE);
         else image(p->id, x, y, p->flip);
+        if (p->sink > 0 && t && p->anchor) {          // the waterline: foam hugging the shape where it goes under
+            cv_clip(CV, ox, 0, 384, MS_ART_H);
+            int r = (int)(p->ay - p->sink), line = (int)(y + r * k);
+            for (int c = 0; r >= 0 && r + 1 < t->h && c < t->w; c++) {
+                int in = t->px[(r * t->w + c) * 4 + 3] > 128 || t->px[((r + 1) * t->w + c) * 4 + 3] > 128;
+                if (!in) continue;
+                int sx = (int)(x + (p->flip ? t->w - 1 - c : c) * k);
+                cv_rect(CV, sx, line - 1, 1, 1, (CvColor){ 253, 254, 254, 230 });
+                if ((c * 7 + (int)(s_time * 12)) % 5) cv_rect(CV, sx, line, 1, 1, (CvColor){ 150, 248, 253, 200 });
+            }
+        }
     }
     if (sc->dot) cv_rect(CV, (int)(ox + sc->dot_x), (int)sc->dot_y, 2, 2, CV_WHITE);   // the hunt's shot
     cv_unclip(CV);

@@ -88,6 +88,7 @@ static void set_bg(const char *id) {
     MScene *s = sc();
     snprintf(s->bg, MS_ID, "%s", id);
     s->travel = 0; s->nspr = 0; s->status = 0; s->map = 0; s->dot = 0; s->bg_hide = 0; s->veil = 0;
+    s->bg_x = s->bg_y = 0; s->box_mid = 0;
     s->ripple = 0; s->splash = 0; s->carve[0] = 0;
     memset(s->bar, 0, sizeof s->bar);
     s->tap_key = 0; s->nbtn = 0; s->hunting = 0;
@@ -134,7 +135,7 @@ static void sprite(const char *id, float x, float y, int flip) {
     if (s->nspr >= MS_SPRITES) return;
     MSprite *p = &s->spr[s->nspr++];
     snprintf(p->id, MS_ID, "%s", id);
-    p->x = x; p->y = y; p->flip = flip; p->bottom = 0; p->right = 0; p->scale = 1; p->size = 0; p->anchor = 0; p->above_box = 0;
+    p->x = x; p->y = y; p->flip = flip; p->bottom = 0; p->right = 0; p->scale = 1; p->size = 0; p->anchor = 0; p->above_box = 0; p->sink = 0;
 }
 
 // A sprite placed by its bottom-right corner, at a whole-number scale.
@@ -574,7 +575,7 @@ static int matt_menu(int change) {
     set_bg("scene_matt_store");
     snprintf(sc()->overlay, MS_ID, "portrait_matt");
     sc()->panel = PANEL_TALL;
-    title("Matt's General Store - %s 1, 1848", MONTH[S->g->mem[902] - 1]);
+    title("Matt's General Store\n%s 1, 1848", MONTH[S->g->mem[902] - 1]);   // the date under the name: clear of the portrait
     body("Total bill: $%s\nAmount you have: $%s", a2_money(mt->bill_cents, a), a2_money(S->g->my_cents, b));
     for (int l = 1; l <= 5; l++) { opt("%-12s $%s", ITEMS[l], a2_money(matt_cost(mt, l), a)); opt_pic(MATT_ICON[l]); }
     opt("Leave store");
@@ -672,7 +673,7 @@ static void supplies(void) {
 
 // The original map (M0.PCK) without its marks, one Apple pixel per pixel,
 // at (MAP_X, MAP_Y) (tools/art.py local); the route and marks drawn over it.
-#define MAP_X 4
+#define MAP_X 52                           // in the middle (art.py MAP_X)
 #define MAP_Y 12
 
 static void map_line(MScene *s, double x0, double y0, double x1, double y1) {
@@ -707,9 +708,7 @@ static void map_screen(void) {
     MScene *s = sc();
     set_bg("scene_map");
     modern_map_scene(s, S->g);
-    s->panel = 0;
-    snprintf(s->hint, sizeof s->hint, "%s", PRESS_SPACE);
-    wait_continue();
+    wait_look();                                 // the legend and the prompt under it (draw.c draw_map)
 }
 
 static int pace(void) {
@@ -1040,6 +1039,13 @@ static void hunt_frame(void *ctx) {
         sp->anchor = an != NULL;                    // none: drawn from its corner, and test_harness fails
         sp->bottom = !an;
         sp->ax = an ? an->x : 0; sp->ay = an ? an->y : 0;
+        if (p->kind == HV_HUNTER && an) {           // bigger than the original's: kept whole in the field, as his is
+            const float W = 48, H = 64;             // the hunter's pictures
+            float left = sp->x - (sp->flip ? W - sp->ax : sp->ax), top = sp->y - sp->ay;
+            float dx = left < 0 ? -left : left + W > 384 ? 384 - W - left : 0;
+            float dy = top < 0 ? -top : top + H > MS_ART_H ? MS_ART_H - H - top : 0;
+            sp->x += dx; sp->y += dy; s->hunter_x += dx; s->hunter_y += dy;
+        }
     }
     s->dot = v.shot;
     s->dot_x = rx((float)v.sx); s->dot_y = ry((float)v.sy);
@@ -1051,55 +1057,72 @@ static void hunt_frame(void *ctx) {
     } else snprintf(s->bar[2], sizeof s->bar[2], "Arrows aim   Space fires   Return walks");
 }
 
-// CROSS.LIB, animated (the original drew the river, the wagon's pose, then
-// swept the water in and drew the outcome, some four seconds in all): the
-// wagon in its pose waits on the near bank, crosses to the far one bobbing in
-// its wake, and the outcome happens midstream: a ford gone wrong splashes and
-// stalls, a ferry or a float gone wrong tips over and drifts downstream. The banks are
-// the scene's (CROSS_FROM, CROSS_TO: where the sprite's bottom centre goes).
-// In perspective from the scene's horizon (art.py draw_crossing): the wagon's
-// size is its distance below the horizon over the near bank's, a fifth of it
-// on the far bank, and it goes at an even pace over the ground, so on the
-// screen it slows as it goes away (the inverse distance moves evenly).
-#define CROSS_FROM_X 250.0f                // on the near bank's grass
-#define CROSS_FROM_Y 196.0f
-#define CROSS_TO_X 150.0f                  // the far bank, where the trees open
-#define CROSS_TO_Y 62.0f
-#define CROSS_HORIZON 26.0f                // the sky's bottom row
-#define CROSS_VANISH_X 192.0f              // the vanishing point: the middle
+// CROSS.LIB, animated as the original's: the wagon held still where the
+// original's is in its window while the river goes by under it. The original
+// drew the wagon afloat with the near bank at the lower right, swept the
+// water in over that bank, then drew the outcome: the far bank coming in at
+// the upper left, the water over a ford gone wrong, or the wagon tipped over.
+// Here a 384 x 216 window moves up and to the left over the strip
+// (scene_river_strip, art.py draw_crossing_strip: its banks run up to the
+// right, as the original's) on the original's clock, as much of it bank
+// frame by frame as of the original's (cross_way): the near bank gone by
+// CROSS_TROUBLE, the far one in at the upper left by CROSS_END. Trouble stops
+// it in open water at CROSS_TROUBLE: a ford goes under (CROSS_SINK), a float
+// or a ferry tips over and the message comes at once, as the original's.
+#define CROSS_CAM_X 106.0f                 // the window's top left on the strip at the start (art.py
+#define CROSS_CAM_Y 212.0f                 // STRIP_*: afloat, the near bank behind), (0, 0) at the end
+#define CROSS_X 177.0f                     // the wagon's waterline on the canvas: where the original's
+#define CROSS_Y 125.0f                     // wagon is in its window, up and left of the middle
+#define CROSS_START 36                     // frames (the original's at 60 a second): the wagon on the bank,
+#define CROSS_TROUBLE 104                  // the bank under water (the trouble here),
+#define CROSS_END 183                      // the far bank reached,
+#define CROSS_SUNK 29                      // a ford's water over the wagon (50060's 22 lines),
+// A ford gone wrong, frame by frame from CROSS_TROUBLE: the rows of the
+// picture under the water, so as much of the wagon shows as of the
+// original's under 50060's water (measured on its recorded frames: all of
+// it, then 0.85 at frame 8, 0.65 at 16, 0.44 when the message comes).
+static const unsigned char CROSS_SINK[CROSS_SUNK + 1] = {
+    0, 0, 2, 2, 2, 4, 4, 6, 7, 7, 8, 10, 12, 12, 13, 14, 15, 15, 16, 18, 18, 18, 20, 20, 22, 22, 22, 23, 24, 24 };
+// How far across at frame f, 0 to 1: every 8 frames from CROSS_START (the
+// last at CROSS_END), straight between, fitted so as much of the window is
+// bank, frame by frame, as of the original's while its water and far bank
+// sweep in (within 3% of each half; measured on its recorded frames).
+static const float CROSS_WAY[19] = {
+    0, .056f, .1f, .149f, .187f, .236f, .292f, .349f, .417f, .49f, .565f, .656f, .716f, .773f, .814f,
+    .863f, .901f, .942f, 1 };
+static float cross_way(int f) {
+    if (f <= CROSS_START) return 0;
+    if (f >= CROSS_END) return 1;
+    int i = (f - CROSS_START) / 8;
+    if (i > 17) i = 17;                    // the last span: 172 to CROSS_END
+    float a = CROSS_START + i * 8.0f, b = i == 17 ? (float)CROSS_END : a + 8;
+    return CROSS_WAY[i] + (CROSS_WAY[i + 1] - CROSS_WAY[i]) * (f - a) / (b - a);
+}
 static void cross(int method, int losses) {
     static const char *const M[4] = { "", "cross_ferry", "cross_ford", "cross_float" };
     static const char *const HOW[4] = { "", "Taking the ferry across", "Fording the river", "Floating the wagon across" };
     Mach *m = S->m;
     MScene *s = sc();
-    set_bg("scene_river_crossing");
+    set_bg("scene_river_strip");
+    s->box_mid = 1;                                              // the outcome's box over the picture
     int mi = method >= 1 && method <= 3 ? method : 2;
     snprintf(s->bar[0], sizeof s->bar[0], "%s", lm_name(S->g->lm));
     td(S->g, s->bar[1]);
     snprintf(s->bar[2], sizeof s->bar[2], "%s", HOW[mi]);
-    sprite(M[mi], CROSS_FROM_X, CROSS_FROM_Y, mi == 1);         // the ferry's art heads up-right: mirrored, as the others, to the far bank
+    sprite(M[mi], CROSS_X, CROSS_Y, mi == 1);                   // the ferry's art heads up-right: mirrored, as the others, to the far bank
     MSprite *w = &s->spr[s->nspr - 1];
     w->anchor = 1; w->ax = 56; w->ay = 50;                       // the 112x56 pictures: the waterline's middle
-    const float d0 = CROSS_FROM_Y - CROSS_HORIZON, d1 = CROSS_TO_Y - CROSS_HORIZON;   // distance below the horizon
-    const float g0 = (CROSS_FROM_X - CROSS_VANISH_X) / d0, g1 = (CROSS_TO_X - CROSS_VANISH_X) / d1;  // across the ground
-    const int frames = 240, wait0 = 30, mid = 130;
-    int tipped = 0;
+    int ford_bad = losses && method == 2, tip = losses && method != 2;
+    int frames = !losses ? CROSS_END : ford_bad ? CROSS_TROUBLE + CROSS_SUNK : CROSS_TROUBLE - 1;   // a tip: its last frame
     for (int f = 0; f <= frames; f++) {
-        float t = f < wait0 ? 0 : (float)(f - wait0) / (frames - wait0 - 30);
-        if (t > 1) t = 1;
-        if (losses && f >= mid && f < mid + 40) t = (float)(mid - wait0) / (frames - wait0 - 30);   // the trouble: it stops
-        if (losses && method != 2 && f == mid) { snprintf(w->id, MS_ID, "cross_tipped"); tipped = 1; }   // 50050
-        float d = 1 / ((1 - t) / d0 + t / d1), k = d / d0;       // k: the size here
-        float gx = (g0 * (1 - t) / d0 + g1 * t / d1) / ((1 - t) / d0 + t / d1);
-        if (tipped) gx += (f - mid) * .35f / d0;                 // carried downstream
-        float x = CROSS_VANISH_X + gx * d, y = CROSS_HORIZON + d;
-        float bob = t > 0 && t < 1 ? 1.5f * k * sinf(f * .25f) : 0;
-        w->x = x; w->y = y + bob; w->size = k;
-        s->ripple_x = x; s->ripple_y = y - 4 * k; s->ripple = t > 0 && t < 1 ? f * .6f : 0; s->ripple_k = k;
-        s->splash = losses && method == 2 && f >= mid && f < mid + 40;   // 50060: the ford goes wrong
+        float u = cross_way(losses && f > CROSS_TROUBLE ? CROSS_TROUBLE : f);
+        s->bg_x = -(float)(int)(CROSS_CAM_X * (1 - u));
+        s->bg_y = -(float)(int)(CROSS_CAM_Y * (1 - u));
+        int after = f - CROSS_TROUBLE;                           // frames into the trouble
+        if (tip && f == frames) snprintf(w->id, MS_ID, "cross_tipped");   // 50050: then the message at once
+        w->sink = ford_bad && after > 0 ? CROSS_SINK[after] : 0;   // 50060: the wagon itself held still, as the original's
         mach_advance(m, FRAME_CYCLES);
     }
-    s->ripple = 0; s->splash = 0;
 }
 
 // HUNT.LIB:50000-50011: the instructions, a page as the original's, with its

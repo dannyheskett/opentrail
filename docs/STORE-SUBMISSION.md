@@ -33,6 +33,8 @@ other store named on Apple's). The screenshots are made by
 | `PLAY_UPLOAD_KEYSTORE` | the upload keystore, base64 | the AAB |
 | `PLAY_KEY_ALIAS`, `PLAY_KEYSTORE_PASSWORD`, `PLAY_KEY_PASSWORD` | its alias and passwords | the AAB |
 | `PLAY_SERVICE_ACCOUNT_JSON` | the Play service account's JSON | the internal track, store-release |
+| `ANDROID_SIDELOAD_KEYSTORE` | the sideload APK's keystore (`opentrail-sideload.jks`, alias `opentrail-sideload`), base64 | the release's APK |
+| `ANDROID_SIDELOAD_PASSWORD` | its password (the store's and the key's) | the release's APK |
 | `AWS_ROLE_ARN`, `AWS_DEVICEFARM_ARN` | optional: Device Farm | devicefarm |
 
 ```
@@ -43,6 +45,8 @@ gh secret set ASC_KEY_P8           < AuthKey_XXXXXXXXXX.p8
 gh secret set ASC_KEY_ID           -b '...'
 gh secret set ASC_ISSUER_ID        -b '...'
 base64 -w0 upload.jks              | gh secret set PLAY_UPLOAD_KEYSTORE
+base64 -w0 opentrail-sideload.jks  | gh secret set ANDROID_SIDELOAD_KEYSTORE
+gh secret set ANDROID_SIDELOAD_PASSWORD < sideload.pass
 gh secret set PLAY_KEY_ALIAS       -b '...'
 gh secret set PLAY_KEYSTORE_PASSWORD -b '...'
 gh secret set PLAY_KEY_PASSWORD    -b '...'
@@ -73,9 +77,9 @@ still ships everything else (an unsigned `.ipa`, no AAB).
 
 ## Google Play, once
 
-1. Play Console → Create app: name `OpenTrail`, English (US), Game, Free,
-   both declarations. Package name `com.danheskett.opentrail` (it is fixed by
-   the first upload).
+1. Play Console → Create app: name `opentrail: 1848`, package name
+   `com.danheskett.opentrail` (fixed for good once created), English (US),
+   Game, Free, both declarations.
 2. The first App Bundle goes up by hand (Play's API cannot create the first
    release): take `opentrail-build-N-android.aab` from the GitHub Release,
    Testing → Internal testing → Create release, upload. From then on
@@ -91,6 +95,26 @@ still ships everything else (an unsigned `.ipa`, no AAB).
    testers for 14 days first (Testing → Closed testing).
 7. When ready: `store-release.yml` with `android_track: production` (and a
    `rollout` fraction for a staged release).
+
+## The sideload APK's key, once
+
+Since September 2026 an app installed from outside Play on a certified
+Android device must be registered to a verified developer (Android developer
+verification). Play registers the package itself with Play's signing key; the
+APK on the GitHub releases is signed with the project's own sideload key,
+which has to be added to the package as a second key:
+
+1. Play Console → **Android developer verification** → **Package names** →
+   `com.danheskett.opentrail` → **Add another key**: the sideload key's
+   SHA-256 certificate fingerprint (`make android` prints it; `keytool -list
+   -v -keystore opentrail-sideload.jks` shows it too).
+2. **Sign and upload an APK**: copy the snippet Play Console gives, build an
+   APK with it (`make android ANDROID_ADI='<snippet>'` with the sideload key's
+   `ANDROID_KEYSTORE`, `ANDROID_KEY_ALIAS=opentrail-sideload` and
+   `ANDROID_STORE_PASS`), and upload that APK. It is used only for the check.
+
+Keep `opentrail-sideload.jks` and its password backed up: a release signed
+with any other key will not install over the ones before it.
 
 ## Before the public listing
 

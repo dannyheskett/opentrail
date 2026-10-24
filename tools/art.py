@@ -125,7 +125,7 @@ STORE_ICON = {"oxen": 8, "food": 2, "clothing": 5, "bullets": 6,
 
 # The assets drawn here (cmd_local) rather than generated.
 LOCAL = {"ui_divider", "ui_font", "scene_map", "scene_tombstone",
-         "scene_columbia", "scene_river_crossing",
+         "scene_columbia", "scene_river_crossing", "scene_river_strip",
          "travel_bg_prairie_grass", "travel_bg_prairie_dry", "travel_bg_prairie_snow",
          "travel_bg_mountains_grass", "travel_bg_mountains_dry", "travel_bg_mountains_snow"}
 
@@ -317,13 +317,13 @@ def cmd_embed(args):
 # Art drawn here: the map, the river scenes, the travel backdrop
 # ============================================================================
 
-MAP_X, MAP_Y = 4, 12    # the map's place on the canvas (src/modern/modern.c)
+MAP_X, MAP_Y = 52, 12   # the map's place on the canvas, in the middle (src/modern/modern.c)
 
 
 def draw_map():
     """The original map at one Apple pixel per pixel, its lettering and marks
     taken out by hand (art/inputs/map_clean.png), framed on the panels' dark
-    brown (view_modern.c), the legend's room to its right."""
+    brown (draw.c), in the middle: the legend goes under it."""
     m = Image.open("art/inputs/map_clean.png").convert("RGB")
     out = Image.new("RGB", (384, 216), (12, 10, 8))
     out.paste((60, 48, 36), (MAP_X - 1, MAP_Y - 1, MAP_X + m.width + 1, MAP_Y + m.height + 1))
@@ -419,11 +419,11 @@ def flow_axis(cls):
     return total / np.linalg.norm(total)
 
 
-def smooth_noise(rng, cell):
+def smooth_noise(rng, cell, h=RCH, w=RCW):
     """Value noise: random values on a coarse grid, bilinearly interpolated."""
-    grid = np.array([[rng.random() for _ in range(RCW // cell + 2)]
-                     for _ in range(RCH // cell + 2)]) - 0.5
-    y, x = np.arange(RCH) / cell, np.arange(RCW) / cell
+    grid = np.array([[rng.random() for _ in range(w // cell + 2)]
+                     for _ in range(h // cell + 2)]) - 0.5
+    y, x = np.arange(h) / cell, np.arange(w) / cell
     y0, x0 = y.astype(int), x.astype(int)
     fy, fx = (y - y0)[:, None], (x - x0)[None, :]
     a, b = grid[y0][:, x0], grid[y0][:, x0 + 1]
@@ -561,13 +561,15 @@ def dither(v, ramp, yy, xx):
     return np.array(ramp)[np.clip(i + up, 0, len(ramp) - 1)]
 
 
-def draw_crossing():
+def draw_crossing(H=RCH, far_edge=FAR_EDGE, near_edge=NEAR_EDGE, gap=(120, 180), streaks=240):
+    """The river crossing: the menus' picture, or (draw_crossing_strip) the
+    tall strip the crossing scrolls along."""
     rng = random.Random(1848)
-    W, H = RCW, RCH
+    W = RCW
     yy, xx = np.mgrid[0:H, 0:W]
-    tex = smooth_noise(rng, 3) + smooth_noise(rng, 9) * 0.8
-    far = FAR_EDGE + (smooth_noise(rng, 14) * 3).astype(int)[0]          # the far edge, along x
-    near = NEAR_EDGE + (smooth_noise(rng, 14) * 3).astype(int)[0]
+    tex = smooth_noise(rng, 3, H) + smooth_noise(rng, 9, H) * 0.8
+    far = far_edge + (smooth_noise(rng, 14, H) * 3).astype(int)[0]       # the far edge, along x
+    near = near_edge + (smooth_noise(rng, 14, H) * 3).astype(int)[0]
     out = np.zeros((H, W, 3), np.uint8)
     # the sky, lighter down to the horizon, and two clouds
     sky = yy < 26
@@ -577,17 +579,17 @@ def draw_crossing():
         out[cl & sky] = X_SKY[2]
     # the far meadow, darker toward the horizon
     mead = (yy >= 26) & (yy < far[None, :])
-    out[mead] = dither(0.35 + (yy - 26) / 40.0 + tex * 0.12, X_GRASS, yy, xx)[mead]
+    out[mead] = dither(0.35 + (yy - 26) / ((far_edge - 26) * 1.25) + tex * 0.12, X_GRASS, yy, xx)[mead]
     # the cottonwoods along it: crowns lit from the upper left, trunks under them
     for i in range(11):
         cx = 18 + i * 34 + rng.randint(-8, 8)
-        if 120 < cx < 180:                       # open where the wagon comes out
+        if gap[0] < cx < gap[1]:                 # open where the wagon comes out
             continue
         r = rng.randint(8, 13)
-        cy = 40 - r // 2
+        cy = far_edge - 18 - r // 2
         trunk = (abs(xx - cx) <= 1) & (yy > cy) & (yy < far[cx] - 1)
         out[trunk] = X_EARTH[0]
-        d = np.hypot((xx - cx) / 1.15, yy - cy) + smooth_noise(rng, 2)[:H, :W] * 2.5
+        d = np.hypot((xx - cx) / 1.15, yy - cy) + smooth_noise(rng, 2, H)[:H, :W] * 2.5
         crown = d < r
         light = 0.75 - ((xx - cx) + (yy - cy)) / (2.4 * r) * 0.5 - d / r * 0.25
         out[crown] = dither(light + tex * 0.1, X_LEAF, yy, xx)[crown]
@@ -596,9 +598,9 @@ def draw_crossing():
     across = np.clip((yy - far[None, :]) / np.maximum(near[None, :] - far[None, :], 1), 0, 1)
     depth = np.sin(across * np.pi)                    # 0 at the banks, 1 mid-river
     out[water] = dither(0.68 - depth * 0.55 + tex * 0.06, X_WATER[:6], yy, xx)[water]
-    for _ in range(240):                              # the current: a light crest over a dark trough,
-        x0, y0 = rng.randrange(W), rng.randrange(FAR_EDGE + 4, NEAR_EDGE - 4)
-        near_k = (y0 - 26) / (NEAR_EDGE - 26)         # shorter and thinner with the distance (the horizon y 26)
+    for _ in range(streaks):                          # the current: a light crest over a dark trough,
+        x0, y0 = rng.randrange(W), rng.randrange(far_edge + 4, near_edge - 4)
+        near_k = (y0 - 26) / (near_edge - 26)         # shorter and thinner with the distance (the horizon y 26)
         n = max(2, round(rng.randint(5, 16) * near_k * 1.3))
         for t in range(n):
             x = x0 + t
@@ -616,11 +618,87 @@ def draw_crossing():
         out[band] = dither(0.55 + tex * 0.15, X_EARTH, yy, xx)[band]
     # the near bank: grass, lighter toward us, reeds along the water
     bank = yy >= near[None, :] + 4
-    out[bank] = dither(0.5 + (yy - NEAR_EDGE) / 80.0 + tex * 0.12, X_GRASS, yy, xx)[bank]
+    out[bank] = dither(0.5 + (yy - near_edge) / 80.0 + tex * 0.12, X_GRASS, yy, xx)[bank]
     for _ in range(90):
         x = rng.randrange(W)
         top = near[x] + 4 - rng.randint(4, 9)
         for y in range(top, near[x] + 6):
+            out[y, x] = X_LEAF[1] if y < top + 2 else X_LEAF[2]
+    return Image.fromarray(out)
+
+
+# The crossing's strip, as the original's (CROSS.LIB): the banks run up to
+# the right, two across for one up, the near one at the lower right and the
+# far one at the upper left, and cross() in modern.c moves a 384 x 216 window
+# up and to the left over it (one across for two up), the wagon still in the
+# window's middle: the near bank goes under at the lower right and the far
+# one comes in at the upper left. A row of the river is a line of constant
+# v = y + x / 2. The window starts at the lower right (106, 212), the wagon
+# afloat with the near bank's line (v 550) behind it, and moves at an even
+# pace to (0, 0), where the far bank's line (v 135) is just over the wagon's
+# cover: as much of the window is bank, frame by frame, as of the original's
+# (CROSS_* in modern.c). At the trouble's moment neither bank is in it.
+STRIP_W, STRIP_H, STRIP_FAR, STRIP_NEAR = 490, 428, 135, 550
+
+
+def draw_crossing_strip():
+    rng = random.Random(1848)
+    W, H, F, N = STRIP_W, STRIP_H, STRIP_FAR, STRIP_NEAR
+    yy, xx = np.mgrid[0:H, 0:W]
+    v = yy + xx // 2                                   # across the river, in whole rows
+    along = xx - yy // 2
+    tex = smooth_noise(rng, 3, H, W) + smooth_noise(rng, 9, H, W) * 0.8
+    wob = lambda: (smooth_noise(rng, 14, H, W) * 3).astype(int)[0]
+    farx, nearx = wob(), wob()
+    far = F + farx[xx]                                 # each bank's line, wavering along it
+    near = N + nearx[xx]
+    out = np.zeros((H, W, 3), np.uint8)
+    # the far bank: meadow, darker away from the water
+    land = v < far
+    out[land] = dither(0.9 - (far - v) / 220.0 + tex * 0.12, X_GRASS, yy, xx)[land]
+    # cottonwoods along it, open over the wagon (x 177 at the window's top left)
+    for i in range(18):
+        cx = 6 + i * 32 + rng.randint(-8, 8)
+        r = rng.randint(8, 13)
+        cy = F - 18 - r // 2 - cx // 2
+        if abs(cx - 177) < 64 or cy < -r:
+            continue
+        trunk = (abs(xx - cx) <= 1) & (yy > cy) & (v < far - 1)
+        out[trunk] = X_EARTH[0]
+        d = np.hypot((xx - cx) / 1.15, yy - cy) + smooth_noise(rng, 2, H, W) * 2.5
+        crown = d < r
+        light = 0.75 - ((xx - cx) + (yy - cy)) / (2.4 * r) * 0.5 - d / r * 0.25
+        out[crown] = dither(light + tex * 0.1, X_LEAF, yy, xx)[crown]
+    # the water: darker mid-river, lighter at the banks
+    water = (v >= far) & (v < near)
+    across = np.clip((v - far) / np.maximum(near - far, 1), 0, 1)
+    depth = np.sin(across * np.pi)
+    out[water] = dither(0.68 - depth * 0.55 + tex * 0.06, X_WATER[:6], yy, xx)[water]
+    for _ in range(900):                               # the current, along the banks: two across, one up
+        x0, y0 = rng.randrange(W), rng.randrange(H)
+        if not water[y0, x0]:
+            continue
+        n = rng.randint(6, 18)
+        for t in range(n):
+            x, y = x0 + t, y0 - t // 2
+            if x >= W or y < 1 or y + 1 >= H or not water[y, x] or not water[y + 1, x]:
+                break
+            base = int(np.clip(0.68 - depth[y, x] * 0.55, 0, 1) * 5)
+            out[y, x] = X_WATER[7] if 1 < t < n - 2 and rng.random() < 0.08 else X_WATER[min(base + 2, 6)]
+            out[y + 1, x] = X_WATER[max(base - 1, 0)]
+    edge = water & ((v - far <= 1) | (near - v <= 1))
+    out[edge] = X_WATER[6]
+    # the banks' edges: mud
+    band = ((v >= far - 3) & (v < far)) | ((v >= near) & (v < near + 4))
+    out[band] = dither(0.55 + tex * 0.15, X_EARTH, yy, xx)[band]
+    # the near bank: grass, lighter toward us, reeds along the water
+    bank = v >= near + 4
+    out[bank] = dither(0.5 + (v - N) / 80.0 + tex * 0.12, X_GRASS, yy, xx)[bank]
+    for _ in range(140):
+        x = rng.randrange(W)
+        e = N + nearx[x] - x // 2                      # the near bank's row at x
+        top = e + 4 - rng.randint(4, 9)
+        for y in range(max(top, 0), min(e + 6, H)):
             out[y, x] = X_LEAF[1] if y < top + 2 else X_LEAF[2]
     return Image.fromarray(out)
 
@@ -909,6 +987,9 @@ def cmd_local(args):
         img = draw_crossing() if i == "scene_river_crossing" else draw_river(p)
         img.save(f"{ASSETS}/{i}.png")
         print(f"{ASSETS}/{i}.png")
+        if i == "scene_river_crossing":
+            draw_crossing_strip().save(f"{ASSETS}/scene_river_strip.png")
+            print(f"{ASSETS}/scene_river_strip.png")
         if i == "scene_columbia" and args.check:
             river_check(img)
 

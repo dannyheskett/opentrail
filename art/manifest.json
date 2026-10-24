@@ -213,6 +213,15 @@
    "source": "drawn in code (tools/art.py local)"
   },
   {
+   "id": "scene_river_strip",
+   "w": 490,
+   "h": 428,
+   "group": "scene",
+   "desc": "The crossing's strip, drawn in code (art.py draw_crossing_strip): the banks running up to the right as the original's, the near one at the lower right, the far one with cottonwoods (open where the wagon lands) at the upper left; the crossing moves a window up and to the left over it",
+   "original": "RIVER.IMA 5",
+   "source": "drawn in code (tools/art.py local)"
+  },
+  {
    "id": "scene_columbia",
    "w": 384,
    "h": 216,

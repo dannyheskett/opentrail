@@ -47,6 +47,7 @@ typedef struct {
     int anchor;                     // (x, y) is where the image's point (ax, ay) lands (mirrored with it)
     float ax, ay;                   // the hunt: each sprite's feet (hunt_anchor.h)
     int above_box;                  // the travel scene: kept above the box (a landmark standing on the ground)
+    float sink;                     // rows of the image under the water from its waterline ay (a ford gone wrong)
 } MSprite;
 
 typedef struct { float x0, y0, x1, y1; } MLine;    // canvas pixels
@@ -63,6 +64,8 @@ typedef struct {
     char bg[MS_ID];                 // full-canvas background, "" for none
     char overlay[MS_ID];            // a picture centred in the panel's space (portraits, banners)
     float bg_hide, overlay_hide;    // fading in: 1 unseen .. 0 fully shown (the opening)
+    float bg_x, bg_y;               // bg's top left on the canvas, from the 384 columns' (the crossing moves over a big strip)
+    int box_mid;                    // the box a band across the picture's middle, not at the bottom (the crossing's outcome)
 
     // the travel view: bg is the backdrop, repeated across the scene's rows and
     // moved right with the landmark (the wagon walks in place); the landmark
