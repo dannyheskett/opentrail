@@ -38,14 +38,14 @@ wagon,pioneer,1848,frontier,history,educational,retro,hunting,river,raft,oxen,pi
 ## Description (≤4000 chars)
 
 ```
-It is 1848. Your wagon party of five sets out from Independence, Missouri, on the 2,000-mile journey to Oregon's Willamette Valley. Buy oxen, food and spare parts at Matt's General Store, choose your pace and rations, hunt for food, ford rivers or float your wagon across, trade with the people you meet, and keep your party alive through storms, broken axles and disease.
+It is 1848. Your wagon party of five sets out from Independence, Missouri, on the 2,000-mile journey west to the Willamette Valley. Buy oxen, food and spare parts at Matt's General Store, choose your pace and rations, hunt for food, ford rivers or float your wagon across, trade with the people you meet, and keep your party alive through storms, broken axles and disease.
 
 The trail passes the Kansas River crossing, Fort Laramie, Independence Rock and the Blue Mountains, and ends with a raft run down the rapids of the Columbia River. Make it to the valley with your party, your supplies and your money, and earn your place on the Top Ten. Every choice is numbered and answered with a tap.
 
 PIXEL ART AND MUSIC
 • Every landmark, river crossing and event drawn as pixel art
 • Folk tunes of the trail played by a small orchestra
-• A hunting game: tap the field to aim, then fire
+• A hunting game: tap to walk the hunter there, double-tap to shoot
 
 MADE FOR TOUCH
 • Tap a choice; type names and epitaphs on the built-in keyboard
@@ -62,7 +62,7 @@ Read the code, report a bug, or build it yourself: https://github.com/dannyheske
 ## App Review notes
 
 ```
-Thank you for reviewing OpenTrail. It needs no account, sign-in or network access. Every choice is answered by tapping it; the menu button at the top right turns the sound off or quits a game. In the hunt, tap the field to aim and use Walk and Fire under it.
+Thank you for reviewing OpenTrail. It needs no account, sign-in or network access. Every choice is answered by tapping it; the menu button at the top right turns the sound off or quits a game. In the hunt, tap the field to walk the hunter there and double-tap to shoot that way.
 ```
 
 ## App information
