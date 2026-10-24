@@ -307,11 +307,25 @@ jobs:
         if: steps.raylib.outputs.cache-hit != 'true'
         timeout-minutes: 15
         run: ./scripts/build_raylib_android.sh --ndk "${ANDROID_SDK_ROOT}/ndk/${NDK_VERSION}" --arch arm64 --arch x86_64
-      - name: Package the sideload APK (debug-signed)
+      # The sideload APK signs with the project's sideload key (registered for
+      # the package under Android developer verification), so each release
+      # installs over the last; without the secrets, a throwaway debug key.
+      - name: Package the sideload APK
+        env:
+          ANDROID_SIDELOAD_KEYSTORE: ${{ secrets.ANDROID_SIDELOAD_KEYSTORE }}
+          ANDROID_SIDELOAD_PASSWORD: ${{ secrets.ANDROID_SIDELOAD_PASSWORD }}
         run: |
+          KEY=()
+          if [ -n "$ANDROID_SIDELOAD_KEYSTORE" ] && [ -n "$ANDROID_SIDELOAD_PASSWORD" ]; then
+            echo "$ANDROID_SIDELOAD_KEYSTORE" | base64 -d > "$RUNNER_TEMP/sideload.jks"
+            KEY=(ANDROID_KEYSTORE="$RUNNER_TEMP/sideload.jks" ANDROID_KEY_ALIAS=opentrail-sideload
+                 ANDROID_STORE_PASS="$ANDROID_SIDELOAD_PASSWORD")
+          else
+            echo "::warning::ANDROID_SIDELOAD_* secrets not set: the APK is signed with a throwaway key and will not install over earlier releases"
+          fi
           make dist-android RELEASE_VERSION=${{ needs.prepare.outputs.version }} \
             ANDROID_NDK="${ANDROID_SDK_ROOT}/ndk/${NDK_VERSION}" ANDROID_SDK_ROOT="${ANDROID_SDK_ROOT}" \
-            ANDROID_BUILD_TOOLS="${ANDROID_BUILD_TOOLS}" ANDROID_PLATFORM_VER="${ANDROID_PLATFORM_VER}"
+            ANDROID_BUILD_TOOLS="${ANDROID_BUILD_TOOLS}" ANDROID_PLATFORM_VER="${ANDROID_PLATFORM_VER}" "${KEY[@]}"
       # All four signing secrets, or the AAB is skipped and the APK still ships.
       - name: Detect Play signing secrets
         id: playsecret
