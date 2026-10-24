@@ -169,6 +169,34 @@ void cv_image(Canvas *cv, const CvImage *img, int flip, float x, float y, float 
     blit(cv, img, flip, 0, 0, (float)img->w, (float)img->h, x, y, w, h, tint);
 }
 
+// img at its own size with its top left at (x, y), partly under water: the
+// waterline runs from row wl_l at its left edge to row wl_r at its right
+// (canvas rows); above it the picture as it is, for CV_MURK rows under it
+// fading into what is there (the water seen through), and nothing deeper.
+#define CV_MURK 4
+void cv_image_water(Canvas *cv, const CvImage *img, int flip, float x, float y, float wl_l, float wl_r) {
+    if (!img || !img->px) return;
+    int x0, x1, y0, y1;
+    SPAN_X(cv, x, (float)img->w, &x0, &x1);
+    SPAN_Y(cv, y, (float)img->h, &y0, &y1);
+    for (int i = x0; i < x1; i++) {
+        int u = (int)floorf(i + .5f - x);
+        if (u < 0 || u >= img->w) continue;
+        float line = wl_l + (wl_r - wl_l) * (u + .5f) / img->w;   // the water's row in this column
+        if (flip) u = img->w - 1 - u;
+        for (int j = y0; j < y1; j++) {
+            float depth = j + .5f - line;
+            if (depth >= CV_MURK) break;
+            int v = (int)floorf(j + .5f - y);
+            if (v < 0 || v >= img->h) continue;
+            const uint8_t *px = img->px + 4 * ((size_t)v * img->w + u);
+            unsigned al = px[3];
+            if (depth > 0) al = (unsigned)(al * .55f * (1 - depth / CV_MURK));
+            blend(cv, i, j, px[0], px[1], px[2], al);
+        }
+    }
+}
+
 void cv_npatch(Canvas *cv, const CvImage *img, int b, float x, float y, float w, float h, CvColor tint) {
     if (!img || !img->px) return;
     float bl = b, bt = b;
