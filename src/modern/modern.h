@@ -47,7 +47,8 @@ typedef struct {
     int anchor;                     // (x, y) is where the image's point (ax, ay) lands (mirrored with it)
     float ax, ay;                   // the hunt: each sprite's feet (hunt_anchor.h)
     int above_box;                  // the travel scene: kept above the box (a landmark standing on the ground)
-    float sink;                     // rows of the image under the water from its waterline ay (a ford gone wrong)
+    int water;                      // drawn against a waterline (a crossing gone wrong): under it, the river
+    float wl_l, wl_r;               // the waterline's canvas rows at the picture's left and right edges
 } MSprite;
 
 typedef struct { float x0, y0, x1, y1; } MLine;    // canvas pixels
@@ -66,6 +67,7 @@ typedef struct {
     float bg_hide, overlay_hide;    // fading in: 1 unseen .. 0 fully shown (the opening)
     float bg_x, bg_y;               // bg's top left on the canvas, from the 384 columns' (the crossing moves over a big strip)
     int box_mid;                    // the box a band across the picture's middle, not at the bottom (the crossing's outcome)
+    float box_top;                  // and its top there when it fits (under the crossing's waterline), else the middle
 
     // the travel view: bg is the backdrop, repeated across the scene's rows and
     // moved right with the landmark (the wagon walks in place); the landmark
@@ -120,7 +122,8 @@ typedef struct {
     int veil;                       // over the scene, under the sprites: 0 none, 1 a storm's dark, 2 a blizzard's white
     float ripple_x, ripple_y, ripple; // rings on the water round (x, y), radius ripple (0 none; the crossing)
     float ripple_k;                 // the rings' and the splash's size there (the distance)
-    int splash;                     // and a splash there (a ford gone wrong)
+    int splash;                     // and a splash there (a crossing gone wrong)
+    float bubbles;                  // bubbles rising there, this far along (0 none; a ford going under)
     char carve[160];                // words cut in the tombstone's face ("Here lies ..."), "" none
     int dot;                        // the hunt's shot in flight, a dot at (dot_x, dot_y)
     float dot_x, dot_y;

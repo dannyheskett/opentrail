@@ -975,6 +975,38 @@ def draw_font():
     return im
 
 
+def cmd_waterlines(_):
+    """The crossing pictures at 6x on the river's blue, a ruler of their rows,
+    and the waterline modern.c draws them against (CROSS_WL: the rows at the
+    left and right edges) in red, to check by eye that it runs where each
+    picture meets the water: build/waterlines.png."""
+    import re
+    src = open("src/modern/modern.c").read()
+    rows = re.search(r"CROSS_WL\[5\]\[2\] = \{(.*?)\};", src, re.S).group(1)
+    wl = [tuple(map(float, p)) for p in re.findall(r"\{ *([\d.]+), *([\d.]+) *\}", rows)]
+    names = [None, "cross_ferry", "cross_ford", "cross_float", "cross_tipped"]
+    K = 6
+    sheet = Image.new("RGB", (2 * (112 * K + 40), 2 * (56 * K + 10)), (255, 255, 255))
+    for i, n in enumerate(names[1:], 1):
+        im = Image.open(f"{ASSETS}/{n}.png").convert("RGBA")
+        bg = Image.new("RGBA", im.size, (30, 80, 160, 255))
+        bg.alpha_composite(im)
+        big = bg.resize((112 * K, 56 * K), Image.NEAREST).convert("RGB")
+        d = ImageDraw.Draw(big)
+        for r in range(0, 56, 2):
+            d.line([(0, r * K), (8 if r % 10 else 20, r * K)], fill=(255, 255, 0))
+            if r % 10 == 0:
+                d.text((24, r * K - 5), str(r), fill=(255, 255, 0))
+        d.line([(0, wl[i][0] * K), (112 * K, wl[i][1] * K)], fill=(255, 40, 40), width=2)
+        d.text((4, 56 * K - 14), f"{n}: {wl[i][0]:g} to {wl[i][1]:g}", fill=(255, 255, 255))
+        sheet.paste(big, (((i - 1) % 2) * (112 * K + 40) + 40, ((i - 1) // 2) * (56 * K + 10)))
+    os.makedirs("build", exist_ok=True)
+    sheet.save("build/waterlines.png")
+    for i, n in enumerate(names[1:], 1):
+        print(f"{n:14} waterline rows {wl[i][0]:g} (left) to {wl[i][1]:g} (right)")
+    print("build/waterlines.png")
+
+
 def cmd_local(args):
     ensure_originals()
     drawn = [("scene_map", draw_map()), ("ui_divider", draw_divider()), ("ui_font", draw_font()),
@@ -1616,6 +1648,7 @@ def main():
     p = sub.add_parser("gallery"); p.set_defaults(fn=cmd_gallery)
     p.add_argument("--port", type=int, default=8765); p.add_argument("--no-open", action="store_true")
     sub.add_parser("originals").set_defaults(fn=cmd_originals)
+    sub.add_parser("waterlines").set_defaults(fn=cmd_waterlines)
     p = sub.add_parser("local"); p.set_defaults(fn=cmd_local)
     p.add_argument("--check", action="store_true", help="also the raft's track over the Columbia")
     p = sub.add_parser("anchors"); p.add_argument("--check", action="store_true"); p.set_defaults(fn=cmd_anchors)

@@ -322,7 +322,8 @@ static void draw_panel(MScene *sc, int cw, float ox, Vec2 mouse) {
             top = 6;
             if (ov && ov->h <= 100) top = 6 + ov->h + 4;   // a banner above the panel: start below it
             if (top + h > MS_ART_H - 4) top = MS_ART_H - 4 - h;   // the band under the picture keeps the hint
-        } else if (sc->box_mid && !kb_height(sc)) top = (float)(int)((MS_ART_H - h) / 2);   // across the middle, over the wagon
+        } else if (sc->box_mid && !kb_height(sc))     // under the waterline when it fits (into the caption), else the middle
+            top = sc->box_top > 0 && sc->box_top + h <= CH - 2 ? sc->box_top : (float)(int)((MS_ART_H - h) / 2);
         else top = CH - kb_height(sc) - 6 - h;      // above the touch keyboard when it is up
         if (top < 2) top = 2;
     }
@@ -539,25 +540,28 @@ void modern_draw(Canvas *cv, MScene *sc, float mouse_x, float mouse_y, int ask, 
             x = floorf(x - (p->flip ? t->w - p->ax : p->ax) * k + .5f);
             y = floorf(y - p->ay * k + .5f);
         }
-        if (p->sink > 0 && t && p->anchor) {          // under the water from below its waterline up
-            float line = y + (p->ay - p->sink) * k;
-            cv_clip(CV, ox, 0, 384, line < MS_ART_H ? line : MS_ART_H);
+        if (p->water && t && k == 1) {              // a crossing gone wrong: under the waterline, the river
+            cv_image_water(CV, t, p->flip, x, y, p->wl_l, p->wl_r);
+            for (int c = 0; c < t->w; c++) {        // foam where the picture meets the water
+                float line = p->wl_l + (p->wl_r - p->wl_l) * (c + .5f) / t->w;
+                int u = p->flip ? t->w - 1 - c : c, v = (int)floorf(line - y);
+                if (v < 0 || v + 1 >= t->h) continue;
+                if (t->px[(v * t->w + u) * 4 + 3] <= 128 && t->px[((v + 1) * t->w + u) * 4 + 3] <= 128) continue;
+                cv_rect(CV, (int)x + c, (int)floorf(line) - 1, 1, 1, (CvColor){ 253, 254, 254, 230 });
+                if ((c * 7 + (int)(s_time * 12)) % 5) cv_rect(CV, (int)x + c, (int)floorf(line), 1, 1, (CvColor){ 150, 248, 253, 200 });
+            }
+            continue;
         }
         if (t && k != 1)
             cv_image(CV, t, p->flip, x, y, (float)t->w * k, (float)t->h * k, CV_WHITE);
         else image(p->id, x, y, p->flip);
-        if (p->sink > 0 && t && p->anchor) {          // the waterline: foam hugging the shape where it goes under
-            cv_clip(CV, ox, 0, 384, MS_ART_H);
-            int r = (int)(p->ay - p->sink), line = (int)(y + r * k);
-            for (int c = 0; r >= 0 && r + 1 < t->h && c < t->w; c++) {
-                int in = t->px[(r * t->w + c) * 4 + 3] > 128 || t->px[((r + 1) * t->w + c) * 4 + 3] > 128;
-                if (!in) continue;
-                int sx = (int)(x + (p->flip ? t->w - 1 - c : c) * k);
-                cv_rect(CV, sx, line - 1, 1, 1, (CvColor){ 253, 254, 254, 230 });
-                if ((c * 7 + (int)(s_time * 12)) % 5) cv_rect(CV, sx, line, 1, 1, (CvColor){ 150, 248, 253, 200 });
-            }
-        }
     }
+    if (sc->bubbles > 0)                                            // bubbles rising from it, going under (over it)
+        for (int k = 0; k < 6; k++) {
+            float t = fmodf(sc->bubbles + k * 7.0f, 24.0f);         // each one's age, 0 to 24 frames
+            float bx = sc->ripple_x + ((k * 37) % 31 - 15) * sc->ripple_k, by = sc->ripple_y - t * .7f;
+            cv_rect(CV, (int)(ox + bx), (int)by, 2, 2, cv_fade(CV_WHITE, .8f - t / 40));
+        }
     if (sc->dot) cv_rect(CV, (int)(ox + sc->dot_x), (int)sc->dot_y, 2, 2, CV_WHITE);   // the hunt's shot
     cv_unclip(CV);
     if (sc->carve[0]) {                             // the words on the tombstone's face, centred, cut dark
