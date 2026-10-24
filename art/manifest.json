@@ -57,7 +57,7 @@
    "group": "scene",
    "desc": "Landmark 3: Fort Kearney",
    "original": "L3.PCK",
-   "source": "art/runs/scene_landmark_03/run05/01_raw.png"
+   "source": "art/runs/scene_landmark_03/run06/01_raw.png"
   },
   {
    "id": "scene_landmark_04",
@@ -93,7 +93,7 @@
    "group": "scene",
    "desc": "Landmark 7: South Pass",
    "original": "L7.PCK",
-   "source": "art/runs/scene_landmark_07/run04/01_raw.png"
+   "source": "art/runs/scene_landmark_07/run05/01_raw.png"
   },
   {
    "id": "scene_landmark_08",
@@ -165,7 +165,7 @@
    "group": "scene",
    "desc": "Landmark 15: Fort Walla Walla",
    "original": "L15.PCK",
-   "source": "art/runs/scene_landmark_15/run08/01_raw.png"
+   "source": "art/runs/scene_landmark_15/run11/01_raw.png"
   },
   {
    "id": "scene_landmark_16",
@@ -421,7 +421,7 @@
    "group": "travel",
    "desc": "Distant landmark on the horizon while travelling: Fort Kearney",
    "transparent": true,
-   "source": "art/runs/travel_icon_03/run02/02_edited.png"
+   "source": "art/runs/travel_icon_03/run05/01_raw.png"
   },
   {
    "id": "travel_icon_04",
@@ -453,11 +453,11 @@
   {
    "id": "travel_icon_07",
    "w": 96,
-   "h": 44,
+   "h": 24,
    "group": "travel",
    "desc": "Distant landmark on the horizon while travelling: South Pass",
    "transparent": true,
-   "source": "none: made before the art/ tree; its run was never committed"
+   "source": "art/runs/travel_icon_07/run01/01_raw.png"
   },
   {
    "id": "travel_icon_08",
@@ -529,7 +529,7 @@
    "group": "travel",
    "desc": "Distant landmark on the horizon while travelling: Fort Walla Walla",
    "transparent": true,
-   "source": "art/runs/travel_icon_15/run02/01_raw.png"
+   "source": "art/runs/travel_icon_15/run03/01_raw.png"
   },
   {
    "id": "travel_icon_16",

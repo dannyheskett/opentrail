@@ -1,0 +1,24 @@
+{
+ "id": "scene_landmark_07",
+ "_asset": [
+  "scene_landmark_07"
+ ],
+ "_note": "Landmark 7: South Pass (384x216). Redone as the original's (L7.PCK: an open green upland under snowy mountains, the lead wagon, a wagon train behind, a rider) to match the new trail icon: it starts from inputs/scene_landmark_07_base.png, made of approved art laid out as the original: travel_icon_07's two mountains (3.5x) on the horizon, an open upland, the trail wagon travel_wagon_1 large (1.25x) and three small copies far behind, Fort Kearney's rider on his white horse. (The original recoloured as a base gave a broken wagon and trees.)",
+ "style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "prompt": "South Pass in 1848: a broad open green upland with short grass rolling up to two snow-capped blue-grey mountains on the horizon, the smaller one on the left and the larger one on the right, a blue sky, a large covered wagon with a white canvas top pulled by two oxen in the foreground on the left, a line of three small covered wagons far behind on the upland at the right, a cavalry rider in a blue uniform on a white horse in the foreground on the right, no trees",
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": true,
+ "figure": false,
+ "_original": "L7.PCK",
+ "_accept": [
+  "the base's layout kept: the two mountains, the lead wagon and its oxen, the wagon train behind, the rider",
+  "the wagon whole and well drawn: white canvas top, wooden box, four wheels, two oxen",
+  "an open grassy upland: no trees, no canyon walls",
+  "drawn as one picture in the set's style"
+ ],
+ "input_image_path": "art/inputs/scene_landmark_07_base.png",
+ "strength": 0.5
+}

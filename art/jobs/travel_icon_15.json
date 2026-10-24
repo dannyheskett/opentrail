@@ -6,16 +6,27 @@
  "seed": 1848,
  "_raw_only": true,
  "figure": false,
- "id": "travel_icon_15",
- "_asset": [
-  "travel_icon_15"
- ],
- "_note": "Fort Walla Walla, a foreground landmark: the wagon's pixel scale, standing on the ground line (y=76).",
  "width": 170,
  "height": 72,
  "_target": [
   170,
   72
  ],
- "prompt": "a compact frontier-era fort seen straight from the side, a tall wall of pointed grey weathered logs facing the viewer with a heavy wooden gate, a two-story wooden blockhouse with an overhanging upper floor and a shingled roof at each corner, small cannons poking out of the blockhouses, a red white and blue American flag on a tall pole inside the fort rising above the wall, the fort standing alone and empty"
+ "_note": "Fort Walla Walla, a foreground landmark: the wagon's pixel scale, standing on the ground line (y=76). Redone because run02 cut its palisade off at the left. References: the original trail icon (MOUNTAINS.IMA 12: a stockade of upright logs stepping up to a blockhouse), the original vista's stockade, and the approved Fort Laramie icon for the set's look.",
+ "prompt": "Fort Walla Walla in 1848 seen straight from the side, the whole of it with open sky on both sides: a stockade wall of tall upright pointed grey logs with a heavy wooden gate, rising to a two-storey wooden blockhouse with an overhanging upper floor and a shingled roof at the right end, an American flag on a pole above the wall, standing alone and empty on a thin strip of dry grass, every log and corner fully visible, on a plain magenta background",
+ "reference_image_paths": [
+  "art/inputs/travel_icon_15_orig.png",
+  "art/inputs/travel_icon_15_vista.png",
+  "assets/modern/travel_icon_05.png"
+ ],
+ "_accept": [
+  "the whole stockade inside the image, its left end not cut",
+  "upright pointed logs, a gate, the blockhouse at the right end, the flag",
+  "the Fort Laramie icon's pixel scale and shading",
+  "background transparent"
+ ],
+ "id": "travel_icon_15",
+ "_asset": [
+  "travel_icon_15"
+ ]
 }

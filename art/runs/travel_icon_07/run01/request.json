@@ -1,0 +1,11 @@
+{
+ "prompt": "two low rounded snow-capped mountains far away on the horizon, a smaller one on the left and a larger one on the right, white snow over blue-grey rock with a few dark green pines at their feet, the whole of both mountains visible with space at the sides, on a plain magenta background",
+ "prompt_style": "rd_pro__default",
+ "width": 96,
+ "height": 24,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}
