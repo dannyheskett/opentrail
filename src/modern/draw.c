@@ -403,20 +403,28 @@ static void draw_panel(MScene *sc, int cw, float ox, Vec2 mouse) {
 
 // The quit dialog, centred over the scene (legacy mode's words, numbered
 // as every choice is).
+static void button(Rect r, const char *label, int lit);
 static void draw_quit(int cw) {
-    static const char *const L[4] = { "Do you want to quit", "the game?", "", "1. Yes   2. No" };
-    float w = 0;
-    for (int i = 0; i < 4; i++) {
+    static const char *const L[2] = { "Do you want to quit", "the game?" };
+    static const char *const B[2] = { "1. Yes", "2. No" };      // buttons, as every choice is
+    float bw[2], bh = (float)row_h() + 4, w = 0;
+    for (int i = 0; i < 2; i++) {
         float lw = text_w(L[i]);
         if (lw > w) w = lw;
+        bw[i] = text_w(B[i]) + 20 > 64 ? text_w(B[i]) + 20 : 64;
     }
-    Rect r = { (float)(int)((cw - w - 32) / 2), (CH - 4 * (FONT + 2) - 24) / 2.0f, (float)(int)w + 32, 4 * (FONT + 2) + 24 };
+    if (bw[0] + 8 + bw[1] > w) w = bw[0] + 8 + bw[1];
+    float h = 12 + 2 * (FONT + 2) + 8 + bh + 12;
+    Rect r = { (float)(int)((cw - w - 32) / 2), (float)(int)((CH - h) / 2), (float)(int)w + 32, h };
     panel_box(r);
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 2; i++)
         text(L[i], r.x + 16, r.y + 12 + i * (FONT + 2), CV_WHITE);
-    float ly = r.y + 12 + 3 * (FONT + 2) - 3;                     // "1. Yes   2. No": a click on either
-    s_quit[0] = (Rect){ r.x + 12, ly, 7 * FONT, FONT + 6 };
-    s_quit[1] = (Rect){ r.x + 12 + 9 * FONT, ly, 6 * FONT, FONT + 6 };
+    float by = r.y + 12 + 2 * (FONT + 2) + 8, bx = r.x + 16;
+    for (int i = 0; i < 2; i++) {                                 // a click or a tap on either
+        s_quit[i] = (Rect){ bx, by, bw[i], bh };
+        button(s_quit[i], B[i], 0);
+        bx += bw[i] + 8;
+    }
 }
 
 // The trail map's route, landmarks and legend, over its background.
