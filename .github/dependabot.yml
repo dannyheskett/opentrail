@@ -6,6 +6,8 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    # pull requests go to staging: main only takes staging's (the rulesets)
+    target-branch: "staging"
     commit-message:
       prefix: "ci"
     groups:
