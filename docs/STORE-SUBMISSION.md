@@ -73,9 +73,9 @@ still ships everything else (an unsigned `.ipa`, no AAB).
 
 ## Google Play, once
 
-1. Play Console → Create app: name `OpenTrail`, English (US), Game, Free,
-   both declarations. Package name `com.danheskett.opentrail` (it is fixed by
-   the first upload).
+1. Play Console → Create app: name `opentrail: 1848`, package name
+   `com.danheskett.opentrail` (fixed for good once created), English (US),
+   Game, Free, both declarations.
 2. The first App Bundle goes up by hand (Play's API cannot create the first
    release): take `opentrail-build-N-android.aab` from the GitHub Release,
    Testing → Internal testing → Create release, upload. From then on
