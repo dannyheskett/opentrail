@@ -28,14 +28,14 @@ Lead a wagon party 2,000 miles west in 1848. Free, open source, no ads.
 ## Full description (≤4000 chars)
 
 ```
-It is 1848. Your wagon party of five sets out from Independence, Missouri, on the 2,000-mile journey to Oregon's Willamette Valley. Buy oxen, food and spare parts at Matt's General Store, choose your pace and rations, hunt for food, ford rivers or float your wagon across, trade with the people you meet, and keep your party alive through storms, broken axles and disease.
+It is 1848. Your wagon party of five sets out from Independence, Missouri, on the 2,000-mile journey west to the Willamette Valley. Buy oxen, food and spare parts at Matt's General Store, choose your pace and rations, hunt for food, ford rivers or float your wagon across, trade with the people you meet, and keep your party alive through storms, broken axles and disease.
 
 The trail passes the Kansas River crossing, Fort Laramie, Independence Rock and the Blue Mountains, and ends with a raft run down the rapids of the Columbia River. Make it to the valley with your party, your supplies and your money, and earn your place on the Top Ten. Every choice is numbered and answered with a tap.
 
 PIXEL ART AND MUSIC
 • Every landmark, river crossing and event drawn as pixel art
 • Folk tunes of the trail played by a small orchestra
-• A hunting game: tap the field to aim, then fire
+• A hunting game: tap to walk the hunter there, double-tap to shoot
 
 MADE FOR TOUCH
 • Tap a choice; type names and epitaphs on the built-in keyboard
