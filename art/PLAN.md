@@ -64,11 +64,11 @@ Made by `tools/art.py plan`: one row per job in art/jobs/, the images it makes, 
 | scene_landmark_00 | rd_plus__environment | 384x216 | scene_landmark_00 | run17 | $0.06 |
 | scene_landmark_01 | rd_plus__environment | 384x216 | scene_landmark_01 | run07 | $0.06 |
 | scene_landmark_02 | rd_plus__environment | 384x216 | scene_landmark_02 | run08 | $0.06 |
-| scene_landmark_03 | rd_plus__environment | 384x216 | scene_landmark_03 | run05 | $0.06 |
+| scene_landmark_03 | rd_plus__environment | 384x216 | scene_landmark_03 | run06 | $0.06 |
 | scene_landmark_04 | rd_plus__environment | 384x216 | scene_landmark_04 | run05 | $0.06 |
 | scene_landmark_05 | rd_plus__environment | 384x216 | scene_landmark_05 | run07 | $0.06 |
 | scene_landmark_06 | rd_plus__environment | 384x216 | scene_landmark_06 | run02 | $0.06 |
-| scene_landmark_07 | rd_plus__environment | 384x216 | scene_landmark_07 | run04 | $0.06 |
+| scene_landmark_07 | rd_plus__environment | 384x216 | scene_landmark_07 | run05 | $0.06 |
 | scene_landmark_08 | rd_plus__environment | 384x216 | scene_landmark_08 | run02 | $0.06 |
 | scene_landmark_09 | rd_plus__environment | 384x216 | scene_landmark_09 | run04 | $0.06 |
 | scene_landmark_10 | rd_plus__environment | 384x216 | scene_landmark_10 | run03 | $0.06 |
@@ -76,23 +76,23 @@ Made by `tools/art.py plan`: one row per job in art/jobs/, the images it makes, 
 | scene_landmark_12 | rd_plus__environment | 384x216 | scene_landmark_12 | run09 | $0.06 |
 | scene_landmark_13 | rd_plus__environment | 384x216 | scene_landmark_13 | run14 | $0.06 |
 | scene_landmark_14 | rd_plus__environment | 384x216 | scene_landmark_14 | run06 | $0.06 |
-| scene_landmark_15 | rd_plus__environment | 384x216 | scene_landmark_15 | run08 | $0.06 |
+| scene_landmark_15 | rd_plus__environment | 384x216 | scene_landmark_15 | run11 | $0.06 |
 | scene_landmark_16 | rd_plus__environment | 384x216 | scene_landmark_16 | run04 | $0.06 |
 | scene_landmark_17 | rd_plus__environment | 384x216 | scene_landmark_17 | run03 | $0.06 |
 | scene_matt_store | rd_plus__environment | 384x216 | scene_matt_store | run01 | $0.06 |
 | scene_title | rd_plus__environment | 384x216 | scene_title | run01 | $0.06 |
 | travel_icon_01 | rd_pro__default | 97x33 | travel_icon_01, travel_icon_02, travel_icon_09, travel_icon_12 | run04 | $0.18 |
-| travel_icon_03 | rd_pro__default | 120x60 | travel_icon_03 | run02 | $0.18 |
+| travel_icon_03 | rd_pro__default | 120x60 | travel_icon_03 | run05 | $0.18 |
 | travel_icon_04 | rd_pro__default | 40x26 | travel_icon_04 | run01 | $0.18 |
 | travel_icon_05 | rd_pro__default | 170x72 | travel_icon_05 | run04 | $0.18 |
 | travel_icon_06 | rd_pro__default | 150x44 | travel_icon_06 | run03 | $0.18 |
-| travel_icon_07 | rd_pro__default | 150x44 | travel_icon_07 | none | $0.18 |
+| travel_icon_07 | rd_pro__default | 96x24 | travel_icon_07 | run01 | $0.18 |
 | travel_icon_08 | rd_pro__default | 170x72 | travel_icon_08 | run01 | $0.18 |
 | travel_icon_10 | rd_pro__default | 140x48 | travel_icon_10 | run04 | $0.18 |
 | travel_icon_11 | rd_pro__default | 150x64 | travel_icon_11 | run01 | $0.18 |
 | travel_icon_13 | rd_pro__default | 170x72 | travel_icon_13 | run03 | $0.18 |
 | travel_icon_14 | rd_pro__default | 130x26 | travel_icon_14 | run03 | $0.18 |
-| travel_icon_15 | rd_pro__default | 170x72 | travel_icon_15 | run02 | $0.18 |
+| travel_icon_15 | rd_pro__default | 170x72 | travel_icon_15 | run03 | $0.18 |
 | travel_icon_16 | rd_pro__default | 97x33 | travel_icon_16 | run01 | $0.18 |
 | travel_icon_17 | rd_pro__default | 160x36 | travel_icon_17 | run07 | $0.18 |
 | travel_wagon_anim | rd_advanced_animation__walking | 156x60 | travel_wagon_1, travel_wagon_2, travel_wagon_3, travel_wagon_4, travel_wagon_5, travel_wagon_6, travel_wagon_7, travel_wagon_8 | run01 | $0.14 |

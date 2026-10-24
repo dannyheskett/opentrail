@@ -41,6 +41,10 @@ void cv_ellipse_lines(Canvas *cv, float cx, float cy, float rx, float ry, CvColo
 
 // img drawn into (x, y, w, h), mirrored when flip, its colours times tint.
 void cv_image(Canvas *cv, const CvImage *img, int flip, float x, float y, float w, float h, CvColor tint);
+// img at its own size from (x, y), partly under water: drawn above the
+// waterline (canvas row wl_l at its left edge to wl_r at its right), fading
+// into the water for a few rows under it, nothing deeper.
+void cv_image_water(Canvas *cv, const CvImage *img, int flip, float x, float y, float wl_l, float wl_r);
 // img as a nine-patch with border b on each side, stretched to (x, y, w, h).
 void cv_npatch(Canvas *cv, const CvImage *img, int b, float x, float y, float w, float h, CvColor tint);
 

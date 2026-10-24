@@ -1,0 +1,11 @@
+{
+ "prompt": "Fort Walla Walla in 1848: on the left a stockade of tall upright pointed grey logs with a gate, a wooden blockhouse at its right end and one small American flag, snowy purple-hazed mountains and white clouds along a high horizon, a band of green grass across the middle distance, dark bare pebbly ground in front, in the foreground three Cayuse men trading: a tall man in a white blanket, a fringed brown skirt and a wide hat with feathers at the left, a man in a white shirt sitting on a brown hide in the middle, a man in a white shirt and a feather headdress standing at the right, one American flag only, no other flags or banners, no animals, no walls, no rocks",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 1848,
+ "strength": 0.4,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

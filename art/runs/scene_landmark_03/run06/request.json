@@ -1,0 +1,11 @@
+{
+ "prompt": "Fort Kearney in 1848 on a flat green plain: a covered wagon with two white oxen and a woman in a pink dress at the left, a cavalry soldier in a blue uniform and cap riding a white horse in the centre, a winding dirt road, a small white clapboard house, an American flag on a tall wooden pole, a big two-storey dark red-brown brick house with a grey roof, white-framed windows and two chimneys at the right, green hills and white clouds behind",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 1848,
+ "strength": 0.55,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

@@ -1,0 +1,11 @@
+{
+ "prompt": "Fort Walla Walla in 1848 seen straight from the side, the whole of it with open sky on both sides: a stockade wall of tall upright pointed grey logs with a heavy wooden gate, rising to a two-storey wooden blockhouse with an overhanging upper floor and a shingled roof at the right end, an American flag on a pole above the wall, standing alone and empty on a thin strip of dry grass, every log and corner fully visible, on a plain magenta background",
+ "prompt_style": "rd_pro__default",
+ "width": 170,
+ "height": 72,
+ "num_images": 1,
+ "seed": 1848,
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "async": true
+}

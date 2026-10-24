@@ -1,0 +1,24 @@
+{
+ "id": "scene_landmark_15",
+ "_asset": [
+  "scene_landmark_15"
+ ],
+ "_note": "Landmark 15: Fort Walla Walla (384x216). Redone to match the new trail icon: it starts from inputs/scene_landmark_15_base.png, the approved vista (run08: the three men trading on the hide, the mountains) with its log-cabin walls and the bundles at the lower left replaced by more of its own sky, a grass band and its own bare ground (the joins blended), and travel_icon_15's stockade (1x, its left end off the picture) at the left, as the original's (L15.PCK); strength 0.4 keeps the stockade as drawn.",
+ "style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "prompt": "Fort Walla Walla in 1848: on the left a stockade of tall upright pointed grey logs with a gate, a wooden blockhouse at its right end and one small American flag, snowy purple-hazed mountains and white clouds along a high horizon, a band of green grass across the middle distance, dark bare pebbly ground in front, in the foreground three Cayuse men trading: a tall man in a white blanket, a fringed brown skirt and a wide hat with feathers at the left, a man in a white shirt sitting on a brown hide in the middle, a man in a white shirt and a feather headdress standing at the right, one American flag only, no other flags or banners, no animals, no walls, no rocks",
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": true,
+ "figure": false,
+ "_original": "L15.PCK",
+ "_accept": [
+  "the base's layout kept: the three men, the hide, the mountains",
+  "the trail icon's stockade at the left: grey upright pointed logs, a gate, the blockhouse, one small American flag",
+  "a grass band and bare ground across the whole width: no walls, rocks, bundles or animals",
+  "drawn as one picture: no seams"
+ ],
+ "input_image_path": "art/inputs/scene_landmark_15_base.png",
+ "strength": 0.4
+}

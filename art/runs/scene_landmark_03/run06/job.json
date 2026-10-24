@@ -1,0 +1,23 @@
+{
+ "id": "scene_landmark_03",
+ "_asset": [
+  "scene_landmark_03"
+ ],
+ "_note": "Landmark 3: Fort Kearney (384x216). Redone to match the new trail icon: it starts from inputs/scene_landmark_03_base.png, the approved vista with its red clapboard house replaced by travel_icon_03's brick house (2.2x), so the layout is the approved one (the original's: wagon left, soldier riding, buildings and flag right) and the house is the icon's.",
+ "style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "prompt": "Fort Kearney in 1848 on a flat green plain: a covered wagon with two white oxen and a woman in a pink dress at the left, a cavalry soldier in a blue uniform and cap riding a white horse in the centre, a winding dirt road, a small white clapboard house, an American flag on a tall wooden pole, a big two-storey dark red-brown brick house with a grey roof, white-framed windows and two chimneys at the right, green hills and white clouds behind",
+ "num_images": 1,
+ "seed": 1848,
+ "bypass_prompt_expansion": true,
+ "figure": false,
+ "_original": "L3.PCK",
+ "_accept": [
+  "the base's layout kept: wagon and oxen left, the rider centre, the road, the white house, the flag",
+  "the trail icon's house: two-storey red-brown brick, grey roof, white-framed windows, two chimneys",
+  "drawn as one picture: no seams"
+ ],
+ "input_image_path": "art/inputs/scene_landmark_03_base.png",
+ "strength": 0.55
+}
