@@ -122,13 +122,12 @@ See [BUILD.md](BUILD.md) for building and testing.
     original's layout, both in the generated scenes' colours), the six
     travel backdrops, the divider, and the
     text font `ui_font`, Press Start 2P rendered at its own 8 px into 8x8
-    cells from `third_party/pressstart2p/`, SIL Open Font License 1.1). One
-    exception, `travel_icon_07`, predates `art/` and has no run. A job makes
+    cells from `third_party/pressstart2p/`, SIL Open Font License 1.1). A job makes
     one image, or several from one run (an animation's frames; the four
     river crossings share `travel_icon_01`), or the start frame of another
     job (`hunt_hunter_dirs` and the two `hunt_hunter_*_diag`: the hunter's
     turn and his diagonals, cut into `inputs/`). Each job keeps exactly one
-    run (none for `travel_icon_07`), holding only the files used and its
+    run, holding only the files used and its
     `job`/`request`/`task`/`poll` records; every file in `inputs/` is a
     kept job's input or reference, or an input of `art.py local`
     (`map_clean.png`, the map's base). Four jobs (`travel_icon_01`, `_16`,

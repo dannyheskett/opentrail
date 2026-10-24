@@ -1,0 +1,31 @@
+{
+ "style": "rd_pro__default",
+ "remove_bg": true,
+ "bypass_prompt_expansion": false,
+ "num_images": 1,
+ "seed": 1848,
+ "_raw_only": true,
+ "figure": false,
+ "width": 120,
+ "height": 60,
+ "_target": [
+  120,
+  60
+ ],
+ "_note": "Fort Kearney, a foreground landmark: the wagon's pixel scale, standing on the ground line (y=76). Redone because run02 cut the brick house off at the right (its reference, a crop of the vista, cut it there too): references are the original trail icon (PRAIRIE.IMA 5: a brick building and a flag) and the approved Fort Laramie icon for the set's look (with the original vista's buildings as a third, Retro Diffusion failed twice).",
+ "prompt": "Fort Kearney in 1848 seen from the side, the whole of it with open sky on both sides: a two-storey dark red-brown brick house with a grey gabled roof and white-framed windows, a small white clapboard house to its left, an American flag on a tall wooden pole between them, on a thin strip of green grass, every wall and roof edge fully visible, on a plain magenta background",
+ "reference_image_paths": [
+  "art/inputs/travel_icon_03_orig.png",
+  "assets/modern/travel_icon_05.png"
+ ],
+ "_accept": [
+  "the whole brick house and its right wall inside the image, nothing cut at any edge",
+  "red-brown brick house, small white house, flag on its pole between them",
+  "the Fort Laramie icon's pixel scale and shading",
+  "background transparent"
+ ],
+ "id": "travel_icon_03",
+ "_asset": [
+  "travel_icon_03"
+ ]
+}

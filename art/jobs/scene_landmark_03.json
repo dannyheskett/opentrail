@@ -3,23 +3,21 @@
  "_asset": [
   "scene_landmark_03"
  ],
- "_note": "Landmark 3: Fort Kearney (384x216)",
+ "_note": "Landmark 3: Fort Kearney (384x216). Redone to match the new trail icon: it starts from inputs/scene_landmark_03_base.png, the approved vista with its red clapboard house replaced by travel_icon_03's brick house (2.2x), so the layout is the approved one (the original's: wagon left, soldier riding, buildings and flag right) and the house is the icon's.",
  "style": "rd_plus__environment",
  "width": 384,
  "height": 216,
- "prompt": "a cavalry soldier in a blue cap and blue uniform riding a white horse walking to the left, large in the centre foreground, behind him a small 1848 army fort on a flat green plain, on the right a long low whitewashed building with a grey roof and a big two-storey dark red-brown brick building with a gabled roof at the right edge, a tall flagpole with a United States flag at the top edge, on the left a covered wagon facing the viewer head-on with a person in its round front opening, two white oxen with horns yoked side by side in front of it in the bottom left corner, in the middle distance a woman in pink with a white bonnet leading a small child and a man in a white hat, dark tree line on the left horizon, blue sky",
+ "prompt": "Fort Kearney in 1848 on a flat green plain: a covered wagon with two white oxen and a woman in a pink dress at the left, a cavalry soldier in a blue uniform and cap riding a white horse in the centre, a winding dirt road, a small white clapboard house, an American flag on a tall wooden pole, a big two-storey dark red-brown brick house with a grey roof, white-framed windows and two chimneys at the right, green hills and white clouds behind",
  "num_images": 1,
  "seed": 1848,
  "bypass_prompt_expansion": true,
  "figure": false,
  "_original": "L3.PCK",
  "_accept": [
-  "flat green plain, horizon about a seventh down, dark tree line at the left",
-  "right half: long low whitewashed building (grey roof, door between two windows, white end wall); second low white building with a brick chimney; big two-storey dark red-brown gabled building at the right edge",
-  "tall flagpole in front of the second building, US flag at the top edge",
-  "left: covered wagon coming toward the viewer with a person in its round opening, its pair of yoked white oxen head-on in the bottom-left corner; a smaller second wagon behind with a white-hatted driver heading right on a dark track",
-  "centre: woman in pink and white bonnet leading a child in white, man in white hat and dark blue coat, all facing right",
-  "centre foreground: soldier in blue cap and blue uniform on a white horse walking left - the largest figure",
-  "not: stockade or palisade, parade ground, extra soldiers or crowd, loose oxen"
- ]
+  "the base's layout kept: wagon and oxen left, the rider centre, the road, the white house, the flag",
+  "the trail icon's house: two-storey red-brown brick, grey roof, white-framed windows, two chimneys",
+  "drawn as one picture: no seams"
+ ],
+ "input_image_path": "art/inputs/scene_landmark_03_base.png",
+ "strength": 0.55
 }

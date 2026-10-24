@@ -1,0 +1,11 @@
+{
+ "prompt": "South Pass in 1848: a broad open green upland with short grass rolling up to two snow-capped blue-grey mountains on the horizon, the smaller one on the left and the larger one on the right, a blue sky, a large covered wagon with a white canvas top pulled by two oxen in the foreground on the left, a line of three small covered wagons far behind on the upland at the right, a cavalry rider in a blue uniform on a white horse in the foreground on the right, no trees",
+ "prompt_style": "rd_plus__environment",
+ "width": 384,
+ "height": 216,
+ "num_images": 1,
+ "seed": 1848,
+ "strength": 0.5,
+ "bypass_prompt_expansion": true,
+ "async": true
+}

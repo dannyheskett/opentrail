@@ -4,13 +4,29 @@
  "bypass_prompt_expansion": false,
  "num_images": 1,
  "seed": 1848,
+ "_raw_only": true,
  "figure": false,
+ "width": 96,
+ "height": 24,
+ "_target": [
+  96,
+  24
+ ],
+ "_note": "South Pass, a distant landmark on the horizon (drawn 2x, ON_HORIZON at y=56), as the original's (MOUNTAINS.IMA 7: two low snow-capped hills on the horizon). Replaces the composite of two near rock slabs (no run). References: the original icon, the original vista's horizon (snowy rounded peaks), and the approved Blue Mountains icon for the horizon scale and colours.",
+ "prompt": "two low rounded snow-capped mountains far away on the horizon, a smaller one on the left and a larger one on the right, white snow over blue-grey rock with a few dark green pines at their feet, the whole of both mountains visible with space at the sides, on a plain magenta background",
+ "reference_image_paths": [
+  "art/inputs/travel_icon_07_orig.png",
+  "art/inputs/travel_icon_07_vista.png",
+  "assets/modern/travel_icon_14.png"
+ ],
+ "_accept": [
+  "two snowy rounded hills, smaller left, larger right, low and wide",
+  "whole, nothing cut at any edge",
+  "the Blue Mountains icon's distant scale and colours",
+  "background transparent"
+ ],
  "id": "travel_icon_07",
  "_asset": [
   "travel_icon_07"
- ],
- "_note": "South Pass, a foreground landmark: the wagon's pixel scale, standing on the ground line (y=76). Its image in the game is 96x44 (made before art/, from an earlier version of this job; no run was kept).",
- "width": 150,
- "height": 44,
- "prompt": "a short worn dirt path running between two big weathered grey rock outcrops, the near outcrop large and close in front, the far outcrop smaller and further back, the path fading into patchy grass at its ends and sides, sagebrush around the rocks, seen from the side"
+ ]
 }
