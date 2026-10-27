@@ -98,12 +98,18 @@ play-tester.
 
 ## Releases
 
-Every push to `main` is a release: `.github/workflows/release.yml` numbers
-it (the next `release-N`, version `v1.0.N`), builds every platform, and once
-every build has passed tags the commit and publishes a GitHub Release; the
-Android bundle then goes to Play's internal track and the iOS build to
-TestFlight. Run by hand it is a dry run. `.github/workflows/ci.yml` builds and
-tests every pull request. [docs/STORE-SUBMISSION.md](docs/STORE-SUBMISSION.md)
+Work branches merge into `staging` (squash) and `main` takes merges from
+`staging` only; `.github/workflows/ci.yml` builds and tests every pull request,
+and every job must pass. Merging `staging` into `main` runs
+`.github/workflows/build.yml`: it numbers the build (the next `release-N`,
+version `v1.0.N`), builds every platform, and once every build has passed tags
+the commit and publishes a GitHub Release. It never ships to a store.
+
+Shipping is the separate, manual `.github/workflows/release.yml`: it takes a
+`release-N` and ships it to Google Play (the track you pick), then the App
+Store (TestFlight for internal testers, then App Review -- withdrawing any
+earlier version still pending review), stops at the first failure, and reads
+each store back at the end. [docs/STORE-SUBMISSION.md](docs/STORE-SUBMISSION.md)
 covers the stores.
 
 ## How it is made

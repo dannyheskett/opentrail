@@ -1,7 +1,7 @@
 # OpenTrail — Google Play store listing
 
 `scripts/play_release.py listing` pushes the fields below and the images in this
-folder (`store-release.yml`); the console-only settings are at the end. The
+folder (`release.yml`); the console-only settings are at the end. The
 screenshots are made by `tools/store_shots.py` (the real game, by taps).
 
 ## Assets (this folder)
