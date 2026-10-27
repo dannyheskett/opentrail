@@ -1,7 +1,7 @@
 # OpenTrail — App Store listing
 
 `scripts/asc_release.py listing` pushes the fields below and the screenshots in
-`screenshots/` (`store-release.yml`); `scripts/asc_setup.py app-info` sets the
+`screenshots/` (`release.yml`); `scripts/asc_setup.py app-info` sets the
 category, age rating, URLs and price. Mirrors `android/play-assets/LISTING.md`
 with Apple's differences. Never mention another platform or store in the copy:
 Apple rejects listings that do.

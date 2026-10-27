@@ -21,7 +21,7 @@ HDRS        := $(wildcard src/*/*.h)
 CORE_SRC    := $(ENGINE_SRC) $(MACHINE_SRC) $(LEGACY_SRC) $(MODERN_SRC)
 
 # The version, as the family's (openbounty's): the release's N, which the
-# release workflow passes as RELEASE_VERSION; else the latest release-N tag
+# build workflow passes as RELEASE_VERSION; else the latest release-N tag
 # (0 before the first). build/version.h carries it (OT_VERSION), shown as
 # v1.0.N at the bottom right of the opening screen and by --version.
 RELEASE_VERSION ?= $(shell git tag --list 'release-*' 2>/dev/null | sed -n 's/^release-\([1-9][0-9]*\)$$/\1/p' | sort -n | tail -1 | grep . || echo 0)
@@ -299,7 +299,7 @@ ANDROID_APK_DIR := build/android
 ANDROID_LIB     := $(ANDROID_APK_DIR)/lib/$(ANDROID_ABI)/lib$(ANDROID_APP_NAME).so
 ANDROID_APK     := build/$(ANDROID_APP_NAME).apk
 # The sideload APK's key. Releases sign with the project's own sideload key
-# (ANDROID_KEYSTORE, ANDROID_KEY_ALIAS and the passwords; release.yml passes
+# (ANDROID_KEYSTORE, ANDROID_KEY_ALIAS and the passwords; build.yml passes
 # the ANDROID_SIDELOAD_* secrets), registered for the package under Android
 # developer verification, so every release installs over the last. Without
 # one, a throwaway debug key (local and CI builds only).

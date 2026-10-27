@@ -9,9 +9,9 @@ their certificate, API key, upload key and service account are reusable here.
 | When | Workflow | What |
 |---|---|---|
 | Every pull request | `ci.yml` | Builds every platform; launches the Android build on an emulator and the iOS build on a Simulator (screenshots kept as artifacts); signs the `.ipa` when the secrets are set |
-| Every push to `main` | `release.yml` | The next `release-N`: every platform built and published as a GitHub Release (Linux, Windows, macOS, both web games, the APK, the App Bundle, the `.ipa`); then the AAB to Play's **internal** track and the `.ipa` to **TestFlight**, with "What to Test" notes. Testers only. |
-| By hand | `store-release.yml` | Pushes the listings and screenshots from the repo, promotes a build (Play: internal, alpha, beta or production, a staged rollout; Apple: a version with the build attached, submitted for review when ticked). Dry run by default. |
-| By hand | `asc-setup.yml` | One-time App Store Connect setup through the API: `bundle-id`, `profile`, `app-info`. Dry run by default. |
+| Every merge of `staging` into `main` | `build.yml` | The next `release-N`: every platform built and published as a GitHub Release (Linux, Windows, macOS, both web games, the APK, the App Bundle, the `.ipa`). Nothing goes to a store. Missing signing secrets fail the build. |
+| By hand | `release.yml` | Ships a `release-N` from its GitHub Release, in order, stopping at the first failure: the AAB to the Play track you pick (internal, alpha, beta or production, optionally a staged rollout) with the listing; then the `.ipa` to App Store Connect, TestFlight "What to Test" notes for internal testers, version 1.0.N with the listing, submitted to App Review (an earlier version still pending review is withdrawn first). Each store is read back at the end. |
+| By hand | `asc-setup.yml` | One-time App Store Connect setup through the API: `bundle-id`, `profile`, `app-info`. Dry run by default (titled DRY RUN). |
 | By hand | `devicefarm.yml` | AWS Device Farm fuzz test on real phones (needs `AWS_ROLE_ARN`, `AWS_DEVICEFARM_ARN`). |
 
 The listings are `android/play-assets/LISTING.md` and
@@ -28,11 +28,11 @@ other store named on Apple's). The screenshots are made by
 | `IOS_CERT_PASSWORD` | its password | signed `.ipa` |
 | `IOS_TEAM_ID` | the team id (10 characters) | signed `.ipa` |
 | `IOS_PROVISIONING_PROFILE` | the App Store profile **for com.danheskett.opentrail**, base64 (from `asc-setup profile`) | signed `.ipa` |
-| `ASC_KEY_P8` | the App Store Connect API key, the `.p8` text (not base64) | TestFlight, store-release, asc-setup |
+| `ASC_KEY_P8` | the App Store Connect API key, the `.p8` text (not base64) | release, asc-setup |
 | `ASC_KEY_ID`, `ASC_ISSUER_ID` | its id and issuer | the same |
 | `PLAY_UPLOAD_KEYSTORE` | the upload keystore, base64 | the AAB |
 | `PLAY_KEY_ALIAS`, `PLAY_KEYSTORE_PASSWORD`, `PLAY_KEY_PASSWORD` | its alias and passwords | the AAB |
-| `PLAY_SERVICE_ACCOUNT_JSON` | the Play service account's JSON | the internal track, store-release |
+| `PLAY_SERVICE_ACCOUNT_JSON` | the Play service account's JSON | release |
 | `ANDROID_SIDELOAD_KEYSTORE` | the sideload APK's keystore (`opentrail-sideload.jks`, alias `opentrail-sideload`), base64 | the release's APK |
 | `ANDROID_SIDELOAD_PASSWORD` | its password (the store's and the key's) | the release's APK |
 | `AWS_ROLE_ARN`, `AWS_DEVICEFARM_ARN` | optional: Device Farm | devicefarm |
@@ -70,10 +70,9 @@ still ships everything else (an unsigned `.ipa`, no AAB).
 4. App Privacy → "No, we do not collect data from this app". Console only.
 5. App Review Information (the reviewer contact) once on any version; later
    releases copy it.
-6. Push to `main`: the release uploads the signed `.ipa` to TestFlight. Add
-   yourself to the internal testing group to install it.
-7. When ready: `store-release.yml` with platform `ios`, `submit_for_review`
-   ticked (a dry run first).
+6. Run `release.yml` with `stores: appstore` for a `release-N`: it uploads the
+   signed `.ipa`, puts it on TestFlight for the internal testing group (add
+   yourself to install it), and submits it to App Review.
 
 ## Google Play, once
 
@@ -83,18 +82,18 @@ still ships everything else (an unsigned `.ipa`, no AAB).
 2. The first App Bundle goes up by hand (Play's API cannot create the first
    release): take `opentrail-build-N-android.aab` from the GitHub Release,
    Testing → Internal testing → Create release, upload. From then on
-   `release.yml` uploads every release to the internal track.
+   `release.yml` uploads each release you ship to the track you pick.
 3. Grant the service account (the one in `PLAY_SERVICE_ACCOUNT_JSON`) access to
    the app (Users and permissions), with release and listing rights.
 4. App content: Data safety (no data collected or shared), the content rating
    (IARC questionnaire: see "Categorization" in the listing), target audience,
    ads (none), the privacy policy URL.
-5. Store listing: `store-release.yml` with platform `android` and
-   `push_listing` pushes the text, icon, feature graphic and screenshots.
+5. Store listing: `release.yml` with `stores: play` and `push_listing` pushes
+   the text, icon, feature graphic and screenshots.
 6. Production access for a new personal account needs a closed test with 12
    testers for 14 days first (Testing → Closed testing).
-7. When ready: `store-release.yml` with `android_track: production` (and a
-   `rollout` fraction for a staged release).
+7. When ready: `release.yml` with `android_track: production` (and a `rollout`
+   fraction for a staged release).
 
 ## The sideload APK's key, once
 
