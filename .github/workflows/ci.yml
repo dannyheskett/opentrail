@@ -248,22 +248,35 @@ jobs:
           xcrun simctl bootstatus "$UDID" -b
           app=build/ios-sim/OpenTrail.app
           xcrun simctl install "$UDID" "$app"
-          xcrun simctl launch "$UDID" com.danheskett.opentrail
-          sleep 10
-          xcrun simctl io "$UDID" screenshot ios-shot.png
-          sips -r 270 ios-shot.png >/dev/null          # the device stays portrait; the app is landscape
-          xcrun simctl spawn "$UDID" log show --style compact --last 5m \
-            --predicate 'eventMessage CONTAINS "opentrail"' 2>/dev/null | head -60 || true
-          sleep 20
-          xcrun simctl io "$UDID" screenshot ios-shot-late.png
-          sips -r 270 ios-shot-late.png >/dev/null
-          alive=1
-          xcrun simctl spawn "$UDID" launchctl list | grep -i opentrail || { echo "gone by now"; alive=0; }
-          for f in $(find ~/Library/Logs/DiagnosticReports ~/Library/Logs/CoreSimulator \
-                          -name '*OpenTrail*' -newermt '-10 minutes' 2>/dev/null | head -2); do
-            echo "== $f"; head -80 "$f"
+          # A launch can die in Apple's CoreAudio, not ours: the Simulator's
+          # audio service misses an RPC and the framework aborts the app
+          # (_ReportRPCTimeout in AURemoteIO::SetProperty). That crash, and only
+          # that one, is relaunched -- at most 3 times, each printed. Any other
+          # crash, or this one a 4th time, fails the job.
+          for attempt in 1 2 3 4; do
+            marker="$RUNNER_TEMP/launch-$attempt"; touch "$marker"
+            xcrun simctl launch "$UDID" com.danheskett.opentrail
+            sleep 10
+            xcrun simctl io "$UDID" screenshot ios-shot.png
+            sips -r 270 ios-shot.png >/dev/null          # the device stays portrait; the app is landscape
+            xcrun simctl spawn "$UDID" log show --style compact --last 5m \
+              --predicate 'eventMessage CONTAINS "opentrail"' 2>/dev/null | head -60 || true   # log excerpt only
+            sleep 20
+            xcrun simctl io "$UDID" screenshot ios-shot-late.png
+            sips -r 270 ios-shot-late.png >/dev/null
+            if xcrun simctl spawn "$UDID" launchctl list | grep -i opentrail; then
+              break                                      # running 30 s after launch
+            fi
+            echo "gone by now"
+            reports=$(find ~/Library/Logs/DiagnosticReports ~/Library/Logs/CoreSimulator \
+                        -name '*OpenTrail*' -newer "$marker" 2>/dev/null | head -2)
+            for f in $reports; do echo "== $f"; head -80 "$f"; done
+            if [ "$attempt" -lt 4 ] && [ -n "$reports" ] && grep -q '_ReportRPCTimeout' $reports; then
+              echo "::warning::CoreAudio RPC timeout in the Simulator killed launch $attempt; relaunching ($attempt/3)"
+              continue
+            fi
+            exit 1
           done
-          [ "$alive" = 1 ]                               # running 30 s after launch
       - name: Upload the Simulator screenshots
         if: always()
         uses: actions/upload-artifact@v7
