@@ -12,7 +12,6 @@ their certificate, API key, upload key and service account are reusable here.
 | Every merge of `staging` into `main` | `build.yml` | The next `release-N`: every platform built and published as a GitHub Release (Linux, Windows, macOS, both web games, the APK, the App Bundle, the `.ipa`). Nothing goes to a store. Missing signing secrets fail the build. |
 | By hand | `release.yml` | Ships a `release-N` from its GitHub Release, in order, stopping at the first failure: the AAB to the Play track you pick (internal, alpha, beta or production, optionally a staged rollout) with the listing; then the `.ipa` to App Store Connect, TestFlight "What to Test" notes for internal testers, version 1.0.N with the listing, submitted to App Review (an earlier version still pending review is withdrawn first). Each store is read back at the end. |
 | By hand | `asc-setup.yml` | One-time App Store Connect setup through the API: `bundle-id`, `profile`, `app-info`. Dry run by default (titled DRY RUN). |
-| By hand | `devicefarm.yml` | AWS Device Farm fuzz test on real phones (needs `AWS_ROLE_ARN`, `AWS_DEVICEFARM_ARN`). |
 
 The listings are `android/play-assets/LISTING.md` and
 `ios/app-store-assets/LISTING.md` (`scripts/store_listing.py --check`
@@ -35,7 +34,6 @@ other store named on Apple's). The screenshots are made by
 | `PLAY_SERVICE_ACCOUNT_JSON` | the Play service account's JSON | release |
 | `ANDROID_SIDELOAD_KEYSTORE` | the sideload APK's keystore (`opentrail-sideload.jks`, alias `opentrail-sideload`), base64 | the release's APK |
 | `ANDROID_SIDELOAD_PASSWORD` | its password (the store's and the key's) | the release's APK |
-| `AWS_ROLE_ARN`, `AWS_DEVICEFARM_ARN` | optional: Device Farm | devicefarm |
 
 ```
 base64 -w0 distribution.p12        | gh secret set IOS_CERT_P12
