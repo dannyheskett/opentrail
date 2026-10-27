@@ -34,5 +34,17 @@ Thumbs.db
 __pycache__/
 *.pyc
 
-# Local notes for coding agents (the docs are in docs/)
-CLAUDE.md
+# --- store signing material ---
+# Never commit these: the release workflow decodes the Play keystore and the
+# Apple distribution certificate from secrets at build time.
+*.jks
+*.keystore
+*.p12
+*.mobileprovision
+*.p8
+*.b64
+# ...and the material the signing certificate is built from.
+*.key
+*.csr
+*.cer
+*.pem
