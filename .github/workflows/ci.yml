@@ -18,6 +18,12 @@ concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+# bash -eo pipefail for every step: a failing command, including one inside a
+# pipe, fails its step.
+defaults:
+  run:
+    shell: bash
+
 jobs:
   linux:
     runs-on: ubuntu-22.04
@@ -50,6 +56,12 @@ jobs:
         run: ./scripts/build_raylib_linux.sh
       - name: Run tests
         run: xvfb-run -a -s '-screen 0 1280x800x24' make test   # a display, so test_harness runs
+      # The store scripts' failure handling: bounded retries, and replacing a
+      # pending App Review. Faked transport, no network.
+      - name: Test the store scripts
+        run: |
+          python3 -m pip install --quiet cryptography
+          python3 scripts/test_store_scripts.py
       - name: Build the game
         run: make build/opentrail
       - name: Check it needs only libc and libm
